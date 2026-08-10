@@ -1,0 +1,1496 @@
+{
+  "definitions": {
+    "ZSA_AM_DSO1": {
+      "kind": "entity",
+      "@EndUserText.label": "DSO",
+      "elements": {
+        "AS_OF_DATE": {
+          "@EndUserText.label": "AS_OF_DATE"
+        },
+        "AR_ROLLING_MONTHS": {
+          "@EndUserText.label": "AR_ROLLING_MONTHS"
+        },
+        "REVENUE_ROLLING_MONTHS": {
+          "@EndUserText.label": "REVENUE_ROLLING_MONTHS"
+        },
+        "COMPANY_CODE": {
+          "@EndUserText.label": "COMPANY_CODE"
+        },
+        "CUSTOMER": {
+          "@EndUserText.label": "CUSTOMER"
+        },
+        "CURRENCY": {
+          "@EndUserText.label": "CURRENCY"
+        },
+        "AR_ROLLING_TOTAL": {
+          "@EndUserText.label": "AR_ROLLING_TOTAL",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "AVERAGE_MONTHLY_AR": {
+          "@EndUserText.label": "AVERAGE_MONTHLY_AR",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "REVENUE_ROLLING_TOTAL": {
+          "@EndUserText.label": "REVENUE_ROLLING_TOTAL",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "AVERAGE_MONTHLY_REVENUE": {
+          "@EndUserText.label": "AVERAGE_MONTHLY_REVENUE",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "DSO_DAYS": {
+          "@EndUserText.label": "DSO_DAYS",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        }
+      },
+      "@ObjectModel.modelingPattern": {
+        "#": "ANALYTICAL_CUBE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "ANALYTICAL_PROVIDER"
+        },
+        {
+          "#": "_DWC_AM_EDITABLE_DIMENSION_NAMES"
+        }
+      ],
+      "@DataWarehouse.editorType": {
+        "#": "DWCQueryModelEditor"
+      },
+      "@DataWarehouse.hanaCatalog.viewType": {
+        "#": "CALCULATION_VIEW"
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              {
+                "id": "ZSA_FA_DSO_tb_dd",
+                "args": {
+                  "P_RBLS_ROLLING_AVERAGE_MONTHS": {
+                    "param": true,
+                    "ref": [
+                      "P_RBLS_ROLLING_AVERAGE_MONTHS"
+                    ]
+                  },
+                  "P_REVN_ROLLING_AVERAGE_MONTHS": {
+                    "param": true,
+                    "ref": [
+                      "P_REVN_ROLLING_AVERAGE_MONTHS"
+                    ]
+                  }
+                }
+              }
+            ],
+            "as": "ZSA_FA_DSO_tb_dd"
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "AS_OF_DATE"
+              ],
+              "as": "AS_OF_DATE"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "AR_ROLLING_MONTHS"
+              ],
+              "as": "AR_ROLLING_MONTHS"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "REVENUE_ROLLING_MONTHS"
+              ],
+              "as": "REVENUE_ROLLING_MONTHS"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "COMPANY_CODE"
+              ],
+              "as": "COMPANY_CODE"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "CUSTOMER"
+              ],
+              "as": "CUSTOMER"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "CURRENCY"
+              ],
+              "as": "CURRENCY"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "AR_ROLLING_TOTAL"
+              ],
+              "as": "AR_ROLLING_TOTAL"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "AVERAGE_MONTHLY_AR"
+              ],
+              "as": "AVERAGE_MONTHLY_AR"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "REVENUE_ROLLING_TOTAL"
+              ],
+              "as": "REVENUE_ROLLING_TOTAL"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "AVERAGE_MONTHLY_REVENUE"
+              ],
+              "as": "AVERAGE_MONTHLY_REVENUE"
+            },
+            {
+              "ref": [
+                "ZSA_FA_DSO_tb_dd",
+                "DSO_DAYS"
+              ],
+              "as": "DSO_DAYS"
+            }
+          ],
+          "mixin": {}
+        }
+      },
+      "params": {
+        "P_RBLS_ROLLING_AVERAGE_MONTHS": {
+          "@EndUserText.label": "AR AVG Number of months",
+          "default": 3,
+          "@AnalyticsDetails.query.variableSequence": 1
+        },
+        "P_REVN_ROLLING_AVERAGE_MONTHS": {
+          "@EndUserText.label": "SR AVG Number of months",
+          "default": 3,
+          "@AnalyticsDetails.query.variableSequence": 2
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_XSXLIFDF"
+        }
+      }
+    },
+    "RAD_S3P": {
+      "kind": "context",
+      "@EndUserText.label": "RAD_S3P",
+      "@DataWarehouse.space.schema": "RAD_S3P",
+      "@DataWarehouse.space.name": "RAD_S3P"
+    },
+    "RAD_S3P.I_CUSTOMER": {
+      "kind": "entity",
+      "@EndUserText.label": "Customer",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "I_CUSTOMER_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "Customer": {
+          "@EndUserText.label": "Customer number",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 10
+        },
+        "CustomerName": {
+          "@EndUserText.label": "Name of customer",
+          "type": "cds.String",
+          "key": false,
+          "length": 80
+        },
+        "CustomerFullName": {
+          "@EndUserText.label": "Customer full name",
+          "type": "cds.String",
+          "key": false,
+          "length": 220
+        },
+        "BPCustomerName": {
+          "@EndUserText.label": "Customer name",
+          "type": "cds.String",
+          "key": false,
+          "length": 81
+        },
+        "BPCustomerFullName": {
+          "@EndUserText.label": "Customer full name",
+          "type": "cds.String",
+          "key": false,
+          "length": 220
+        },
+        "CreatedByUser": {
+          "@EndUserText.label": "Name of person who created the object",
+          "type": "cds.String",
+          "key": false,
+          "length": 12
+        },
+        "CreationDate": {
+          "@EndUserText.label": "Record created on",
+          "type": "cds.String",
+          "key": false,
+          "length": 8
+        },
+        "AddressID": {
+          "@EndUserText.label": "Address",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "CustomerClassification": {
+          "@EndUserText.label": "Customer classification",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "VATRegistration": {
+          "@EndUserText.label": "Vat registration number",
+          "type": "cds.String",
+          "key": false,
+          "length": 20
+        },
+        "CustomerAccountGroup": {
+          "@EndUserText.label": "Customer account group",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        },
+        "AuthorizationGroup": {
+          "@EndUserText.label": "Authorization group",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        },
+        "DeliveryIsBlocked": {
+          "@EndUserText.label": "Central delivery block for the customer",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "PostingIsBlocked": {
+          "@EndUserText.label": "Central posting block",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "BillingIsBlockedForCustomer": {
+          "@EndUserText.label": "Central billing block for customer",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "OrderIsBlockedForCustomer": {
+          "@EndUserText.label": "Central order block for customer",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "InternationalLocationNumber1": {
+          "@EndUserText.label": "International location number  (part 1)",
+          "type": "cds.String",
+          "key": false,
+          "length": 7
+        },
+        "IsOneTimeAccount": {
+          "@EndUserText.label": "Indicator: is the account a one-time account?",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "TaxJurisdiction": {
+          "@EndUserText.label": "Tax jurisdiction",
+          "type": "cds.String",
+          "key": false,
+          "length": 15
+        },
+        "Industry": {
+          "@EndUserText.label": "Industry key",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        },
+        "TaxNumberType": {
+          "@EndUserText.label": "Tax number type",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "TaxNumber1": {
+          "@EndUserText.label": "Tax number 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 16
+        },
+        "TaxNumber2": {
+          "@EndUserText.label": "Tax number 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 11
+        },
+        "TaxNumber3": {
+          "@EndUserText.label": "Tax number 3",
+          "type": "cds.String",
+          "key": false,
+          "length": 18
+        },
+        "TaxNumber4": {
+          "@EndUserText.label": "Tax number 4",
+          "type": "cds.String",
+          "key": false,
+          "length": 18
+        },
+        "TaxNumber5": {
+          "@EndUserText.label": "Tax number 5",
+          "type": "cds.String",
+          "key": false,
+          "length": 60
+        },
+        "TaxNumber6": {
+          "@EndUserText.label": "Tax number 6",
+          "type": "cds.String",
+          "key": false,
+          "length": 20
+        },
+        "CustomerCorporateGroup": {
+          "@EndUserText.label": "Group key",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "Supplier": {
+          "@EndUserText.label": "Account number of supplier",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "NielsenRegion": {
+          "@EndUserText.label": "Nielsen id",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "IndustryCode1": {
+          "@EndUserText.label": "Industry code 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "IndustryCode2": {
+          "@EndUserText.label": "Industry code 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "IndustryCode3": {
+          "@EndUserText.label": "Industry code 3",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "IndustryCode4": {
+          "@EndUserText.label": "Industry code 4",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "IndustryCode5": {
+          "@EndUserText.label": "Industry code 5",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "Country": {
+          "@EndUserText.label": "Country/region key",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "OrganizationBPName1": {
+          "@EndUserText.label": "Name 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 35
+        },
+        "OrganizationBPName2": {
+          "@EndUserText.label": "Name 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 35
+        },
+        "CityName": {
+          "@EndUserText.label": "City",
+          "type": "cds.String",
+          "key": false,
+          "length": 35
+        },
+        "PostalCode": {
+          "@EndUserText.label": "Postal code",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "StreetName": {
+          "@EndUserText.label": "Street and house number",
+          "type": "cds.String",
+          "key": false,
+          "length": 35
+        },
+        "SortField": {
+          "@EndUserText.label": "Sort field",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "FaxNumber": {
+          "@EndUserText.label": "Fax number",
+          "type": "cds.String",
+          "key": false,
+          "length": 31
+        },
+        "BR_SUFRAMACode": {
+          "@EndUserText.label": "Suframa code",
+          "type": "cds.String",
+          "key": false,
+          "length": 9
+        },
+        "Region": {
+          "@EndUserText.label": "Region (state, province, county)",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "TelephoneNumber1": {
+          "@EndUserText.label": "First telephone number",
+          "type": "cds.String",
+          "key": false,
+          "length": 16
+        },
+        "TelephoneNumber2": {
+          "@EndUserText.label": "Second telephone number",
+          "type": "cds.String",
+          "key": false,
+          "length": 16
+        },
+        "AlternativePayerAccount": {
+          "@EndUserText.label": "Account number of an alternative payer",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "DataMediumExchangeIndicator": {
+          "@EndUserText.label": "Recipient code for data medium exchange",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "VATLiability": {
+          "@EndUserText.label": "Liable for vat",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "IsBusinessPurposeCompleted": {
+          "@EndUserText.label": "Business purpose completed flag",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "ResponsibleType": {
+          "@EndUserText.label": "Tax type",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FiscalAddress": {
+          "@EndUserText.label": "Account number of the master record with the fiscal address",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "NFPartnerIsNaturalPerson": {
+          "@EndUserText.label": "Natural person",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "DeletionIndicator": {
+          "@EndUserText.label": "Central deletion flag for master record",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "TradingPartner": {
+          "@EndUserText.label": "Company id of trading partner",
+          "type": "cds.String",
+          "key": false,
+          "length": 6
+        },
+        "DeliveryDateTypeRule": {
+          "@EndUserText.label": "Delivery date rule",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "ExpressTrainStationName": {
+          "@EndUserText.label": "Express train station",
+          "type": "cds.String",
+          "key": false,
+          "length": 25
+        },
+        "TrainStationName": {
+          "@EndUserText.label": "Train station",
+          "type": "cds.String",
+          "key": false,
+          "length": 25
+        },
+        "InternationalLocationNumber2": {
+          "@EndUserText.label": "International location number (part 2)",
+          "type": "cds.String",
+          "key": false,
+          "length": 5
+        },
+        "InternationalLocationNumber3": {
+          "@EndUserText.label": "Check digit for the international location number",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "CityCode": {
+          "@EndUserText.label": "City code",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        },
+        "County": {
+          "@EndUserText.label": "County code",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "CustomerHasUnloadingPoint": {
+          "@EndUserText.label": "Indicator: unloading points exist",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "CustomerWorkingTimeCalendar": {
+          "@EndUserText.label": "Working time calendar",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "IsCompetitor": {
+          "@EndUserText.label": "Indicator: competitor",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "TaxInvoiceRepresentativeName": {
+          "@EndUserText.label": "Name of representative",
+          "type": "cds.String",
+          "key": false,
+          "length": 10
+        },
+        "BusinessType": {
+          "@EndUserText.label": "Type of business",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "IndustryType": {
+          "@EndUserText.label": "Type of industry",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "TW_CollvBillingIsSupported": {
+          "@EndUserText.label": "Consolidated invoicing for taiwan",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "AlternativePayeeIsAllowed": {
+          "@EndUserText.label": "Indicator: is an alternative payer allowed in document?",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "FreeDefinedAttribute01": {
+          "@EndUserText.label": "Attribute 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FreeDefinedAttribute02": {
+          "@EndUserText.label": "Attribute 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FreeDefinedAttribute03": {
+          "@EndUserText.label": "Attribute 3",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FreeDefinedAttribute04": {
+          "@EndUserText.label": "Attribute 4",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FreeDefinedAttribute05": {
+          "@EndUserText.label": "Attribute 5",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "FreeDefinedAttribute06": {
+          "@EndUserText.label": "Attribute 6",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "FreeDefinedAttribute07": {
+          "@EndUserText.label": "Attribute 7",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "FreeDefinedAttribute08": {
+          "@EndUserText.label": "Attribute 8",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "FreeDefinedAttribute09": {
+          "@EndUserText.label": "Attribute 9",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "FreeDefinedAttribute10": {
+          "@EndUserText.label": "Attribute 10",
+          "type": "cds.String",
+          "key": false,
+          "length": 3
+        },
+        "PaymentReason": {
+          "@EndUserText.label": "Payment reason",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        },
+        "CustomerConditionGroup1": {
+          "@EndUserText.label": "Customer condition group 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "CustomerConditionGroup2": {
+          "@EndUserText.label": "Customer condition group 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "CustomerConditionGroup3": {
+          "@EndUserText.label": "Customer condition group 3",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "CustomerConditionGroup4": {
+          "@EndUserText.label": "Customer condition group 4",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "CustomerConditionGroup5": {
+          "@EndUserText.label": "Customer condition group 5",
+          "type": "cds.String",
+          "key": false,
+          "length": 2
+        },
+        "IsSalesProspect": {
+          "@EndUserText.label": "Indicator: sales prospect",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "PaymentIsBlockedForCustomer": {
+          "@EndUserText.label": "Payment block",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "IsConsumer": {
+          "@EndUserText.label": "Indicator: consumer",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "DataControllerSet": {
+          "@EndUserText.label": "Bp: data controller set flag",
+          "type": "cds.String",
+          "key": false,
+          "length": 1
+        },
+        "DataController1": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController2": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController3": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController4": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController5": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController6": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController7": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController8": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController9": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "DataController10": {
+          "@EndUserText.label": "Bp: data controller (internal use only)",
+          "type": "cds.String",
+          "key": false,
+          "length": 30
+        },
+        "BusinessPartnerName1": {
+          "@EndUserText.label": "Name 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BusinessPartnerName2": {
+          "@EndUserText.label": "Name 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BusinessPartnerName3": {
+          "@EndUserText.label": "Name 3",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BusinessPartnerName4": {
+          "@EndUserText.label": "Name 4",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BPAddrCityName": {
+          "@EndUserText.label": "City",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BPAddrStreetName": {
+          "@EndUserText.label": "Street",
+          "type": "cds.String",
+          "key": false,
+          "length": 60
+        },
+        "AddressSearchTerm1": {
+          "@EndUserText.label": "Search term 1",
+          "type": "cds.String",
+          "key": false,
+          "length": 20
+        },
+        "AddressSearchTerm2": {
+          "@EndUserText.label": "Search term 2",
+          "type": "cds.String",
+          "key": false,
+          "length": 20
+        },
+        "DistrictName": {
+          "@EndUserText.label": "District",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "POBoxDeviatingCityName": {
+          "@EndUserText.label": "Po box city",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        },
+        "BusinessPartnerFormOfAddress": {
+          "@EndUserText.label": "Form-of-address key",
+          "type": "cds.String",
+          "key": false,
+          "length": 4
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "Z_CUST_TEXT": {
+      "kind": "entity",
+      "elements": {
+        "Customer": {
+          "@EndUserText.label": "Customer number",
+          "type": "cds.String",
+          "length": 10,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "CustomerName"
+            }
+          ]
+        },
+        "CustomerName": {
+          "@EndUserText.label": "Name of customer",
+          "type": "cds.String",
+          "length": 80,
+          "@Semantics.text": true
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true,
+          "@Semantics.language": true
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "RAD_S3P.I_CUSTOMER"
+            ],
+            "as": "I_CUSTOMER"
+          },
+          "columns": [
+            {
+              "ref": [
+                "Customer"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "CustomerName"
+              ]
+            },
+            {
+              "ref": [
+                "Language"
+              ],
+              "key": true
+            }
+          ]
+        }
+      },
+      "@EndUserText.label": "Z_CUST_TEXT",
+      "@ObjectModel.modelingPattern": {
+        "#": "LANGUAGE_DEPENDENT_TEXT"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "LANGUAGE_DEPENDENT_TEXT"
+        }
+      ],
+      "@DataWarehouse.consumption.external": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_CKBUNGQR"
+        }
+      }
+    },
+    "ZSA_HL_AR_AGEING1": {
+      "kind": "entity",
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "elements": {
+        "BillingDocument": {
+          "@EndUserText.label": "BillingDocument",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "CompanyCode": {
+          "@EndUserText.label": "CompanyCode",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "SourceLedger": {
+          "@EndUserText.label": "SourceLedger",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "FinancialAccountType": {
+          "@EndUserText.label": "FinancialAccountType",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "Customer": {
+          "@EndUserText.label": "Customer",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "PostingDate": {
+          "@EndUserText.label": "PostingDate",
+          "type": "cds.Date"
+        },
+        "ClearingDate": {
+          "@EndUserText.label": "ClearingDate",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "NetDueDate": {
+          "@EndUserText.label": "NetDueDate",
+          "type": "cds.Date"
+        },
+        "GLAccount": {
+          "@EndUserText.label": "GLAccount",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "AmountInGlobalCurrency": {
+          "@EndUserText.label": "AmountInGlobalCurrency",
+          "precision": 19,
+          "scale": 2,
+          "type": "cds.Decimal"
+        },
+        "GlobalCurrency": {
+          "@EndUserText.label": "GlobalCurrency",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "FiscalYear": {
+          "@EndUserText.label": "FiscalYear",
+          "type": "cds.Integer"
+        },
+        "AccountingDocument": {
+          "@EndUserText.label": "AccountingDocument",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "OpenItemStatus": {
+          "@EndUserText.label": "OpenItemStatus",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "AgeingDays": {
+          "@EndUserText.label": "AgeingDays",
+          "type": "cds.Integer"
+        }
+      },
+      "@EndUserText.label": "DSO AR",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@DataWarehouse.dataSource.schema": "RADH_S3P#WRG_AR4MQRE016AYP3OE",
+      "@DataWarehouse.dataSource.entity": "sap.dataset.conf_00ca4d12-0774-4666-8a6d-7f8d45b9c118_view",
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_XSXLIFDF"
+        }
+      }
+    },
+    "ZSA_HL_DSO_NET_CREDIT_SALES1": {
+      "kind": "entity",
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "elements": {
+        "BillingDocument": {
+          "@EndUserText.label": "BillingDocument",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "BillingDocumentDate": {
+          "@EndUserText.label": "BillingDocumentDate",
+          "type": "cds.Date"
+        },
+        "CompanyCode": {
+          "@EndUserText.label": "CompanyCode",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "PayerParty": {
+          "@EndUserText.label": "PayerParty",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "BillingDocumentType": {
+          "@EndUserText.label": "BillingDocumentType",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "SDDocSmentCategory": {
+          "@EndUserText.label": "SDDocSmentCategory",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "BillingDocumentItem": {
+          "@EndUserText.label": "BillingDocumentItem",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "NetAmount": {
+          "@EndUserText.label": "NetAmount",
+          "precision": 19,
+          "scale": 2,
+          "type": "cds.Decimal"
+        },
+        "TransactionCurrency": {
+          "@EndUserText.label": "TransactionCurrency",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "SIGNED_NET_CREDIT_VALUE": {
+          "@EndUserText.label": "SIGNED_NET_CREDIT_VALUE",
+          "precision": 19,
+          "scale": 2,
+          "type": "cds.Decimal"
+        },
+        "MONTH_KEY": {
+          "@EndUserText.label": "MONTH_KEY",
+          "type": "cds.Date"
+        }
+      },
+      "@EndUserText.label": "DSO Net Credit Sales",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@DataWarehouse.dataSource.schema": "RADH_S3P#WRG_AR4MQRE016AYP3OE",
+      "@DataWarehouse.dataSource.entity": "sap.dataset.conf_0d2c1685-93cd-41ca-be6f-ddd88f8927f7_view",
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_XSXLIFDF"
+        }
+      }
+    },
+    "ZSA_FA_DSO_tb_dd": {
+      "kind": "entity",
+      "elements": {
+        "AS_OF_DATE": {
+          "@EndUserText.label": "AS_OF_DATE",
+          "type": "cds.Date"
+        },
+        "AR_ROLLING_MONTHS": {
+          "@EndUserText.label": "AR_ROLLING_MONTHS",
+          "type": "cds.Integer",
+          "@Analytics.dimension": true
+        },
+        "REVENUE_ROLLING_MONTHS": {
+          "@EndUserText.label": "REVENUE_ROLLING_MONTHS",
+          "type": "cds.Integer",
+          "@Analytics.dimension": true
+        },
+        "COMPANY_CODE": {
+          "@EndUserText.label": "COMPANY_CODE",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true,
+          "@Analytics.dimension": true
+        },
+        "CUSTOMER": {
+          "@EndUserText.label": "CUSTOMER",
+          "type": "cds.String",
+          "length": 10,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.association": {
+            "=": "_Z_CUST_TE"
+          },
+          "@Analytics.dimension": true
+        },
+        "CURRENCY": {
+          "@EndUserText.label": "CURRENCY",
+          "type": "cds.String",
+          "length": 5,
+          "key": true,
+          "notNull": true,
+          "@Analytics.dimension": true,
+          "@Semantics.currencyCode": true
+        },
+        "AR_ROLLING_TOTAL": {
+          "@EndUserText.label": "AR_ROLLING_TOTAL",
+          "precision": 31,
+          "scale": 6,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Semantics.amount.currencyCode": {
+            "=": "CURRENCY"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "AVERAGE_MONTHLY_AR": {
+          "@EndUserText.label": "AVERAGE_MONTHLY_AR",
+          "precision": 31,
+          "scale": 6,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "REVENUE_ROLLING_TOTAL": {
+          "@EndUserText.label": "REVENUE_ROLLING_TOTAL",
+          "precision": 31,
+          "scale": 6,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Semantics.amount.currencyCode": {
+            "=": "CURRENCY"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "AVERAGE_MONTHLY_REVENUE": {
+          "@EndUserText.label": "AVERAGE_MONTHLY_REVENUE",
+          "precision": 31,
+          "scale": 6,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "DSO_DAYS": {
+          "@EndUserText.label": "DSO_DAYS",
+          "precision": 31,
+          "scale": 0,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "NONE"
+          }
+        },
+        "_Z_CUST_TE": {
+          "type": "cds.Association",
+          "@EndUserText.label": "DSO Fact New to Z_CUST_TEXT",
+          "on": [
+            {
+              "ref": [
+                "CUSTOMER"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_Z_CUST_TE",
+                "Customer"
+              ]
+            }
+          ],
+          "target": "Z_CUST_TEXT"
+        }
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@EndUserText.label": "DSO Fact New DD",
+      "@ObjectModel.modelingPattern": {
+        "#": "ANALYTICAL_FACT"
+      },
+      "@Analytics.dbViewType": "TABLE_FUNCTION",
+      "params": {
+        "P_RBLS_ROLLING_AVERAGE_MONTHS": {
+          "@EndUserText.label": "AR AVG Number of months",
+          "type": "cds.Integer",
+          "default": "3"
+        },
+        "P_REVN_ROLLING_AVERAGE_MONTHS": {
+          "@EndUserText.label": "SR AVG Number of months",
+          "type": "cds.Integer",
+          "default": "3"
+        }
+      },
+      "@DataWarehouse.consumption.external": true,
+      "@DataWarehouse.tableFunction.script": "RETURN\r\n\r\nSELECT\r\n    CURRENT_DATE AS \"AS_OF_DATE\",\r\n\r\n    CAST(\r\n        :P_RBLS_ROLLING_AVERAGE_MONTHS\r\n        AS INTEGER\r\n    ) AS \"AR_ROLLING_MONTHS\",\r\n\r\n    CAST(\r\n        :P_REVN_ROLLING_AVERAGE_MONTHS\r\n        AS INTEGER\r\n    ) AS \"REVENUE_ROLLING_MONTHS\",\r\n\r\n    AR.\"COMPANY_CODE\"\r\n        AS \"COMPANY_CODE\",\r\n\r\n    AR.\"CUSTOMER\"\r\n        AS \"CUSTOMER\",\r\n\r\n    AR.\"CURRENCY\"\r\n        AS \"CURRENCY\",\r\n\r\n    CAST(\r\n        AR.\"AR_ROLLING_TOTAL\"\r\n        AS DECIMAL(31,6)\r\n    ) AS \"AR_ROLLING_TOTAL\",\r\n\r\n    CAST(\r\n        AR.\"AVERAGE_MONTHLY_AR\"\r\n        AS DECIMAL(31,6)\r\n    ) AS \"AVERAGE_MONTHLY_AR\",\r\n\r\n    CAST(\r\n        COALESCE(\r\n            REV.\"REVENUE_ROLLING_TOTAL\",\r\n            0\r\n        )\r\n        AS DECIMAL(31,6)\r\n    ) AS \"REVENUE_ROLLING_TOTAL\",\r\n\r\n    CAST(\r\n        COALESCE(\r\n            REV.\"AVERAGE_MONTHLY_REVENUE\",\r\n            0\r\n        )\r\n        AS DECIMAL(31,6)\r\n    ) AS \"AVERAGE_MONTHLY_REVENUE\",\r\n\r\n    CASE\r\n        WHEN CAST(\r\n                 :P_RBLS_ROLLING_AVERAGE_MONTHS\r\n                 AS INTEGER\r\n             ) <= 0\r\n\r\n          OR CAST(\r\n                 :P_REVN_ROLLING_AVERAGE_MONTHS\r\n                 AS INTEGER\r\n             ) <= 0\r\n\r\n        THEN CAST(\r\n            NULL AS DECIMAL(31,0)\r\n        )\r\n\r\n        WHEN REV.\"AVERAGE_MONTHLY_REVENUE\" IS NULL\r\n          OR REV.\"AVERAGE_MONTHLY_REVENUE\" = 0\r\n\r\n        THEN CAST(\r\n            0 AS DECIMAL(31,0)\r\n        )\r\n\r\n        ELSE CAST(\r\n            ROUND(\r\n                30\r\n                * AR.\"AVERAGE_MONTHLY_AR\"\r\n                / REV.\"AVERAGE_MONTHLY_REVENUE\",\r\n                0\r\n            )\r\n            AS DECIMAL(31,0)\r\n        )\r\n    END AS \"DSO_DAYS\"\r\n\r\nFROM\r\n(\r\n    SELECT\r\n        AR_MONTHLY.\"COMPANY_CODE\",\r\n        AR_MONTHLY.\"CUSTOMER\",\r\n        AR_MONTHLY.\"CURRENCY\",\r\n\r\n        SUM(\r\n            AR_MONTHLY.\"AR_AT_KEY_DATE\"\r\n        ) AS \"AR_ROLLING_TOTAL\",\r\n\r\n        CAST(\r\n            SUM(\r\n                AR_MONTHLY.\"AR_AT_KEY_DATE\"\r\n            )\r\n            /\r\n            CAST(\r\n                :P_RBLS_ROLLING_AVERAGE_MONTHS\r\n                AS INTEGER\r\n            )\r\n            AS DECIMAL(31,6)\r\n        ) AS \"AVERAGE_MONTHLY_AR\"\r\n\r\n    FROM\r\n    (\r\n        SELECT\r\n            AR_SOURCE.\"CompanyCode\"\r\n                AS \"COMPANY_CODE\",\r\n\r\n            AR_SOURCE.\"Customer\"\r\n                AS \"CUSTOMER\",\r\n\r\n            AR_SOURCE.\"GlobalCurrency\"\r\n                AS \"CURRENCY\",\r\n\r\n            KEY_DATES.\"KEY_DATE\"\r\n                AS \"KEY_DATE\",\r\n\r\n            SUM(\r\n                CAST(\r\n                    AR_SOURCE.\"AmountInGlobalCurrency\"\r\n                    AS DECIMAL(31,6)\r\n                )\r\n            ) AS \"AR_AT_KEY_DATE\"\r\n\r\n        FROM \"ZSA_HL_AR_AGEING1\" AR_SOURCE\r\n\r\n        CROSS JOIN\r\n        (\r\n            SELECT\r\n                CASE\r\n                    WHEN SERIES_DATA.\"GENERATED_PERIOD_START\" = 0\r\n                    THEN CURRENT_DATE\r\n\r\n                    ELSE LAST_DAY(\r\n                        ADD_MONTHS(\r\n                            CURRENT_DATE,\r\n                            - SERIES_DATA.\"GENERATED_PERIOD_START\"\r\n                        )\r\n                    )\r\n                END AS \"KEY_DATE\"\r\n\r\n            FROM SERIES_GENERATE_INTEGER(\r\n                1,\r\n                0,\r\n                CAST(\r\n                    :P_RBLS_ROLLING_AVERAGE_MONTHS\r\n                    AS INTEGER\r\n                )\r\n            ) SERIES_DATA\r\n\r\n        ) KEY_DATES\r\n\r\n        WHERE CAST(\r\n                  :P_RBLS_ROLLING_AVERAGE_MONTHS\r\n                  AS INTEGER\r\n              ) > 0\r\n\r\n          AND AR_SOURCE.\"PostingDate\" IS NOT NULL\r\n\r\n          AND TRIM(\r\n                  TO_VARCHAR(\r\n                      AR_SOURCE.\"PostingDate\"\r\n                  )\r\n              ) <> ''\r\n\r\n          AND TRIM(\r\n                  TO_VARCHAR(\r\n                      AR_SOURCE.\"PostingDate\"\r\n                  )\r\n              ) <> '00000000'\r\n\r\n          AND TRIM(\r\n                  TO_VARCHAR(\r\n                      AR_SOURCE.\"PostingDate\"\r\n                  )\r\n              ) <> '0000-00-00'\r\n\r\n          AND LENGTH(\r\n                  TRIM(\r\n                      TO_VARCHAR(\r\n                          AR_SOURCE.\"PostingDate\"\r\n                      )\r\n                  )\r\n              ) = 10\r\n\r\n          AND TO_DATE(\r\n                  TRIM(\r\n                      TO_VARCHAR(\r\n                          AR_SOURCE.\"PostingDate\"\r\n                      )\r\n                  ),\r\n                  'YYYY-MM-DD'\r\n              ) <= KEY_DATES.\"KEY_DATE\"\r\n\r\n          AND\r\n          (\r\n                 AR_SOURCE.\"ClearingDate\" IS NULL\r\n\r\n              OR TRIM(\r\n                     TO_VARCHAR(\r\n                         AR_SOURCE.\"ClearingDate\"\r\n                     )\r\n                 ) = ''\r\n\r\n              OR TRIM(\r\n                     TO_VARCHAR(\r\n                         AR_SOURCE.\"ClearingDate\"\r\n                     )\r\n                 ) = '00000000'\r\n\r\n              OR TRIM(\r\n                     TO_VARCHAR(\r\n                         AR_SOURCE.\"ClearingDate\"\r\n                     )\r\n                 ) = '0000-00-00'\r\n\r\n              OR\r\n              (\r\n                  LENGTH(\r\n                      TRIM(\r\n                          TO_VARCHAR(\r\n                              AR_SOURCE.\"ClearingDate\"\r\n                          )\r\n                      )\r\n                  ) = 10\r\n\r\n                  AND TO_DATE(\r\n                          TRIM(\r\n                              TO_VARCHAR(\r\n                                  AR_SOURCE.\"ClearingDate\"\r\n                              )\r\n                          ),\r\n                          'YYYY-MM-DD'\r\n                      ) > KEY_DATES.\"KEY_DATE\"\r\n              )\r\n          )\r\n\r\n        GROUP BY\r\n            AR_SOURCE.\"CompanyCode\",\r\n            AR_SOURCE.\"Customer\",\r\n            AR_SOURCE.\"GlobalCurrency\",\r\n            KEY_DATES.\"KEY_DATE\"\r\n\r\n    ) AR_MONTHLY\r\n\r\n    GROUP BY\r\n        AR_MONTHLY.\"COMPANY_CODE\",\r\n        AR_MONTHLY.\"CUSTOMER\",\r\n        AR_MONTHLY.\"CURRENCY\"\r\n\r\n) AR\r\n\r\nLEFT OUTER JOIN\r\n(\r\n    SELECT\r\n        SALES_SOURCE.\"CompanyCode\"\r\n            AS \"COMPANY_CODE\",\r\n\r\n        SALES_SOURCE.\"PayerParty\"\r\n            AS \"CUSTOMER\",\r\n\r\n        SALES_SOURCE.\"TransactionCurrency\"\r\n            AS \"CURRENCY\",\r\n\r\n        SUM(\r\n            CAST(\r\n                SALES_SOURCE.\"SIGNED_NET_CREDIT_VALUE\"\r\n                AS DECIMAL(31,6)\r\n            )\r\n        ) AS \"REVENUE_ROLLING_TOTAL\",\r\n\r\n        CAST(\r\n            SUM(\r\n                CAST(\r\n                    SALES_SOURCE.\"SIGNED_NET_CREDIT_VALUE\"\r\n                    AS DECIMAL(31,6)\r\n                )\r\n            )\r\n            /\r\n            CAST(\r\n                :P_REVN_ROLLING_AVERAGE_MONTHS\r\n                AS INTEGER\r\n            )\r\n            AS DECIMAL(31,6)\r\n        ) AS \"AVERAGE_MONTHLY_REVENUE\"\r\n\r\n    FROM \"ZSA_HL_DSO_NET_CREDIT_SALES1\" SALES_SOURCE\r\n\r\n    WHERE CAST(\r\n              :P_REVN_ROLLING_AVERAGE_MONTHS\r\n              AS INTEGER\r\n          ) > 0\r\n\r\n      AND SALES_SOURCE.\"BillingDocumentDate\" IS NOT NULL\r\n\r\n      AND TRIM(\r\n              TO_VARCHAR(\r\n                  SALES_SOURCE.\"BillingDocumentDate\"\r\n              )\r\n          ) <> ''\r\n\r\n      AND TRIM(\r\n              TO_VARCHAR(\r\n                  SALES_SOURCE.\"BillingDocumentDate\"\r\n              )\r\n          ) <> '00000000'\r\n\r\n      AND TRIM(\r\n              TO_VARCHAR(\r\n                  SALES_SOURCE.\"BillingDocumentDate\"\r\n              )\r\n          ) <> '0000-00-00'\r\n\r\n      AND LENGTH(\r\n              TRIM(\r\n                  TO_VARCHAR(\r\n                      SALES_SOURCE.\"BillingDocumentDate\"\r\n                  )\r\n              )\r\n          ) = 10\r\n\r\n      AND TO_DATE(\r\n              TRIM(\r\n                  TO_VARCHAR(\r\n                      SALES_SOURCE.\"BillingDocumentDate\"\r\n                  )\r\n              ),\r\n              'YYYY-MM-DD'\r\n          ) >= ADD_MONTHS(\r\n                   ADD_DAYS(\r\n                       CURRENT_DATE,\r\n                       1 - DAYOFMONTH(CURRENT_DATE)\r\n                   ),\r\n                   1 - CAST(\r\n                       :P_REVN_ROLLING_AVERAGE_MONTHS\r\n                       AS INTEGER\r\n                   )\r\n               )\r\n\r\n      AND TO_DATE(\r\n              TRIM(\r\n                  TO_VARCHAR(\r\n                      SALES_SOURCE.\"BillingDocumentDate\"\r\n                  )\r\n              ),\r\n              'YYYY-MM-DD'\r\n          ) <= CURRENT_DATE\r\n\r\n    GROUP BY\r\n        SALES_SOURCE.\"CompanyCode\",\r\n        SALES_SOURCE.\"PayerParty\",\r\n        SALES_SOURCE.\"TransactionCurrency\"\r\n\r\n) REV\r\n\r\n    ON  AR.\"COMPANY_CODE\" = REV.\"COMPANY_CODE\"\r\n    AND AR.\"CUSTOMER\" = REV.\"CUSTOMER\"\r\n    AND AR.\"CURRENCY\" = REV.\"CURRENCY\"\r\n\r\n;",
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_XSXLIFDF"
+        }
+      }
+    }
+  },
+  "version": {
+    "csn": "1.0"
+  },
+  "meta": {
+    "creator": "CDS Compiler v1.19.2"
+  },
+  "businessLayerDefinitions": {
+    "ZSA_AM_DSO1": {
+      "identifier": {
+        "key": "ZSA_AM_DSO1"
+      },
+      "text": "DSO",
+      "sourceModel": {
+        "factSources": {
+          "ZSA_FA_DSO_tb_dd": {
+            "text": "DSO Fact New DD",
+            "dataEntity": {
+              "key": "ZSA_FA_DSO_tb_dd"
+            },
+            "parameterMappings": {
+              "P_RBLS_ROLLING_AVERAGE_MONTHS": {
+                "mappingType": "AnalyticModelSourceParameterMappingType.MapToSourceParameter",
+                "variableName": "P_RBLS_ROLLING_AVERAGE_MONTHS"
+              },
+              "P_REVN_ROLLING_AVERAGE_MONTHS": {
+                "mappingType": "AnalyticModelSourceParameterMappingType.MapToSourceParameter",
+                "variableName": "P_REVN_ROLLING_AVERAGE_MONTHS"
+              }
+            }
+          }
+        },
+        "dimensionSources": {}
+      },
+      "exposedAssociations": {},
+      "attributes": {
+        "AS_OF_DATE": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "AS_OF_DATE"
+            }
+          },
+          "text": "AS_OF_DATE",
+          "duplicated": false
+        },
+        "AR_ROLLING_MONTHS": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "AR_ROLLING_MONTHS"
+            }
+          },
+          "text": "AR_ROLLING_MONTHS",
+          "duplicated": false
+        },
+        "REVENUE_ROLLING_MONTHS": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "REVENUE_ROLLING_MONTHS"
+            }
+          },
+          "text": "REVENUE_ROLLING_MONTHS",
+          "duplicated": false
+        },
+        "COMPANY_CODE": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "COMPANY_CODE"
+            }
+          },
+          "text": "COMPANY_CODE",
+          "duplicated": false
+        },
+        "CUSTOMER": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "CUSTOMER"
+            }
+          },
+          "text": "CUSTOMER",
+          "duplicated": false
+        },
+        "CURRENCY": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "CURRENCY"
+            }
+          },
+          "text": "CURRENCY",
+          "duplicated": false
+        }
+      },
+      "measures": {
+        "AR_ROLLING_TOTAL": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "AR_ROLLING_TOTAL"
+            }
+          },
+          "text": "AR_ROLLING_TOTAL",
+          "isAuxiliary": false
+        },
+        "AVERAGE_MONTHLY_AR": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "AVERAGE_MONTHLY_AR"
+            }
+          },
+          "text": "AVERAGE_MONTHLY_AR",
+          "isAuxiliary": false
+        },
+        "REVENUE_ROLLING_TOTAL": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "REVENUE_ROLLING_TOTAL"
+            }
+          },
+          "text": "REVENUE_ROLLING_TOTAL",
+          "isAuxiliary": false
+        },
+        "AVERAGE_MONTHLY_REVENUE": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "AVERAGE_MONTHLY_REVENUE"
+            }
+          },
+          "text": "AVERAGE_MONTHLY_REVENUE",
+          "isAuxiliary": false
+        },
+        "DSO_DAYS": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "ZSA_FA_DSO_tb_dd": {
+              "key": "DSO_DAYS"
+            }
+          },
+          "text": "DSO_DAYS",
+          "isAuxiliary": false
+        }
+      },
+      "crossCalculations": {},
+      "version": "1.7.2",
+      "supportedCapabilities": {},
+      "variables": {
+        "P_RBLS_ROLLING_AVERAGE_MONTHS": {
+          "parameterType": "AnalyticModelParameterType.Input",
+          "text": "AR AVG Number of months",
+          "defaultValue": 3,
+          "order": 1
+        },
+        "P_REVN_ROLLING_AVERAGE_MONTHS": {
+          "parameterType": "AnalyticModelParameterType.Input",
+          "text": "SR AVG Number of months",
+          "defaultValue": 3,
+          "order": 2
+        }
+      }
+    }
+  },
+  "editorSettings": {
+    "Z_CUST_TEXT": {
+      "editor": {
+        "lastModifier": "GRAPHICALVIEWBUILDER",
+        "default": "GRAPHICALVIEWBUILDER"
+      },
+      "uiModel": "{\"contents\":{\"e4d951df-9284-468c-92d3-9eaafbfb720e\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"Z_CUST_TEXT\",\"label\":\"Z_CUST_TEXT\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"dd274d18-24bd-4232-ada9-6c4d711105b0\",\"nodes\":{\"dd274d18-24bd-4232-ada9-6c4d711105b0\":{\"name\":\"Z_CUST_TEXT\"},\"18e969e4-ddf9-4a29-a734-996c4020ceb2\":{\"name\":\"RAD_S3P.I_CUSTOMER\"},\"aa743dd2-dfe4-47b5-9a57-78377748a2d1\":{\"name\":\"Projection 1\"}},\"contexts\":{\"f04cd75f-285b-49cd-9e58-1da9e074d4f3\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"66d2b055-349d-41c4-932b-c759abbb42fd\":{}}},\"dd274d18-24bd-4232-ada9-6c4d711105b0\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"Z_CUST_TEXT\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"5b432d15-9ce8-4204-b6ae-9759cbb4dacd\":{\"name\":\"Customer\"},\"e05cb499-7104-4afd-9fd1-a66022843e8e\":{\"name\":\"CustomerName\"},\"7edaff24-34e7-40b6-ad77-c98db494a050\":{\"name\":\"Language\"}}},\"66d2b055-349d-41c4-932b-c759abbb42fd\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"67fe2634-ac63-4e05-b90d-655d41791276\":{},\"6f0fab03-dedc-4d8f-addf-3880a1ae59df\":{\"name\":\"Entity Symbol 1\"},\"756a886f-7b6d-4c3e-841d-8ac1fa1c7401\":{},\"4dc5a956-6a70-4404-b0a0-039be0755612\":{},\"be574b4d-6086-4f9d-82fc-340b29145bf1\":{}}},\"67fe2634-ac63-4e05-b90d-655d41791276\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":96,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"dd274d18-24bd-4232-ada9-6c4d711105b0\"},\"18e969e4-ddf9-4a29-a734-996c4020ceb2\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.I_CUSTOMER\",\"label\":\"Customer\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1784884514000,\"#objectStatus\":\"1\",\"alias\":\"I_CUSTOMER\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"I_CUSTOMER_Delta\"]},\"context\":\"f04cd75f-285b-49cd-9e58-1da9e074d4f3\",\"elements\":{\"01011749-6999-480a-98bb-706690194648\":{\"name\":\"Customer\"},\"daf4d09b-81cc-4788-80e8-fe392ab6be9e\":{\"name\":\"CustomerName\"},\"8e77fee8-7f71-4037-be68-891de1b43269\":{\"name\":\"CustomerFullName\"},\"a9a00497-e43c-4068-b421-f623fb107c00\":{\"name\":\"BPCustomerName\"},\"c85071b1-2a22-4dd6-a12a-b7f6e8a6ac8c\":{\"name\":\"BPCustomerFullName\"},\"3f7cda45-4ada-4ac8-a77e-07e342520083\":{\"name\":\"CreatedByUser\"},\"414bb7d8-b657-4a71-b813-01223856ddd7\":{\"name\":\"CreationDate\"},\"1d912bfb-4fc0-4fff-81da-36bf33c09c6c\":{\"name\":\"AddressID\"},\"bf7cfc92-f05b-46e3-91a8-77790eedcfb0\":{\"name\":\"CustomerClassification\"},\"bdb2fbe4-6c75-438a-984d-bdd9a1f5732a\":{\"name\":\"VATRegistration\"},\"c4a20d62-c0d9-4876-a815-6ca4c094b960\":{\"name\":\"CustomerAccountGroup\"},\"2b7710c8-57d0-464b-b61b-9d44079ea126\":{\"name\":\"AuthorizationGroup\"},\"954728f0-70e1-4987-8505-fc0eba43b203\":{\"name\":\"DeliveryIsBlocked\"},\"dc54fc97-299b-4b93-b1b1-5b2f3ca84544\":{\"name\":\"PostingIsBlocked\"},\"8d90547c-6201-49ff-834b-effab710f06b\":{\"name\":\"BillingIsBlockedForCustomer\"},\"c865591c-833c-46a1-bbc2-7e9bf1c473d2\":{\"name\":\"OrderIsBlockedForCustomer\"},\"9e1c5867-2830-4966-a8d3-47f6539efd26\":{\"name\":\"InternationalLocationNumber1\"},\"324f5406-2c50-430a-8bea-50b2b371a266\":{\"name\":\"IsOneTimeAccount\"},\"1d84e838-8a22-4958-912d-bb6cc11e2fa2\":{\"name\":\"TaxJurisdiction\"},\"9b7a879c-cd45-40de-a29c-22683b809d79\":{\"name\":\"Industry\"},\"6867c64d-d800-47be-b38f-ca953c5b2c9b\":{\"name\":\"TaxNumberType\"},\"8c91e8cd-2571-469e-906d-6a11353c69be\":{\"name\":\"TaxNumber1\"},\"5b4299ea-3230-4728-a871-6ea7f92829f5\":{\"name\":\"TaxNumber2\"},\"68b5c88b-03b9-47b4-aa14-bd99ff90a3af\":{\"name\":\"TaxNumber3\"},\"dd0f680a-8897-48c0-b1bb-fc0d78fb4987\":{\"name\":\"TaxNumber4\"},\"5a9f39f7-59e9-4d2a-bbb2-a61755a995b3\":{\"name\":\"TaxNumber5\"},\"c7113e52-aed9-4d7f-9213-233b9ea9c63f\":{\"name\":\"TaxNumber6\"},\"f1b4ceb9-ea25-4e88-b047-95d14ba42f3b\":{\"name\":\"CustomerCorporateGroup\"},\"87546833-f727-43eb-a969-cde41b94451e\":{\"name\":\"Supplier\"},\"a1e571ed-c4e1-446c-bcd3-177ac3ecff87\":{\"name\":\"NielsenRegion\"},\"49fdf035-fb99-4aa5-b63c-d898b2493a16\":{\"name\":\"IndustryCode1\"},\"cb42b16d-c1f8-460a-ad39-e4c57cf0eeca\":{\"name\":\"IndustryCode2\"},\"dce23a88-6a39-412b-b0e3-8d042d23b92a\":{\"name\":\"IndustryCode3\"},\"479c7b10-0395-409c-8a13-1b4633249456\":{\"name\":\"IndustryCode4\"},\"9e3e4d67-60f4-402c-9c6a-1d17646fc97c\":{\"name\":\"IndustryCode5\"},\"b3a79e96-1ee6-47df-8f06-edb97c1cb254\":{\"name\":\"Country\"},\"39fa2d36-820a-4914-bdd2-6ea590c61ad4\":{\"name\":\"OrganizationBPName1\"},\"86ec2173-e2e1-401a-a7aa-e16fe240735b\":{\"name\":\"OrganizationBPName2\"},\"91b74c78-76a2-42ec-8121-fc30c3f6cfbb\":{\"name\":\"CityName\"},\"939d7af6-fa3f-47e3-b989-ca4c8fb0f948\":{\"name\":\"PostalCode\"},\"a2d75daa-49e2-4d8b-b9f1-7e5884e4b659\":{\"name\":\"StreetName\"},\"1cd240de-9ac2-4a25-90c5-09cb46acf34e\":{\"name\":\"SortField\"},\"6c5446b2-4cee-4160-a07a-03013cd5d3eb\":{\"name\":\"FaxNumber\"},\"5b654398-295e-48cf-b5e1-a2241c7127fa\":{\"name\":\"BR_SUFRAMACode\"},\"b2c58aa9-a5bb-445e-a45f-bf52d9cc53aa\":{\"name\":\"Region\"},\"4b0d12f0-3c4f-4f0d-98fc-b4a7a35a0e04\":{\"name\":\"TelephoneNumber1\"},\"aa5f3a08-2864-4d74-a62a-46903cef3796\":{\"name\":\"TelephoneNumber2\"},\"6e365829-adc3-4270-9327-480ca69ba56d\":{\"name\":\"AlternativePayerAccount\"},\"30fd0b55-7eab-49e1-a4c2-b6a88ee612f4\":{\"name\":\"DataMediumExchangeIndicator\"},\"791d8266-eb21-483b-94ba-2f0497aafdd6\":{\"name\":\"VATLiability\"},\"35d2851c-a60c-4fa7-bea0-22e2b5b2b4b5\":{\"name\":\"IsBusinessPurposeCompleted\"},\"20a5007a-36f2-4be5-b720-a33a2829d084\":{\"name\":\"ResponsibleType\"},\"3cb3a393-65b9-41e2-a5e1-5f1011b80e7a\":{\"name\":\"FiscalAddress\"},\"b13f5115-86d5-4ee5-88e9-8afcaa0ca4eb\":{\"name\":\"NFPartnerIsNaturalPerson\"},\"bdadf044-5ccd-4734-8f0d-21071b4d92c6\":{\"name\":\"DeletionIndicator\"},\"c56a2cb7-4e28-41ce-baef-e63323f1439f\":{\"name\":\"Language\"},\"d9e52fb2-d86d-4e84-9005-1a25efac3b76\":{\"name\":\"TradingPartner\"},\"3821a25d-d2a3-4b98-82c2-a922c9ce6b24\":{\"name\":\"DeliveryDateTypeRule\"},\"af13285a-86ab-41d8-a39c-dae146afff25\":{\"name\":\"ExpressTrainStationName\"},\"c6e6fa81-f965-4947-8072-7f633ecddfba\":{\"name\":\"TrainStationName\"},\"6dc83f20-14f5-4581-93d7-ae16aeb02d22\":{\"name\":\"InternationalLocationNumber2\"},\"1d3a77ce-fa3c-4337-bc8b-104a6caae460\":{\"name\":\"InternationalLocationNumber3\"},\"7ed7027e-fe47-44ab-8e53-da9acddc2f49\":{\"name\":\"CityCode\"},\"7c56d2de-2a24-4fe1-b9e2-1df4eb53de77\":{\"name\":\"County\"},\"07b2f428-865a-4114-b71d-eb0166e92b8e\":{\"name\":\"CustomerHasUnloadingPoint\"},\"f951e993-c6f1-4ed4-a574-5063bea67495\":{\"name\":\"CustomerWorkingTimeCalendar\"},\"dda90e3e-5f7a-4799-a226-3586fb133f12\":{\"name\":\"IsCompetitor\"},\"f6d3eb4b-fa28-4d01-b731-ad00a7b07a32\":{\"name\":\"TaxInvoiceRepresentativeName\"},\"ad9f578b-1b5d-4508-89d6-964ef489ff1f\":{\"name\":\"BusinessType\"},\"408b8000-f110-445d-9783-39bfa8bca9cc\":{\"name\":\"IndustryType\"},\"5ccfc124-faba-4a0a-909a-114992b57bda\":{\"name\":\"TW_CollvBillingIsSupported\"},\"2a442bfc-980d-446f-8779-b4a7ef6497d7\":{\"name\":\"AlternativePayeeIsAllowed\"},\"aaece9b3-a5d3-4a61-9a92-2952b17e7f82\":{\"name\":\"FreeDefinedAttribute01\"},\"e5c22b52-95be-4af2-a400-050c07b909c5\":{\"name\":\"FreeDefinedAttribute02\"},\"29761e4d-837d-48e0-acd8-87dd59069e90\":{\"name\":\"FreeDefinedAttribute03\"},\"bab20220-3c89-4413-8fc9-d065e8be4344\":{\"name\":\"FreeDefinedAttribute04\"},\"89d567c4-e7bc-42da-87ae-6567f10f938b\":{\"name\":\"FreeDefinedAttribute05\"},\"52e714e0-d57b-49c3-8cd6-8c82a5fe3d9b\":{\"name\":\"FreeDefinedAttribute06\"},\"6c5ccdd0-a889-425b-98dd-e3bf38e9bdc8\":{\"name\":\"FreeDefinedAttribute07\"},\"1e957699-2e3c-493e-abca-2379e2d68c84\":{\"name\":\"FreeDefinedAttribute08\"},\"0baf54a9-cd6d-4fce-8c96-761af8792cb0\":{\"name\":\"FreeDefinedAttribute09\"},\"94d58656-012a-4db0-9a01-babebe0f94f4\":{\"name\":\"FreeDefinedAttribute10\"},\"65a9762d-fe48-4270-9606-d24fd34abe81\":{\"name\":\"PaymentReason\"},\"1d525eb9-e4fb-47b8-b6fb-cdf83332bf2c\":{\"name\":\"CustomerConditionGroup1\"},\"7f56cbef-7524-4d03-98ed-b7dba1248da8\":{\"name\":\"CustomerConditionGroup2\"},\"6737084e-f605-4f90-8895-536a3092a317\":{\"name\":\"CustomerConditionGroup3\"},\"b5672985-cc73-4aae-b4ba-b84e456aa579\":{\"name\":\"CustomerConditionGroup4\"},\"1f491b87-0f92-4f64-8f8c-8c9f384c78f7\":{\"name\":\"CustomerConditionGroup5\"},\"466f8ac6-a660-485c-b6de-26f0f53e52a5\":{\"name\":\"IsSalesProspect\"},\"4cfe8453-19d5-4641-b008-8e010afd961b\":{\"name\":\"PaymentIsBlockedForCustomer\"},\"2210fcf3-eb10-4406-81eb-2b0b1b59f7e6\":{\"name\":\"IsConsumer\"},\"c7e208af-abc7-4a25-99da-fb4aeb4c9eca\":{\"name\":\"DataControllerSet\"},\"a1395e5c-64bf-48e1-905a-d5fa08a32ea8\":{\"name\":\"DataController1\"},\"ef30b8df-a9f7-44cf-a7ed-4dcd175c5fd2\":{\"name\":\"DataController2\"},\"5a2a2f26-1691-49f1-8def-9f0c83ce7480\":{\"name\":\"DataController3\"},\"6598614e-7cf7-4213-82e1-ca89b7943fb8\":{\"name\":\"DataController4\"},\"fbe776fe-ede4-4df0-8249-d5c6bb554cf8\":{\"name\":\"DataController5\"},\"f7149dc7-2e94-40fe-971a-01e27e6e57f3\":{\"name\":\"DataController6\"},\"2208116d-64b3-4f29-a3f4-82a02f4358b9\":{\"name\":\"DataController7\"},\"867bf59b-8053-46de-84b9-901c411b853d\":{\"name\":\"DataController8\"},\"014b7a7e-bf51-49b7-acf1-2f2c1bcb9002\":{\"name\":\"DataController9\"},\"8db3a50a-a568-4ab2-9a86-05a3e5d847df\":{\"name\":\"DataController10\"},\"93c7fb35-e659-4a91-bfdc-76e66970c4d9\":{\"name\":\"BusinessPartnerName1\"},\"42d787ac-aea3-4401-a2a8-e427ffa94ded\":{\"name\":\"BusinessPartnerName2\"},\"e5d9bdf6-4b64-4646-800b-d698810f9768\":{\"name\":\"BusinessPartnerName3\"},\"7fd40d31-2e26-4b08-88f1-d98c556eeae0\":{\"name\":\"BusinessPartnerName4\"},\"c2ef467f-9435-4d14-8075-e827ed436b9d\":{\"name\":\"BPAddrCityName\"},\"dd2659f0-ce85-4ed8-8a1c-ede87c99e261\":{\"name\":\"BPAddrStreetName\"},\"67e0dd38-4954-48ef-a0bd-08dd1b345f4a\":{\"name\":\"AddressSearchTerm1\"},\"c96f6e9e-0957-4c61-84e5-79207d747c5a\":{\"name\":\"AddressSearchTerm2\"},\"7805bba0-081a-4508-80b2-da4a89bdeeb8\":{\"name\":\"DistrictName\"},\"230f47ec-7a50-41c4-acb1-7bdff077cfdb\":{\"name\":\"POBoxDeviatingCityName\"},\"50c3a6e3-2461-4689-861b-cde5066cf97d\":{\"name\":\"BusinessPartnerFormOfAddress\"}},\"successorNode\":\"aa743dd2-dfe4-47b5-9a57-78377748a2d1\"},\"01011749-6999-480a-98bb-706690194648\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Customer\",\"label\":\"Customer number\",\"newName\":\"Customer\",\"indexOrder\":0,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"b42ff4aa-125d-421e-a31a-ba03b68cd11a\"},\"daf4d09b-81cc-4788-80e8-fe392ab6be9e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerName\",\"label\":\"Name of customer\",\"newName\":\"CustomerName\",\"indexOrder\":1,\"length\":80,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0cc1642f-2722-4caa-8329-dc1b4b42fcb3\"},\"8e77fee8-7f71-4037-be68-891de1b43269\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerFullName\",\"label\":\"Customer full name\",\"newName\":\"CustomerFullName\",\"indexOrder\":2,\"length\":220,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c4747767-46e7-415e-9a3c-30700c5c4690\"},\"a9a00497-e43c-4068-b421-f623fb107c00\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPCustomerName\",\"label\":\"Customer name\",\"newName\":\"BPCustomerName\",\"indexOrder\":3,\"length\":81,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"456f634b-48bc-4b2b-9b84-6898b2626158\"},\"c85071b1-2a22-4dd6-a12a-b7f6e8a6ac8c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPCustomerFullName\",\"label\":\"Customer full name\",\"newName\":\"BPCustomerFullName\",\"indexOrder\":4,\"length\":220,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"80bacc6d-f73f-4af5-bcae-9611c1924262\"},\"3f7cda45-4ada-4ac8-a77e-07e342520083\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreatedByUser\",\"label\":\"Name of person who created the object\",\"newName\":\"CreatedByUser\",\"indexOrder\":5,\"length\":12,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7873f2ea-5b2f-46d9-9fc6-aca6c7c4a8df\"},\"414bb7d8-b657-4a71-b813-01223856ddd7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreationDate\",\"label\":\"Record created on\",\"newName\":\"CreationDate\",\"indexOrder\":6,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8328b053-267f-4990-a7a7-37abf55d83ac\"},\"1d912bfb-4fc0-4fff-81da-36bf33c09c6c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressID\",\"label\":\"Address\",\"newName\":\"AddressID\",\"indexOrder\":7,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8da2d6d6-6f11-40ba-80f7-4fb238ebaf29\"},\"bf7cfc92-f05b-46e3-91a8-77790eedcfb0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerClassification\",\"label\":\"Customer classification\",\"newName\":\"CustomerClassification\",\"indexOrder\":8,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"43dcd42d-9085-47cf-8db2-f2bc9772b11b\"},\"bdb2fbe4-6c75-438a-984d-bdd9a1f5732a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"VATRegistration\",\"label\":\"Vat registration number\",\"newName\":\"VATRegistration\",\"indexOrder\":9,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"4413d3bf-d697-4fd8-b388-4d4cc06d8e65\"},\"c4a20d62-c0d9-4876-a815-6ca4c094b960\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerAccountGroup\",\"label\":\"Customer account group\",\"newName\":\"CustomerAccountGroup\",\"indexOrder\":10,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"89559a32-c1fc-443f-9492-a490d1c0d27e\"},\"2b7710c8-57d0-464b-b61b-9d44079ea126\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AuthorizationGroup\",\"label\":\"Authorization group\",\"newName\":\"AuthorizationGroup\",\"indexOrder\":11,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"09fb3424-b12f-4d39-8ee9-d2973b5d3e72\"},\"954728f0-70e1-4987-8505-fc0eba43b203\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeliveryIsBlocked\",\"label\":\"Central delivery block for the customer\",\"newName\":\"DeliveryIsBlocked\",\"indexOrder\":12,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6fd58f0b-8004-4dc7-b3c6-82c8d0bc0880\"},\"dc54fc97-299b-4b93-b1b1-5b2f3ca84544\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingIsBlocked\",\"label\":\"Central posting block\",\"newName\":\"PostingIsBlocked\",\"indexOrder\":13,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ea25bd70-0c69-409f-9cdd-1e4a5f8d5cbb\"},\"8d90547c-6201-49ff-834b-effab710f06b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BillingIsBlockedForCustomer\",\"label\":\"Central billing block for customer\",\"newName\":\"BillingIsBlockedForCustomer\",\"indexOrder\":14,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"4eff11bf-bac7-4138-bca4-b2a8139165da\"},\"c865591c-833c-46a1-bbc2-7e9bf1c473d2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrderIsBlockedForCustomer\",\"label\":\"Central order block for customer\",\"newName\":\"OrderIsBlockedForCustomer\",\"indexOrder\":15,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"990ba735-d176-47b5-88c0-7fb844bb6028\"},\"9e1c5867-2830-4966-a8d3-47f6539efd26\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber1\",\"label\":\"International location number  (part 1)\",\"newName\":\"InternationalLocationNumber1\",\"indexOrder\":16,\"length\":7,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f515c3c4-f096-4c5a-b426-3e24d0eac384\"},\"324f5406-2c50-430a-8bea-50b2b371a266\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsOneTimeAccount\",\"label\":\"Indicator: is the account a one-time account?\",\"newName\":\"IsOneTimeAccount\",\"indexOrder\":17,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7de8a3a8-013a-44f9-aa5f-d58d27bf4abe\"},\"1d84e838-8a22-4958-912d-bb6cc11e2fa2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxJurisdiction\",\"label\":\"Tax jurisdiction\",\"newName\":\"TaxJurisdiction\",\"indexOrder\":18,\"length\":15,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0d914d51-9b02-4841-9b80-3f93c722a7bc\"},\"9b7a879c-cd45-40de-a29c-22683b809d79\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Industry\",\"label\":\"Industry key\",\"newName\":\"Industry\",\"indexOrder\":19,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"483f9201-703c-41ae-a13b-1d52359131ed\"},\"6867c64d-d800-47be-b38f-ca953c5b2c9b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumberType\",\"label\":\"Tax number type\",\"newName\":\"TaxNumberType\",\"indexOrder\":20,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cf29b37d-b522-47a3-8933-4e5ff92f8faa\"},\"8c91e8cd-2571-469e-906d-6a11353c69be\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber1\",\"label\":\"Tax number 1\",\"newName\":\"TaxNumber1\",\"indexOrder\":21,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7f0a9cbd-0579-4392-9622-2927996bd592\"},\"5b4299ea-3230-4728-a871-6ea7f92829f5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber2\",\"label\":\"Tax number 2\",\"newName\":\"TaxNumber2\",\"indexOrder\":22,\"length\":11,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"05ef06d5-3e4e-4fd6-a687-0e380e5e0ea2\"},\"68b5c88b-03b9-47b4-aa14-bd99ff90a3af\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber3\",\"label\":\"Tax number 3\",\"newName\":\"TaxNumber3\",\"indexOrder\":23,\"length\":18,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8c2bb3ee-902b-4ada-a1f8-362e6c0cca87\"},\"dd0f680a-8897-48c0-b1bb-fc0d78fb4987\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber4\",\"label\":\"Tax number 4\",\"newName\":\"TaxNumber4\",\"indexOrder\":24,\"length\":18,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9b4e61ed-0df2-4f3e-9b4e-8313842cf85a\"},\"5a9f39f7-59e9-4d2a-bbb2-a61755a995b3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber5\",\"label\":\"Tax number 5\",\"newName\":\"TaxNumber5\",\"indexOrder\":25,\"length\":60,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b7fac5c5-aecd-486d-a85b-70a99fd5ae18\"},\"c7113e52-aed9-4d7f-9213-233b9ea9c63f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber6\",\"label\":\"Tax number 6\",\"newName\":\"TaxNumber6\",\"indexOrder\":26,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"783be198-2cf6-45f5-b44f-acd62096821c\"},\"f1b4ceb9-ea25-4e88-b047-95d14ba42f3b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerCorporateGroup\",\"label\":\"Group key\",\"newName\":\"CustomerCorporateGroup\",\"indexOrder\":27,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"efc9c238-db01-456f-b48a-a85a55ac15a5\"},\"87546833-f727-43eb-a969-cde41b94451e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Account number of supplier\",\"newName\":\"Supplier\",\"indexOrder\":28,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ee32141b-43ca-4665-83d3-688d53d9db5f\"},\"a1e571ed-c4e1-446c-bcd3-177ac3ecff87\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NielsenRegion\",\"label\":\"Nielsen id\",\"newName\":\"NielsenRegion\",\"indexOrder\":29,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d678b8be-0d20-4f28-a4ba-dece1459951d\"},\"49fdf035-fb99-4aa5-b63c-d898b2493a16\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode1\",\"label\":\"Industry code 1\",\"newName\":\"IndustryCode1\",\"indexOrder\":30,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b2f820be-6c8d-43c9-9bad-b637ec777c3a\"},\"cb42b16d-c1f8-460a-ad39-e4c57cf0eeca\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode2\",\"label\":\"Industry code 2\",\"newName\":\"IndustryCode2\",\"indexOrder\":31,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6b1d43a7-6c58-4119-8227-b9c1d12a5561\"},\"dce23a88-6a39-412b-b0e3-8d042d23b92a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode3\",\"label\":\"Industry code 3\",\"newName\":\"IndustryCode3\",\"indexOrder\":32,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"fa6071ad-ac89-41ae-80ae-293d40ff13a3\"},\"479c7b10-0395-409c-8a13-1b4633249456\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode4\",\"label\":\"Industry code 4\",\"newName\":\"IndustryCode4\",\"indexOrder\":33,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a90354a9-da75-481b-99fa-4d1da2ba698e\"},\"9e3e4d67-60f4-402c-9c6a-1d17646fc97c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode5\",\"label\":\"Industry code 5\",\"newName\":\"IndustryCode5\",\"indexOrder\":34,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"db9fb2e4-7856-4ea6-b322-2b53c4fc526e\"},\"b3a79e96-1ee6-47df-8f06-edb97c1cb254\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Country\",\"label\":\"Country/region key\",\"newName\":\"Country\",\"indexOrder\":35,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"48133536-3fab-436c-879f-1ab13c4812a5\"},\"39fa2d36-820a-4914-bdd2-6ea590c61ad4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrganizationBPName1\",\"label\":\"Name 1\",\"newName\":\"OrganizationBPName1\",\"indexOrder\":36,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"45a2f51a-9815-438a-8132-be8a011bb1cf\"},\"86ec2173-e2e1-401a-a7aa-e16fe240735b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrganizationBPName2\",\"label\":\"Name 2\",\"newName\":\"OrganizationBPName2\",\"indexOrder\":37,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"db35ffd9-9aed-4370-b08c-03546f0bde34\"},\"91b74c78-76a2-42ec-8121-fc30c3f6cfbb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CityName\",\"label\":\"City\",\"newName\":\"CityName\",\"indexOrder\":38,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"3034caf8-c94e-4496-9cce-89c0c7d349f9\"},\"939d7af6-fa3f-47e3-b989-ca4c8fb0f948\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostalCode\",\"label\":\"Postal code\",\"newName\":\"PostalCode\",\"indexOrder\":39,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a43539fa-5cb0-4251-94b6-2a14a160d46b\"},\"a2d75daa-49e2-4d8b-b9f1-7e5884e4b659\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StreetName\",\"label\":\"Street and house number\",\"newName\":\"StreetName\",\"indexOrder\":40,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9e180525-d75c-4644-bb02-89be809a81db\"},\"1cd240de-9ac2-4a25-90c5-09cb46acf34e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"SortField\",\"label\":\"Sort field\",\"newName\":\"SortField\",\"indexOrder\":41,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"06c9448b-0617-478f-8ece-26fb1530d929\"},\"6c5446b2-4cee-4160-a07a-03013cd5d3eb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FaxNumber\",\"label\":\"Fax number\",\"newName\":\"FaxNumber\",\"indexOrder\":42,\"length\":31,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"2a8286a7-0e8c-4f3d-a121-d1cf0859a2c9\"},\"5b654398-295e-48cf-b5e1-a2241c7127fa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BR_SUFRAMACode\",\"label\":\"Suframa code\",\"newName\":\"BR_SUFRAMACode\",\"indexOrder\":43,\"length\":9,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b8652902-e351-44c5-9c24-9cf1cd777ab1\"},\"b2c58aa9-a5bb-445e-a45f-bf52d9cc53aa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Region\",\"label\":\"Region (state, province, county)\",\"newName\":\"Region\",\"indexOrder\":44,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"bfe445ec-b4ca-4881-a57c-c0a2bb60fcb9\"},\"4b0d12f0-3c4f-4f0d-98fc-b4a7a35a0e04\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TelephoneNumber1\",\"label\":\"First telephone number\",\"newName\":\"TelephoneNumber1\",\"indexOrder\":45,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"345bfe53-3f8d-4f3c-8615-1d2083f72524\"},\"aa5f3a08-2864-4d74-a62a-46903cef3796\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TelephoneNumber2\",\"label\":\"Second telephone number\",\"newName\":\"TelephoneNumber2\",\"indexOrder\":46,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5046720a-c568-4636-a174-30cbec3d8d98\"},\"6e365829-adc3-4270-9327-480ca69ba56d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AlternativePayerAccount\",\"label\":\"Account number of an alternative payer\",\"newName\":\"AlternativePayerAccount\",\"indexOrder\":47,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"939bb567-84f3-47e6-9f81-b3f6751e7166\"},\"30fd0b55-7eab-49e1-a4c2-b6a88ee612f4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataMediumExchangeIndicator\",\"label\":\"Recipient code for data medium exchange\",\"newName\":\"DataMediumExchangeIndicator\",\"indexOrder\":48,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"45c6ce8c-e87e-48af-834e-752d14db92eb\"},\"791d8266-eb21-483b-94ba-2f0497aafdd6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"VATLiability\",\"label\":\"Liable for vat\",\"newName\":\"VATLiability\",\"indexOrder\":49,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"34d0898f-9efc-42b3-b535-ae6e22897070\"},\"35d2851c-a60c-4fa7-bea0-22e2b5b2b4b5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsBusinessPurposeCompleted\",\"label\":\"Business purpose completed flag\",\"newName\":\"IsBusinessPurposeCompleted\",\"indexOrder\":50,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"750f62ba-a478-49bf-8f46-6c2129b6cd65\"},\"20a5007a-36f2-4be5-b720-a33a2829d084\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ResponsibleType\",\"label\":\"Tax type\",\"newName\":\"ResponsibleType\",\"indexOrder\":51,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ebd157ef-65d2-41e8-b09e-f0d27ddb5ce3\"},\"3cb3a393-65b9-41e2-a5e1-5f1011b80e7a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalAddress\",\"label\":\"Account number of the master record with the fiscal address\",\"newName\":\"FiscalAddress\",\"indexOrder\":52,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"4700b3dc-d46a-4e88-ac3c-3a48f8adfc10\"},\"b13f5115-86d5-4ee5-88e9-8afcaa0ca4eb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NFPartnerIsNaturalPerson\",\"label\":\"Natural person\",\"newName\":\"NFPartnerIsNaturalPerson\",\"indexOrder\":53,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7c0005bf-ac55-400e-b409-26070fd3f043\"},\"bdadf044-5ccd-4734-8f0d-21071b4d92c6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeletionIndicator\",\"label\":\"Central deletion flag for master record\",\"newName\":\"DeletionIndicator\",\"indexOrder\":54,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ccc58ddd-3809-4644-a242-96688e5c9b0b\"},\"c56a2cb7-4e28-41ce-baef-e63323f1439f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":55,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"90909723-bdfc-4b7a-9efe-83a13a10bf54\"},\"d9e52fb2-d86d-4e84-9005-1a25efac3b76\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TradingPartner\",\"label\":\"Company id of trading partner\",\"newName\":\"TradingPartner\",\"indexOrder\":56,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7217d48e-b6f5-49d7-a657-ee9c9065c0b1\"},\"3821a25d-d2a3-4b98-82c2-a922c9ce6b24\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeliveryDateTypeRule\",\"label\":\"Delivery date rule\",\"newName\":\"DeliveryDateTypeRule\",\"indexOrder\":57,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f0819a14-b245-4d9e-b266-f3f61211b60a\"},\"af13285a-86ab-41d8-a39c-dae146afff25\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ExpressTrainStationName\",\"label\":\"Express train station\",\"newName\":\"ExpressTrainStationName\",\"indexOrder\":58,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"27857631-8677-450f-8ebb-591517c97d63\"},\"c6e6fa81-f965-4947-8072-7f633ecddfba\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TrainStationName\",\"label\":\"Train station\",\"newName\":\"TrainStationName\",\"indexOrder\":59,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"30f08b66-2778-4569-8328-0ff8967d586f\"},\"6dc83f20-14f5-4581-93d7-ae16aeb02d22\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber2\",\"label\":\"International location number (part 2)\",\"newName\":\"InternationalLocationNumber2\",\"indexOrder\":60,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"913306e0-5111-410e-b3cc-51e11ecb78b5\"},\"1d3a77ce-fa3c-4337-bc8b-104a6caae460\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber3\",\"label\":\"Check digit for the international location number\",\"newName\":\"InternationalLocationNumber3\",\"indexOrder\":61,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"36c8a1c5-2ec9-4bed-8fe3-d8743549fa7a\"},\"7ed7027e-fe47-44ab-8e53-da9acddc2f49\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CityCode\",\"label\":\"City code\",\"newName\":\"CityCode\",\"indexOrder\":62,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ec8ec798-da8c-4c61-9494-43b48f9d53b0\"},\"7c56d2de-2a24-4fe1-b9e2-1df4eb53de77\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"County\",\"label\":\"County code\",\"newName\":\"County\",\"indexOrder\":63,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"47e0cbba-7e89-4ad0-bad3-5833b431cd53\"},\"07b2f428-865a-4114-b71d-eb0166e92b8e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerHasUnloadingPoint\",\"label\":\"Indicator: unloading points exist\",\"newName\":\"CustomerHasUnloadingPoint\",\"indexOrder\":64,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6c67d5a6-3dda-4e86-ade2-052fba983d71\"},\"f951e993-c6f1-4ed4-a574-5063bea67495\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerWorkingTimeCalendar\",\"label\":\"Working time calendar\",\"newName\":\"CustomerWorkingTimeCalendar\",\"indexOrder\":65,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"363cd4ec-509d-4cce-92a2-aa3160908f8a\"},\"dda90e3e-5f7a-4799-a226-3586fb133f12\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsCompetitor\",\"label\":\"Indicator: competitor\",\"newName\":\"IsCompetitor\",\"indexOrder\":66,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"52560972-d2ea-4327-a593-29c97a2aa569\"},\"f6d3eb4b-fa28-4d01-b731-ad00a7b07a32\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxInvoiceRepresentativeName\",\"label\":\"Name of representative\",\"newName\":\"TaxInvoiceRepresentativeName\",\"indexOrder\":67,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ef74d69e-5298-4fd9-be58-b219bbc5c408\"},\"ad9f578b-1b5d-4508-89d6-964ef489ff1f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessType\",\"label\":\"Type of business\",\"newName\":\"BusinessType\",\"indexOrder\":68,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f42f65fb-3ee9-4c70-b1e6-ac8061aa071b\"},\"408b8000-f110-445d-9783-39bfa8bca9cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryType\",\"label\":\"Type of industry\",\"newName\":\"IndustryType\",\"indexOrder\":69,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"35a8bca3-efc1-4d6a-a4ad-210b5346243a\"},\"5ccfc124-faba-4a0a-909a-114992b57bda\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TW_CollvBillingIsSupported\",\"label\":\"Consolidated invoicing for taiwan\",\"newName\":\"TW_CollvBillingIsSupported\",\"indexOrder\":70,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5923eb43-31f3-4d5a-afac-0998607aa72d\"},\"2a442bfc-980d-446f-8779-b4a7ef6497d7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AlternativePayeeIsAllowed\",\"label\":\"Indicator: is an alternative payer allowed in document?\",\"newName\":\"AlternativePayeeIsAllowed\",\"indexOrder\":71,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"303d01dc-4d1c-4212-9bff-e6c4c4c89bea\"},\"aaece9b3-a5d3-4a61-9a92-2952b17e7f82\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute01\",\"label\":\"Attribute 1\",\"newName\":\"FreeDefinedAttribute01\",\"indexOrder\":72,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"466fddfa-f7b1-4555-b44a-837ddd67551d\"},\"e5c22b52-95be-4af2-a400-050c07b909c5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute02\",\"label\":\"Attribute 2\",\"newName\":\"FreeDefinedAttribute02\",\"indexOrder\":73,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"bc245478-ffc7-45ae-8d6b-4b044b09c8d2\"},\"29761e4d-837d-48e0-acd8-87dd59069e90\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute03\",\"label\":\"Attribute 3\",\"newName\":\"FreeDefinedAttribute03\",\"indexOrder\":74,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c93b72fd-5e15-4999-9a13-ae662464791a\"},\"bab20220-3c89-4413-8fc9-d065e8be4344\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute04\",\"label\":\"Attribute 4\",\"newName\":\"FreeDefinedAttribute04\",\"indexOrder\":75,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"43637e57-b2ef-438c-9b9b-2746cae244a1\"},\"89d567c4-e7bc-42da-87ae-6567f10f938b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute05\",\"label\":\"Attribute 5\",\"newName\":\"FreeDefinedAttribute05\",\"indexOrder\":76,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"1536ba83-ad8d-43dd-8dfc-e91d7af1e414\"},\"52e714e0-d57b-49c3-8cd6-8c82a5fe3d9b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute06\",\"label\":\"Attribute 6\",\"newName\":\"FreeDefinedAttribute06\",\"indexOrder\":77,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"28443a72-298e-48ff-a2de-bcd31142d6e6\"},\"6c5ccdd0-a889-425b-98dd-e3bf38e9bdc8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute07\",\"label\":\"Attribute 7\",\"newName\":\"FreeDefinedAttribute07\",\"indexOrder\":78,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"25ebb558-1d19-4629-a8e0-296a9cfc8af0\"},\"1e957699-2e3c-493e-abca-2379e2d68c84\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute08\",\"label\":\"Attribute 8\",\"newName\":\"FreeDefinedAttribute08\",\"indexOrder\":79,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a6bfdd7c-62c5-40c4-a9fb-86b5b57827a6\"},\"0baf54a9-cd6d-4fce-8c96-761af8792cb0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute09\",\"label\":\"Attribute 9\",\"newName\":\"FreeDefinedAttribute09\",\"indexOrder\":80,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"67d09085-bd10-4732-9961-eae6b9ab14a3\"},\"94d58656-012a-4db0-9a01-babebe0f94f4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute10\",\"label\":\"Attribute 10\",\"newName\":\"FreeDefinedAttribute10\",\"indexOrder\":81,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"52ba5444-e718-4f6a-83c2-05b5b9ad4594\"},\"65a9762d-fe48-4270-9606-d24fd34abe81\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PaymentReason\",\"label\":\"Payment reason\",\"newName\":\"PaymentReason\",\"indexOrder\":82,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"965dceed-c2c1-414a-b287-2693fc54a5d0\"},\"1d525eb9-e4fb-47b8-b6fb-cdf83332bf2c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup1\",\"label\":\"Customer condition group 1\",\"newName\":\"CustomerConditionGroup1\",\"indexOrder\":83,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"3820d953-e7e1-4165-9146-9c01ab13afff\"},\"7f56cbef-7524-4d03-98ed-b7dba1248da8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup2\",\"label\":\"Customer condition group 2\",\"newName\":\"CustomerConditionGroup2\",\"indexOrder\":84,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0990242e-259e-481d-b254-0e075bd3bb4b\"},\"6737084e-f605-4f90-8895-536a3092a317\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup3\",\"label\":\"Customer condition group 3\",\"newName\":\"CustomerConditionGroup3\",\"indexOrder\":85,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b7436380-10f9-4335-84d4-3b36b712f4c2\"},\"b5672985-cc73-4aae-b4ba-b84e456aa579\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup4\",\"label\":\"Customer condition group 4\",\"newName\":\"CustomerConditionGroup4\",\"indexOrder\":86,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c6e3d4e1-d956-49e6-a982-552f95e411b2\"},\"1f491b87-0f92-4f64-8f8c-8c9f384c78f7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup5\",\"label\":\"Customer condition group 5\",\"newName\":\"CustomerConditionGroup5\",\"indexOrder\":87,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"152b7df3-cbfe-4e7f-9888-6fccbe53c578\"},\"466f8ac6-a660-485c-b6de-26f0f53e52a5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsSalesProspect\",\"label\":\"Indicator: sales prospect\",\"newName\":\"IsSalesProspect\",\"indexOrder\":88,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a2bb7e4a-dc5f-4e6e-b166-3a938f55afe1\"},\"4cfe8453-19d5-4641-b008-8e010afd961b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PaymentIsBlockedForCustomer\",\"label\":\"Payment block\",\"newName\":\"PaymentIsBlockedForCustomer\",\"indexOrder\":89,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0c6c88ce-e623-403e-a184-3d09cd87715f\"},\"2210fcf3-eb10-4406-81eb-2b0b1b59f7e6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsConsumer\",\"label\":\"Indicator: consumer\",\"newName\":\"IsConsumer\",\"indexOrder\":90,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7cfc0eac-eb9b-4243-a4b4-62636f41a8c6\"},\"c7e208af-abc7-4a25-99da-fb4aeb4c9eca\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataControllerSet\",\"label\":\"Bp: data controller set flag\",\"newName\":\"DataControllerSet\",\"indexOrder\":91,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"26bfd3f7-85e3-4c69-b846-a9df8f9c8c82\"},\"a1395e5c-64bf-48e1-905a-d5fa08a32ea8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController1\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController1\",\"indexOrder\":92,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"27c8895c-ac4f-41db-852a-9e5ca949ad31\"},\"ef30b8df-a9f7-44cf-a7ed-4dcd175c5fd2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController2\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController2\",\"indexOrder\":93,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"e361a793-f3e8-448e-892e-75839f85c925\"},\"5a2a2f26-1691-49f1-8def-9f0c83ce7480\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController3\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController3\",\"indexOrder\":94,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a587b04a-062d-4e24-a28d-9bf5a6540398\"},\"6598614e-7cf7-4213-82e1-ca89b7943fb8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController4\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController4\",\"indexOrder\":95,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"66369552-12dd-4901-93d3-076827de9486\"},\"fbe776fe-ede4-4df0-8249-d5c6bb554cf8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController5\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController5\",\"indexOrder\":96,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"24a29beb-8b0d-44fe-8d5e-c427675bc007\"},\"f7149dc7-2e94-40fe-971a-01e27e6e57f3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController6\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController6\",\"indexOrder\":97,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5cb66d0f-d653-4800-9503-d095113598cb\"},\"2208116d-64b3-4f29-a3f4-82a02f4358b9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController7\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController7\",\"indexOrder\":98,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"599f408b-b547-4aa5-a15e-cb2b6b50d562\"},\"867bf59b-8053-46de-84b9-901c411b853d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController8\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController8\",\"indexOrder\":99,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"38ff02fd-4a98-47ab-9584-d9f7647b7415\"},\"014b7a7e-bf51-49b7-acf1-2f2c1bcb9002\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController9\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController9\",\"indexOrder\":100,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c35cac9a-9fc5-4e13-a8da-d6f782347528\"},\"8db3a50a-a568-4ab2-9a86-05a3e5d847df\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController10\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController10\",\"indexOrder\":101,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"671f2f48-6a55-4936-a1e3-93f0cfb82465\"},\"93c7fb35-e659-4a91-bfdc-76e66970c4d9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName1\",\"label\":\"Name 1\",\"newName\":\"BusinessPartnerName1\",\"indexOrder\":102,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d574dbd8-8ff7-454a-ac0c-15300849af96\"},\"42d787ac-aea3-4401-a2a8-e427ffa94ded\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName2\",\"label\":\"Name 2\",\"newName\":\"BusinessPartnerName2\",\"indexOrder\":103,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"29d6c703-fc9b-47ef-b4b2-32a396aeaa53\"},\"e5d9bdf6-4b64-4646-800b-d698810f9768\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName3\",\"label\":\"Name 3\",\"newName\":\"BusinessPartnerName3\",\"indexOrder\":104,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b3435b0c-8927-4e7b-ad8a-c79f4afa3d80\"},\"7fd40d31-2e26-4b08-88f1-d98c556eeae0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName4\",\"label\":\"Name 4\",\"newName\":\"BusinessPartnerName4\",\"indexOrder\":105,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"db99eaa2-541e-4486-a31d-d8412fb2b724\"},\"c2ef467f-9435-4d14-8075-e827ed436b9d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPAddrCityName\",\"label\":\"City\",\"newName\":\"BPAddrCityName\",\"indexOrder\":106,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cf13d10e-7c08-41ab-86c3-5799677a73e7\"},\"dd2659f0-ce85-4ed8-8a1c-ede87c99e261\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPAddrStreetName\",\"label\":\"Street\",\"newName\":\"BPAddrStreetName\",\"indexOrder\":107,\"length\":60,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"fc494d2e-a1c7-4cd2-8509-4c9f9e995aae\"},\"67e0dd38-4954-48ef-a0bd-08dd1b345f4a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressSearchTerm1\",\"label\":\"Search term 1\",\"newName\":\"AddressSearchTerm1\",\"indexOrder\":108,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d3b722e7-7cf9-470d-80a6-aaa761fa3310\"},\"c96f6e9e-0957-4c61-84e5-79207d747c5a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressSearchTerm2\",\"label\":\"Search term 2\",\"newName\":\"AddressSearchTerm2\",\"indexOrder\":109,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cfdb5cc5-4743-4e3e-9af2-df11f6ed8113\"},\"7805bba0-081a-4508-80b2-da4a89bdeeb8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DistrictName\",\"label\":\"District\",\"newName\":\"DistrictName\",\"indexOrder\":110,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"1701e23c-faa8-4572-baf5-c3f012283c59\"},\"230f47ec-7a50-41c4-acb1-7bdff077cfdb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"POBoxDeviatingCityName\",\"label\":\"Po box city\",\"newName\":\"POBoxDeviatingCityName\",\"indexOrder\":111,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"750385e7-2365-4c43-b2ae-19d21a79f095\"},\"50c3a6e3-2461-4689-861b-cde5066cf97d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerFormOfAddress\",\"label\":\"Form-of-address key\",\"newName\":\"BusinessPartnerFormOfAddress\",\"indexOrder\":112,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"541e1ce5-64ca-4f6f-8cef-e4be3972db67\"},\"f04cd75f-285b-49cd-9e58-1da9e074d4f3\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"6f0fab03-dedc-4d8f-addf-3880a1ae59df\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-212,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"18e969e4-ddf9-4a29-a734-996c4020ceb2\"},\"aa743dd2-dfe4-47b5-9a57-78377748a2d1\":{\"classDefinition\":\"sap.cdw.querybuilder.RenameElements\",\"_isProjectionNode\":false,\"name\":\"Projection 1\",\"elements\":{\"b42ff4aa-125d-421e-a31a-ba03b68cd11a\":{\"name\":\"Customer\"},\"0cc1642f-2722-4caa-8329-dc1b4b42fcb3\":{\"name\":\"CustomerName\"},\"c4747767-46e7-415e-9a3c-30700c5c4690\":{\"name\":\"CustomerFullName\"},\"456f634b-48bc-4b2b-9b84-6898b2626158\":{\"name\":\"BPCustomerName\"},\"80bacc6d-f73f-4af5-bcae-9611c1924262\":{\"name\":\"BPCustomerFullName\"},\"7873f2ea-5b2f-46d9-9fc6-aca6c7c4a8df\":{\"name\":\"CreatedByUser\"},\"8328b053-267f-4990-a7a7-37abf55d83ac\":{\"name\":\"CreationDate\"},\"8da2d6d6-6f11-40ba-80f7-4fb238ebaf29\":{\"name\":\"AddressID\"},\"43dcd42d-9085-47cf-8db2-f2bc9772b11b\":{\"name\":\"CustomerClassification\"},\"4413d3bf-d697-4fd8-b388-4d4cc06d8e65\":{\"name\":\"VATRegistration\"},\"89559a32-c1fc-443f-9492-a490d1c0d27e\":{\"name\":\"CustomerAccountGroup\"},\"09fb3424-b12f-4d39-8ee9-d2973b5d3e72\":{\"name\":\"AuthorizationGroup\"},\"6fd58f0b-8004-4dc7-b3c6-82c8d0bc0880\":{\"name\":\"DeliveryIsBlocked\"},\"ea25bd70-0c69-409f-9cdd-1e4a5f8d5cbb\":{\"name\":\"PostingIsBlocked\"},\"4eff11bf-bac7-4138-bca4-b2a8139165da\":{\"name\":\"BillingIsBlockedForCustomer\"},\"990ba735-d176-47b5-88c0-7fb844bb6028\":{\"name\":\"OrderIsBlockedForCustomer\"},\"f515c3c4-f096-4c5a-b426-3e24d0eac384\":{\"name\":\"InternationalLocationNumber1\"},\"7de8a3a8-013a-44f9-aa5f-d58d27bf4abe\":{\"name\":\"IsOneTimeAccount\"},\"0d914d51-9b02-4841-9b80-3f93c722a7bc\":{\"name\":\"TaxJurisdiction\"},\"483f9201-703c-41ae-a13b-1d52359131ed\":{\"name\":\"Industry\"},\"cf29b37d-b522-47a3-8933-4e5ff92f8faa\":{\"name\":\"TaxNumberType\"},\"7f0a9cbd-0579-4392-9622-2927996bd592\":{\"name\":\"TaxNumber1\"},\"05ef06d5-3e4e-4fd6-a687-0e380e5e0ea2\":{\"name\":\"TaxNumber2\"},\"8c2bb3ee-902b-4ada-a1f8-362e6c0cca87\":{\"name\":\"TaxNumber3\"},\"9b4e61ed-0df2-4f3e-9b4e-8313842cf85a\":{\"name\":\"TaxNumber4\"},\"b7fac5c5-aecd-486d-a85b-70a99fd5ae18\":{\"name\":\"TaxNumber5\"},\"783be198-2cf6-45f5-b44f-acd62096821c\":{\"name\":\"TaxNumber6\"},\"efc9c238-db01-456f-b48a-a85a55ac15a5\":{\"name\":\"CustomerCorporateGroup\"},\"ee32141b-43ca-4665-83d3-688d53d9db5f\":{\"name\":\"Supplier\"},\"d678b8be-0d20-4f28-a4ba-dece1459951d\":{\"name\":\"NielsenRegion\"},\"b2f820be-6c8d-43c9-9bad-b637ec777c3a\":{\"name\":\"IndustryCode1\"},\"6b1d43a7-6c58-4119-8227-b9c1d12a5561\":{\"name\":\"IndustryCode2\"},\"fa6071ad-ac89-41ae-80ae-293d40ff13a3\":{\"name\":\"IndustryCode3\"},\"a90354a9-da75-481b-99fa-4d1da2ba698e\":{\"name\":\"IndustryCode4\"},\"db9fb2e4-7856-4ea6-b322-2b53c4fc526e\":{\"name\":\"IndustryCode5\"},\"48133536-3fab-436c-879f-1ab13c4812a5\":{\"name\":\"Country\"},\"45a2f51a-9815-438a-8132-be8a011bb1cf\":{\"name\":\"OrganizationBPName1\"},\"db35ffd9-9aed-4370-b08c-03546f0bde34\":{\"name\":\"OrganizationBPName2\"},\"3034caf8-c94e-4496-9cce-89c0c7d349f9\":{\"name\":\"CityName\"},\"a43539fa-5cb0-4251-94b6-2a14a160d46b\":{\"name\":\"PostalCode\"},\"9e180525-d75c-4644-bb02-89be809a81db\":{\"name\":\"StreetName\"},\"06c9448b-0617-478f-8ece-26fb1530d929\":{\"name\":\"SortField\"},\"2a8286a7-0e8c-4f3d-a121-d1cf0859a2c9\":{\"name\":\"FaxNumber\"},\"b8652902-e351-44c5-9c24-9cf1cd777ab1\":{\"name\":\"BR_SUFRAMACode\"},\"bfe445ec-b4ca-4881-a57c-c0a2bb60fcb9\":{\"name\":\"Region\"},\"345bfe53-3f8d-4f3c-8615-1d2083f72524\":{\"name\":\"TelephoneNumber1\"},\"5046720a-c568-4636-a174-30cbec3d8d98\":{\"name\":\"TelephoneNumber2\"},\"939bb567-84f3-47e6-9f81-b3f6751e7166\":{\"name\":\"AlternativePayerAccount\"},\"45c6ce8c-e87e-48af-834e-752d14db92eb\":{\"name\":\"DataMediumExchangeIndicator\"},\"34d0898f-9efc-42b3-b535-ae6e22897070\":{\"name\":\"VATLiability\"},\"750f62ba-a478-49bf-8f46-6c2129b6cd65\":{\"name\":\"IsBusinessPurposeCompleted\"},\"ebd157ef-65d2-41e8-b09e-f0d27ddb5ce3\":{\"name\":\"ResponsibleType\"},\"4700b3dc-d46a-4e88-ac3c-3a48f8adfc10\":{\"name\":\"FiscalAddress\"},\"7c0005bf-ac55-400e-b409-26070fd3f043\":{\"name\":\"NFPartnerIsNaturalPerson\"},\"ccc58ddd-3809-4644-a242-96688e5c9b0b\":{\"name\":\"DeletionIndicator\"},\"90909723-bdfc-4b7a-9efe-83a13a10bf54\":{\"name\":\"Language\"},\"7217d48e-b6f5-49d7-a657-ee9c9065c0b1\":{\"name\":\"TradingPartner\"},\"f0819a14-b245-4d9e-b266-f3f61211b60a\":{\"name\":\"DeliveryDateTypeRule\"},\"27857631-8677-450f-8ebb-591517c97d63\":{\"name\":\"ExpressTrainStationName\"},\"30f08b66-2778-4569-8328-0ff8967d586f\":{\"name\":\"TrainStationName\"},\"913306e0-5111-410e-b3cc-51e11ecb78b5\":{\"name\":\"InternationalLocationNumber2\"},\"36c8a1c5-2ec9-4bed-8fe3-d8743549fa7a\":{\"name\":\"InternationalLocationNumber3\"},\"ec8ec798-da8c-4c61-9494-43b48f9d53b0\":{\"name\":\"CityCode\"},\"47e0cbba-7e89-4ad0-bad3-5833b431cd53\":{\"name\":\"County\"},\"6c67d5a6-3dda-4e86-ade2-052fba983d71\":{\"name\":\"CustomerHasUnloadingPoint\"},\"363cd4ec-509d-4cce-92a2-aa3160908f8a\":{\"name\":\"CustomerWorkingTimeCalendar\"},\"52560972-d2ea-4327-a593-29c97a2aa569\":{\"name\":\"IsCompetitor\"},\"ef74d69e-5298-4fd9-be58-b219bbc5c408\":{\"name\":\"TaxInvoiceRepresentativeName\"},\"f42f65fb-3ee9-4c70-b1e6-ac8061aa071b\":{\"name\":\"BusinessType\"},\"35a8bca3-efc1-4d6a-a4ad-210b5346243a\":{\"name\":\"IndustryType\"},\"5923eb43-31f3-4d5a-afac-0998607aa72d\":{\"name\":\"TW_CollvBillingIsSupported\"},\"303d01dc-4d1c-4212-9bff-e6c4c4c89bea\":{\"name\":\"AlternativePayeeIsAllowed\"},\"466fddfa-f7b1-4555-b44a-837ddd67551d\":{\"name\":\"FreeDefinedAttribute01\"},\"bc245478-ffc7-45ae-8d6b-4b044b09c8d2\":{\"name\":\"FreeDefinedAttribute02\"},\"c93b72fd-5e15-4999-9a13-ae662464791a\":{\"name\":\"FreeDefinedAttribute03\"},\"43637e57-b2ef-438c-9b9b-2746cae244a1\":{\"name\":\"FreeDefinedAttribute04\"},\"1536ba83-ad8d-43dd-8dfc-e91d7af1e414\":{\"name\":\"FreeDefinedAttribute05\"},\"28443a72-298e-48ff-a2de-bcd31142d6e6\":{\"name\":\"FreeDefinedAttribute06\"},\"25ebb558-1d19-4629-a8e0-296a9cfc8af0\":{\"name\":\"FreeDefinedAttribute07\"},\"a6bfdd7c-62c5-40c4-a9fb-86b5b57827a6\":{\"name\":\"FreeDefinedAttribute08\"},\"67d09085-bd10-4732-9961-eae6b9ab14a3\":{\"name\":\"FreeDefinedAttribute09\"},\"52ba5444-e718-4f6a-83c2-05b5b9ad4594\":{\"name\":\"FreeDefinedAttribute10\"},\"965dceed-c2c1-414a-b287-2693fc54a5d0\":{\"name\":\"PaymentReason\"},\"3820d953-e7e1-4165-9146-9c01ab13afff\":{\"name\":\"CustomerConditionGroup1\"},\"0990242e-259e-481d-b254-0e075bd3bb4b\":{\"name\":\"CustomerConditionGroup2\"},\"b7436380-10f9-4335-84d4-3b36b712f4c2\":{\"name\":\"CustomerConditionGroup3\"},\"c6e3d4e1-d956-49e6-a982-552f95e411b2\":{\"name\":\"CustomerConditionGroup4\"},\"152b7df3-cbfe-4e7f-9888-6fccbe53c578\":{\"name\":\"CustomerConditionGroup5\"},\"a2bb7e4a-dc5f-4e6e-b166-3a938f55afe1\":{\"name\":\"IsSalesProspect\"},\"0c6c88ce-e623-403e-a184-3d09cd87715f\":{\"name\":\"PaymentIsBlockedForCustomer\"},\"7cfc0eac-eb9b-4243-a4b4-62636f41a8c6\":{\"name\":\"IsConsumer\"},\"26bfd3f7-85e3-4c69-b846-a9df8f9c8c82\":{\"name\":\"DataControllerSet\"},\"27c8895c-ac4f-41db-852a-9e5ca949ad31\":{\"name\":\"DataController1\"},\"e361a793-f3e8-448e-892e-75839f85c925\":{\"name\":\"DataController2\"},\"a587b04a-062d-4e24-a28d-9bf5a6540398\":{\"name\":\"DataController3\"},\"66369552-12dd-4901-93d3-076827de9486\":{\"name\":\"DataController4\"},\"24a29beb-8b0d-44fe-8d5e-c427675bc007\":{\"name\":\"DataController5\"},\"5cb66d0f-d653-4800-9503-d095113598cb\":{\"name\":\"DataController6\"},\"599f408b-b547-4aa5-a15e-cb2b6b50d562\":{\"name\":\"DataController7\"},\"38ff02fd-4a98-47ab-9584-d9f7647b7415\":{\"name\":\"DataController8\"},\"c35cac9a-9fc5-4e13-a8da-d6f782347528\":{\"name\":\"DataController9\"},\"671f2f48-6a55-4936-a1e3-93f0cfb82465\":{\"name\":\"DataController10\"},\"d574dbd8-8ff7-454a-ac0c-15300849af96\":{\"name\":\"BusinessPartnerName1\"},\"29d6c703-fc9b-47ef-b4b2-32a396aeaa53\":{\"name\":\"BusinessPartnerName2\"},\"b3435b0c-8927-4e7b-ad8a-c79f4afa3d80\":{\"name\":\"BusinessPartnerName3\"},\"db99eaa2-541e-4486-a31d-d8412fb2b724\":{\"name\":\"BusinessPartnerName4\"},\"cf13d10e-7c08-41ab-86c3-5799677a73e7\":{\"name\":\"BPAddrCityName\"},\"fc494d2e-a1c7-4cd2-8509-4c9f9e995aae\":{\"name\":\"BPAddrStreetName\"},\"d3b722e7-7cf9-470d-80a6-aaa761fa3310\":{\"name\":\"AddressSearchTerm1\"},\"cfdb5cc5-4743-4e3e-9af2-df11f6ed8113\":{\"name\":\"AddressSearchTerm2\"},\"1701e23c-faa8-4572-baf5-c3f012283c59\":{\"name\":\"DistrictName\"},\"750385e7-2365-4c43-b2ae-19d21a79f095\":{\"name\":\"POBoxDeviatingCityName\"},\"541e1ce5-64ca-4f6f-8cef-e4be3972db67\":{\"name\":\"BusinessPartnerFormOfAddress\"}},\"successorNode\":\"dd274d18-24bd-4232-ada9-6c4d711105b0\"},\"b42ff4aa-125d-421e-a31a-ba03b68cd11a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Customer\",\"label\":\"Customer number\",\"newName\":\"Customer\",\"indexOrder\":0,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"5b432d15-9ce8-4204-b6ae-9759cbb4dacd\"},\"0cc1642f-2722-4caa-8329-dc1b4b42fcb3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerName\",\"label\":\"Name of customer\",\"newName\":\"CustomerName\",\"indexOrder\":1,\"length\":80,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"e05cb499-7104-4afd-9fd1-a66022843e8e\"},\"c4747767-46e7-415e-9a3c-30700c5c4690\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerFullName\",\"label\":\"Customer full name\",\"newName\":\"CustomerFullName\",\"isRemoved\":true,\"indexOrder\":2,\"length\":220,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"456f634b-48bc-4b2b-9b84-6898b2626158\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPCustomerName\",\"label\":\"Customer name\",\"newName\":\"BPCustomerName\",\"isRemoved\":true,\"indexOrder\":3,\"length\":81,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"80bacc6d-f73f-4af5-bcae-9611c1924262\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPCustomerFullName\",\"label\":\"Customer full name\",\"newName\":\"BPCustomerFullName\",\"isRemoved\":true,\"indexOrder\":4,\"length\":220,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7873f2ea-5b2f-46d9-9fc6-aca6c7c4a8df\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreatedByUser\",\"label\":\"Name of person who created the object\",\"newName\":\"CreatedByUser\",\"isRemoved\":true,\"indexOrder\":5,\"length\":12,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8328b053-267f-4990-a7a7-37abf55d83ac\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreationDate\",\"label\":\"Record created on\",\"newName\":\"CreationDate\",\"isRemoved\":true,\"indexOrder\":6,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8da2d6d6-6f11-40ba-80f7-4fb238ebaf29\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressID\",\"label\":\"Address\",\"newName\":\"AddressID\",\"isRemoved\":true,\"indexOrder\":7,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"43dcd42d-9085-47cf-8db2-f2bc9772b11b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerClassification\",\"label\":\"Customer classification\",\"newName\":\"CustomerClassification\",\"isRemoved\":true,\"indexOrder\":8,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"4413d3bf-d697-4fd8-b388-4d4cc06d8e65\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"VATRegistration\",\"label\":\"Vat registration number\",\"newName\":\"VATRegistration\",\"isRemoved\":true,\"indexOrder\":9,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"89559a32-c1fc-443f-9492-a490d1c0d27e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerAccountGroup\",\"label\":\"Customer account group\",\"newName\":\"CustomerAccountGroup\",\"isRemoved\":true,\"indexOrder\":10,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"09fb3424-b12f-4d39-8ee9-d2973b5d3e72\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AuthorizationGroup\",\"label\":\"Authorization group\",\"newName\":\"AuthorizationGroup\",\"isRemoved\":true,\"indexOrder\":11,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"6fd58f0b-8004-4dc7-b3c6-82c8d0bc0880\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeliveryIsBlocked\",\"label\":\"Central delivery block for the customer\",\"newName\":\"DeliveryIsBlocked\",\"isRemoved\":true,\"indexOrder\":12,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ea25bd70-0c69-409f-9cdd-1e4a5f8d5cbb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingIsBlocked\",\"label\":\"Central posting block\",\"newName\":\"PostingIsBlocked\",\"isRemoved\":true,\"indexOrder\":13,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"4eff11bf-bac7-4138-bca4-b2a8139165da\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BillingIsBlockedForCustomer\",\"label\":\"Central billing block for customer\",\"newName\":\"BillingIsBlockedForCustomer\",\"isRemoved\":true,\"indexOrder\":14,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"990ba735-d176-47b5-88c0-7fb844bb6028\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrderIsBlockedForCustomer\",\"label\":\"Central order block for customer\",\"newName\":\"OrderIsBlockedForCustomer\",\"isRemoved\":true,\"indexOrder\":15,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"f515c3c4-f096-4c5a-b426-3e24d0eac384\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber1\",\"label\":\"International location number  (part 1)\",\"newName\":\"InternationalLocationNumber1\",\"isRemoved\":true,\"indexOrder\":16,\"length\":7,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7de8a3a8-013a-44f9-aa5f-d58d27bf4abe\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsOneTimeAccount\",\"label\":\"Indicator: is the account a one-time account?\",\"newName\":\"IsOneTimeAccount\",\"isRemoved\":true,\"indexOrder\":17,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"0d914d51-9b02-4841-9b80-3f93c722a7bc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxJurisdiction\",\"label\":\"Tax jurisdiction\",\"newName\":\"TaxJurisdiction\",\"isRemoved\":true,\"indexOrder\":18,\"length\":15,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"483f9201-703c-41ae-a13b-1d52359131ed\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Industry\",\"label\":\"Industry key\",\"newName\":\"Industry\",\"isRemoved\":true,\"indexOrder\":19,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"cf29b37d-b522-47a3-8933-4e5ff92f8faa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumberType\",\"label\":\"Tax number type\",\"newName\":\"TaxNumberType\",\"isRemoved\":true,\"indexOrder\":20,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7f0a9cbd-0579-4392-9622-2927996bd592\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber1\",\"label\":\"Tax number 1\",\"newName\":\"TaxNumber1\",\"isRemoved\":true,\"indexOrder\":21,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"05ef06d5-3e4e-4fd6-a687-0e380e5e0ea2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber2\",\"label\":\"Tax number 2\",\"newName\":\"TaxNumber2\",\"isRemoved\":true,\"indexOrder\":22,\"length\":11,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8c2bb3ee-902b-4ada-a1f8-362e6c0cca87\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber3\",\"label\":\"Tax number 3\",\"newName\":\"TaxNumber3\",\"isRemoved\":true,\"indexOrder\":23,\"length\":18,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"9b4e61ed-0df2-4f3e-9b4e-8313842cf85a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber4\",\"label\":\"Tax number 4\",\"newName\":\"TaxNumber4\",\"isRemoved\":true,\"indexOrder\":24,\"length\":18,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b7fac5c5-aecd-486d-a85b-70a99fd5ae18\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber5\",\"label\":\"Tax number 5\",\"newName\":\"TaxNumber5\",\"isRemoved\":true,\"indexOrder\":25,\"length\":60,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"783be198-2cf6-45f5-b44f-acd62096821c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxNumber6\",\"label\":\"Tax number 6\",\"newName\":\"TaxNumber6\",\"isRemoved\":true,\"indexOrder\":26,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"efc9c238-db01-456f-b48a-a85a55ac15a5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerCorporateGroup\",\"label\":\"Group key\",\"newName\":\"CustomerCorporateGroup\",\"isRemoved\":true,\"indexOrder\":27,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ee32141b-43ca-4665-83d3-688d53d9db5f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Account number of supplier\",\"newName\":\"Supplier\",\"isRemoved\":true,\"indexOrder\":28,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"d678b8be-0d20-4f28-a4ba-dece1459951d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NielsenRegion\",\"label\":\"Nielsen id\",\"newName\":\"NielsenRegion\",\"isRemoved\":true,\"indexOrder\":29,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b2f820be-6c8d-43c9-9bad-b637ec777c3a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode1\",\"label\":\"Industry code 1\",\"newName\":\"IndustryCode1\",\"isRemoved\":true,\"indexOrder\":30,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"6b1d43a7-6c58-4119-8227-b9c1d12a5561\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode2\",\"label\":\"Industry code 2\",\"newName\":\"IndustryCode2\",\"isRemoved\":true,\"indexOrder\":31,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"fa6071ad-ac89-41ae-80ae-293d40ff13a3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode3\",\"label\":\"Industry code 3\",\"newName\":\"IndustryCode3\",\"isRemoved\":true,\"indexOrder\":32,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a90354a9-da75-481b-99fa-4d1da2ba698e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode4\",\"label\":\"Industry code 4\",\"newName\":\"IndustryCode4\",\"isRemoved\":true,\"indexOrder\":33,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"db9fb2e4-7856-4ea6-b322-2b53c4fc526e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryCode5\",\"label\":\"Industry code 5\",\"newName\":\"IndustryCode5\",\"isRemoved\":true,\"indexOrder\":34,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"48133536-3fab-436c-879f-1ab13c4812a5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Country\",\"label\":\"Country/region key\",\"newName\":\"Country\",\"isRemoved\":true,\"indexOrder\":35,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"45a2f51a-9815-438a-8132-be8a011bb1cf\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrganizationBPName1\",\"label\":\"Name 1\",\"newName\":\"OrganizationBPName1\",\"isRemoved\":true,\"indexOrder\":36,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"db35ffd9-9aed-4370-b08c-03546f0bde34\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"OrganizationBPName2\",\"label\":\"Name 2\",\"newName\":\"OrganizationBPName2\",\"isRemoved\":true,\"indexOrder\":37,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"3034caf8-c94e-4496-9cce-89c0c7d349f9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CityName\",\"label\":\"City\",\"newName\":\"CityName\",\"isRemoved\":true,\"indexOrder\":38,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a43539fa-5cb0-4251-94b6-2a14a160d46b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostalCode\",\"label\":\"Postal code\",\"newName\":\"PostalCode\",\"isRemoved\":true,\"indexOrder\":39,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"9e180525-d75c-4644-bb02-89be809a81db\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StreetName\",\"label\":\"Street and house number\",\"newName\":\"StreetName\",\"isRemoved\":true,\"indexOrder\":40,\"length\":35,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"06c9448b-0617-478f-8ece-26fb1530d929\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"SortField\",\"label\":\"Sort field\",\"newName\":\"SortField\",\"isRemoved\":true,\"indexOrder\":41,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"2a8286a7-0e8c-4f3d-a121-d1cf0859a2c9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FaxNumber\",\"label\":\"Fax number\",\"newName\":\"FaxNumber\",\"isRemoved\":true,\"indexOrder\":42,\"length\":31,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b8652902-e351-44c5-9c24-9cf1cd777ab1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BR_SUFRAMACode\",\"label\":\"Suframa code\",\"newName\":\"BR_SUFRAMACode\",\"isRemoved\":true,\"indexOrder\":43,\"length\":9,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"bfe445ec-b4ca-4881-a57c-c0a2bb60fcb9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Region\",\"label\":\"Region (state, province, county)\",\"newName\":\"Region\",\"isRemoved\":true,\"indexOrder\":44,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"345bfe53-3f8d-4f3c-8615-1d2083f72524\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TelephoneNumber1\",\"label\":\"First telephone number\",\"newName\":\"TelephoneNumber1\",\"isRemoved\":true,\"indexOrder\":45,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5046720a-c568-4636-a174-30cbec3d8d98\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TelephoneNumber2\",\"label\":\"Second telephone number\",\"newName\":\"TelephoneNumber2\",\"isRemoved\":true,\"indexOrder\":46,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"939bb567-84f3-47e6-9f81-b3f6751e7166\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AlternativePayerAccount\",\"label\":\"Account number of an alternative payer\",\"newName\":\"AlternativePayerAccount\",\"isRemoved\":true,\"indexOrder\":47,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"45c6ce8c-e87e-48af-834e-752d14db92eb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataMediumExchangeIndicator\",\"label\":\"Recipient code for data medium exchange\",\"newName\":\"DataMediumExchangeIndicator\",\"isRemoved\":true,\"indexOrder\":48,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"34d0898f-9efc-42b3-b535-ae6e22897070\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"VATLiability\",\"label\":\"Liable for vat\",\"newName\":\"VATLiability\",\"isRemoved\":true,\"indexOrder\":49,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"750f62ba-a478-49bf-8f46-6c2129b6cd65\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsBusinessPurposeCompleted\",\"label\":\"Business purpose completed flag\",\"newName\":\"IsBusinessPurposeCompleted\",\"isRemoved\":true,\"indexOrder\":50,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ebd157ef-65d2-41e8-b09e-f0d27ddb5ce3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ResponsibleType\",\"label\":\"Tax type\",\"newName\":\"ResponsibleType\",\"isRemoved\":true,\"indexOrder\":51,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"4700b3dc-d46a-4e88-ac3c-3a48f8adfc10\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalAddress\",\"label\":\"Account number of the master record with the fiscal address\",\"newName\":\"FiscalAddress\",\"isRemoved\":true,\"indexOrder\":52,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7c0005bf-ac55-400e-b409-26070fd3f043\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NFPartnerIsNaturalPerson\",\"label\":\"Natural person\",\"newName\":\"NFPartnerIsNaturalPerson\",\"isRemoved\":true,\"indexOrder\":53,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ccc58ddd-3809-4644-a242-96688e5c9b0b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeletionIndicator\",\"label\":\"Central deletion flag for master record\",\"newName\":\"DeletionIndicator\",\"isRemoved\":true,\"indexOrder\":54,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"90909723-bdfc-4b7a-9efe-83a13a10bf54\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":55,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7edaff24-34e7-40b6-ad77-c98db494a050\"},\"7217d48e-b6f5-49d7-a657-ee9c9065c0b1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TradingPartner\",\"label\":\"Company id of trading partner\",\"newName\":\"TradingPartner\",\"isRemoved\":true,\"indexOrder\":56,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"f0819a14-b245-4d9e-b266-f3f61211b60a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DeliveryDateTypeRule\",\"label\":\"Delivery date rule\",\"newName\":\"DeliveryDateTypeRule\",\"isRemoved\":true,\"indexOrder\":57,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"27857631-8677-450f-8ebb-591517c97d63\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ExpressTrainStationName\",\"label\":\"Express train station\",\"newName\":\"ExpressTrainStationName\",\"isRemoved\":true,\"indexOrder\":58,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"30f08b66-2778-4569-8328-0ff8967d586f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TrainStationName\",\"label\":\"Train station\",\"newName\":\"TrainStationName\",\"isRemoved\":true,\"indexOrder\":59,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"913306e0-5111-410e-b3cc-51e11ecb78b5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber2\",\"label\":\"International location number (part 2)\",\"newName\":\"InternationalLocationNumber2\",\"isRemoved\":true,\"indexOrder\":60,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"36c8a1c5-2ec9-4bed-8fe3-d8743549fa7a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InternationalLocationNumber3\",\"label\":\"Check digit for the international location number\",\"newName\":\"InternationalLocationNumber3\",\"isRemoved\":true,\"indexOrder\":61,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ec8ec798-da8c-4c61-9494-43b48f9d53b0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CityCode\",\"label\":\"City code\",\"newName\":\"CityCode\",\"isRemoved\":true,\"indexOrder\":62,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"47e0cbba-7e89-4ad0-bad3-5833b431cd53\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"County\",\"label\":\"County code\",\"newName\":\"County\",\"isRemoved\":true,\"indexOrder\":63,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"6c67d5a6-3dda-4e86-ade2-052fba983d71\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerHasUnloadingPoint\",\"label\":\"Indicator: unloading points exist\",\"newName\":\"CustomerHasUnloadingPoint\",\"isRemoved\":true,\"indexOrder\":64,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"363cd4ec-509d-4cce-92a2-aa3160908f8a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerWorkingTimeCalendar\",\"label\":\"Working time calendar\",\"newName\":\"CustomerWorkingTimeCalendar\",\"isRemoved\":true,\"indexOrder\":65,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"52560972-d2ea-4327-a593-29c97a2aa569\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsCompetitor\",\"label\":\"Indicator: competitor\",\"newName\":\"IsCompetitor\",\"isRemoved\":true,\"indexOrder\":66,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ef74d69e-5298-4fd9-be58-b219bbc5c408\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TaxInvoiceRepresentativeName\",\"label\":\"Name of representative\",\"newName\":\"TaxInvoiceRepresentativeName\",\"isRemoved\":true,\"indexOrder\":67,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"f42f65fb-3ee9-4c70-b1e6-ac8061aa071b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessType\",\"label\":\"Type of business\",\"newName\":\"BusinessType\",\"isRemoved\":true,\"indexOrder\":68,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"35a8bca3-efc1-4d6a-a4ad-210b5346243a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IndustryType\",\"label\":\"Type of industry\",\"newName\":\"IndustryType\",\"isRemoved\":true,\"indexOrder\":69,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5923eb43-31f3-4d5a-afac-0998607aa72d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"TW_CollvBillingIsSupported\",\"label\":\"Consolidated invoicing for taiwan\",\"newName\":\"TW_CollvBillingIsSupported\",\"isRemoved\":true,\"indexOrder\":70,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"303d01dc-4d1c-4212-9bff-e6c4c4c89bea\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AlternativePayeeIsAllowed\",\"label\":\"Indicator: is an alternative payer allowed in document?\",\"newName\":\"AlternativePayeeIsAllowed\",\"isRemoved\":true,\"indexOrder\":71,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"466fddfa-f7b1-4555-b44a-837ddd67551d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute01\",\"label\":\"Attribute 1\",\"newName\":\"FreeDefinedAttribute01\",\"isRemoved\":true,\"indexOrder\":72,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"bc245478-ffc7-45ae-8d6b-4b044b09c8d2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute02\",\"label\":\"Attribute 2\",\"newName\":\"FreeDefinedAttribute02\",\"isRemoved\":true,\"indexOrder\":73,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"c93b72fd-5e15-4999-9a13-ae662464791a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute03\",\"label\":\"Attribute 3\",\"newName\":\"FreeDefinedAttribute03\",\"isRemoved\":true,\"indexOrder\":74,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"43637e57-b2ef-438c-9b9b-2746cae244a1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute04\",\"label\":\"Attribute 4\",\"newName\":\"FreeDefinedAttribute04\",\"isRemoved\":true,\"indexOrder\":75,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"1536ba83-ad8d-43dd-8dfc-e91d7af1e414\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute05\",\"label\":\"Attribute 5\",\"newName\":\"FreeDefinedAttribute05\",\"isRemoved\":true,\"indexOrder\":76,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"28443a72-298e-48ff-a2de-bcd31142d6e6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute06\",\"label\":\"Attribute 6\",\"newName\":\"FreeDefinedAttribute06\",\"isRemoved\":true,\"indexOrder\":77,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"25ebb558-1d19-4629-a8e0-296a9cfc8af0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute07\",\"label\":\"Attribute 7\",\"newName\":\"FreeDefinedAttribute07\",\"isRemoved\":true,\"indexOrder\":78,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a6bfdd7c-62c5-40c4-a9fb-86b5b57827a6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute08\",\"label\":\"Attribute 8\",\"newName\":\"FreeDefinedAttribute08\",\"isRemoved\":true,\"indexOrder\":79,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"67d09085-bd10-4732-9961-eae6b9ab14a3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute09\",\"label\":\"Attribute 9\",\"newName\":\"FreeDefinedAttribute09\",\"isRemoved\":true,\"indexOrder\":80,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"52ba5444-e718-4f6a-83c2-05b5b9ad4594\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FreeDefinedAttribute10\",\"label\":\"Attribute 10\",\"newName\":\"FreeDefinedAttribute10\",\"isRemoved\":true,\"indexOrder\":81,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"965dceed-c2c1-414a-b287-2693fc54a5d0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PaymentReason\",\"label\":\"Payment reason\",\"newName\":\"PaymentReason\",\"isRemoved\":true,\"indexOrder\":82,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"3820d953-e7e1-4165-9146-9c01ab13afff\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup1\",\"label\":\"Customer condition group 1\",\"newName\":\"CustomerConditionGroup1\",\"isRemoved\":true,\"indexOrder\":83,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"0990242e-259e-481d-b254-0e075bd3bb4b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup2\",\"label\":\"Customer condition group 2\",\"newName\":\"CustomerConditionGroup2\",\"isRemoved\":true,\"indexOrder\":84,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b7436380-10f9-4335-84d4-3b36b712f4c2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup3\",\"label\":\"Customer condition group 3\",\"newName\":\"CustomerConditionGroup3\",\"isRemoved\":true,\"indexOrder\":85,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"c6e3d4e1-d956-49e6-a982-552f95e411b2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup4\",\"label\":\"Customer condition group 4\",\"newName\":\"CustomerConditionGroup4\",\"isRemoved\":true,\"indexOrder\":86,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"152b7df3-cbfe-4e7f-9888-6fccbe53c578\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerConditionGroup5\",\"label\":\"Customer condition group 5\",\"newName\":\"CustomerConditionGroup5\",\"isRemoved\":true,\"indexOrder\":87,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a2bb7e4a-dc5f-4e6e-b166-3a938f55afe1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsSalesProspect\",\"label\":\"Indicator: sales prospect\",\"newName\":\"IsSalesProspect\",\"isRemoved\":true,\"indexOrder\":88,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"0c6c88ce-e623-403e-a184-3d09cd87715f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PaymentIsBlockedForCustomer\",\"label\":\"Payment block\",\"newName\":\"PaymentIsBlockedForCustomer\",\"isRemoved\":true,\"indexOrder\":89,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7cfc0eac-eb9b-4243-a4b4-62636f41a8c6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"IsConsumer\",\"label\":\"Indicator: consumer\",\"newName\":\"IsConsumer\",\"isRemoved\":true,\"indexOrder\":90,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"26bfd3f7-85e3-4c69-b846-a9df8f9c8c82\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataControllerSet\",\"label\":\"Bp: data controller set flag\",\"newName\":\"DataControllerSet\",\"isRemoved\":true,\"indexOrder\":91,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"27c8895c-ac4f-41db-852a-9e5ca949ad31\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController1\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController1\",\"isRemoved\":true,\"indexOrder\":92,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"e361a793-f3e8-448e-892e-75839f85c925\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController2\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController2\",\"isRemoved\":true,\"indexOrder\":93,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a587b04a-062d-4e24-a28d-9bf5a6540398\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController3\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController3\",\"isRemoved\":true,\"indexOrder\":94,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"66369552-12dd-4901-93d3-076827de9486\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController4\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController4\",\"isRemoved\":true,\"indexOrder\":95,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"24a29beb-8b0d-44fe-8d5e-c427675bc007\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController5\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController5\",\"isRemoved\":true,\"indexOrder\":96,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5cb66d0f-d653-4800-9503-d095113598cb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController6\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController6\",\"isRemoved\":true,\"indexOrder\":97,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"599f408b-b547-4aa5-a15e-cb2b6b50d562\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController7\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController7\",\"isRemoved\":true,\"indexOrder\":98,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"38ff02fd-4a98-47ab-9584-d9f7647b7415\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController8\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController8\",\"isRemoved\":true,\"indexOrder\":99,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"c35cac9a-9fc5-4e13-a8da-d6f782347528\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController9\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController9\",\"isRemoved\":true,\"indexOrder\":100,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"671f2f48-6a55-4936-a1e3-93f0cfb82465\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DataController10\",\"label\":\"Bp: data controller (internal use only)\",\"newName\":\"DataController10\",\"isRemoved\":true,\"indexOrder\":101,\"length\":30,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"d574dbd8-8ff7-454a-ac0c-15300849af96\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName1\",\"label\":\"Name 1\",\"newName\":\"BusinessPartnerName1\",\"isRemoved\":true,\"indexOrder\":102,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"29d6c703-fc9b-47ef-b4b2-32a396aeaa53\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName2\",\"label\":\"Name 2\",\"newName\":\"BusinessPartnerName2\",\"isRemoved\":true,\"indexOrder\":103,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b3435b0c-8927-4e7b-ad8a-c79f4afa3d80\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName3\",\"label\":\"Name 3\",\"newName\":\"BusinessPartnerName3\",\"isRemoved\":true,\"indexOrder\":104,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"db99eaa2-541e-4486-a31d-d8412fb2b724\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerName4\",\"label\":\"Name 4\",\"newName\":\"BusinessPartnerName4\",\"isRemoved\":true,\"indexOrder\":105,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"cf13d10e-7c08-41ab-86c3-5799677a73e7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPAddrCityName\",\"label\":\"City\",\"newName\":\"BPAddrCityName\",\"isRemoved\":true,\"indexOrder\":106,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"fc494d2e-a1c7-4cd2-8509-4c9f9e995aae\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BPAddrStreetName\",\"label\":\"Street\",\"newName\":\"BPAddrStreetName\",\"isRemoved\":true,\"indexOrder\":107,\"length\":60,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"d3b722e7-7cf9-470d-80a6-aaa761fa3310\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressSearchTerm1\",\"label\":\"Search term 1\",\"newName\":\"AddressSearchTerm1\",\"isRemoved\":true,\"indexOrder\":108,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"cfdb5cc5-4743-4e3e-9af2-df11f6ed8113\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AddressSearchTerm2\",\"label\":\"Search term 2\",\"newName\":\"AddressSearchTerm2\",\"isRemoved\":true,\"indexOrder\":109,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"1701e23c-faa8-4572-baf5-c3f012283c59\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DistrictName\",\"label\":\"District\",\"newName\":\"DistrictName\",\"isRemoved\":true,\"indexOrder\":110,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"750385e7-2365-4c43-b2ae-19d21a79f095\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"POBoxDeviatingCityName\",\"label\":\"Po box city\",\"newName\":\"POBoxDeviatingCityName\",\"isRemoved\":true,\"indexOrder\":111,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"541e1ce5-64ca-4f6f-8cef-e4be3972db67\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessPartnerFormOfAddress\",\"label\":\"Form-of-address key\",\"newName\":\"BusinessPartnerFormOfAddress\",\"isRemoved\":true,\"indexOrder\":112,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"756a886f-7b6d-4c3e-841d-8ac1fa1c7401\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.RenameSymbol\",\"font\":\"bold 11px \\\"72\\\",\\\"72full\\\",Arial,Helvetica,sans-serif\",\"x\":-2,\"y\":-16,\"object\":\"aa743dd2-dfe4-47b5-9a57-78377748a2d1\"},\"4dc5a956-6a70-4404-b0a0-039be0755612\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-52,0 -2,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"6f0fab03-dedc-4d8f-addf-3880a1ae59df\",\"targetSymbol\":\"756a886f-7b6d-4c3e-841d-8ac1fa1c7401\"},\"be574b4d-6086-4f9d-82fc-340b29145bf1\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"46,0 96,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"756a886f-7b6d-4c3e-841d-8ac1fa1c7401\",\"targetSymbol\":\"67fe2634-ac63-4e05-b90d-655d41791276\"},\"5b432d15-9ce8-4204-b6ae-9759cbb4dacd\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Customer\",\"label\":\"Customer number\",\"newName\":\"Customer\",\"indexOrder\":0,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"e05cb499-7104-4afd-9fd1-a66022843e8e\"},\"e05cb499-7104-4afd-9fd1-a66022843e8e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CustomerName\",\"label\":\"Name of customer\",\"newName\":\"CustomerName\",\"indexOrder\":1,\"length\":80,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"7edaff24-34e7-40b6-ad77-c98db494a050\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":3,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true}}}"
+    }
+  },
+  "$version": "1.0"
+}
