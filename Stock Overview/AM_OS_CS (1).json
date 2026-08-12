@@ -1,0 +1,1541 @@
+{
+  "definitions": {
+    "AM_OS_CS": {
+      "kind": "entity",
+      "@EndUserText.label": "AM_OS_CS",
+      "elements": {
+        "PostingDate": {
+          "@EndUserText.label": "Posting date in the document"
+        },
+        "BaseUnit": {
+          "@EndUserText.label": "Base unit of measure"
+        },
+        "QuantityInBaseUnit": {
+          "@EndUserText.label": "Quantity"
+        },
+        "GoodsMovementType": {
+          "@EndUserText.label": "Movement type (inventory management)"
+        },
+        "Plant": {
+          "@EndUserText.label": "Plant"
+        },
+        "Material": {
+          "@EndUserText.label": "Material in respect of which stock is managed"
+        },
+        "DebitCreditCode": {
+          "@EndUserText.label": "Debit/credit indicator"
+        },
+        "Posting_Date": {
+          "@EndUserText.label": "Posting_Date"
+        },
+        "Posting_Month": {
+          "@EndUserText.label": "Posting_Month"
+        },
+        "Current_Stock": {
+          "@EndUserText.label": "Current_Stock",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "Opening_Stock": {
+          "@EndUserText.label": "Opening_Stock",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "Receipts": {
+          "@EndUserText.label": "Receipts",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "Issues": {
+          "@EndUserText.label": "Issues",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        },
+        "closing_stock": {
+          "@EndUserText.label": "closing_stock",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          }
+        }
+      },
+      "@ObjectModel.modelingPattern": {
+        "#": "ANALYTICAL_CUBE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "ANALYTICAL_PROVIDER"
+        },
+        {
+          "#": "_DWC_AM_EDITABLE_DIMENSION_NAMES"
+        }
+      ],
+      "@DataWarehouse.editorType": {
+        "#": "DWCQueryModelEditor"
+      },
+      "@DataWarehouse.hanaCatalog.viewType": {
+        "#": "CALCULATION_VIEW"
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              {
+                "id": "FV_os_cs",
+                "args": {
+                  "START_DATE": {
+                    "param": true,
+                    "ref": [
+                      "START_DATE"
+                    ]
+                  },
+                  "CLOSE_DATE": {
+                    "param": true,
+                    "ref": [
+                      "CLOSE_DATE"
+                    ]
+                  }
+                }
+              }
+            ],
+            "as": "FV_os_cs"
+          },
+          "columns": [
+            {
+              "ref": [
+                "FV_os_cs",
+                "PostingDate"
+              ],
+              "as": "PostingDate"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "BaseUnit"
+              ],
+              "as": "BaseUnit"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "QuantityInBaseUnit"
+              ],
+              "as": "QuantityInBaseUnit"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "GoodsMovementType"
+              ],
+              "as": "GoodsMovementType"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Plant"
+              ],
+              "as": "Plant"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Material"
+              ],
+              "as": "Material"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "DebitCreditCode"
+              ],
+              "as": "DebitCreditCode"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Posting_Date"
+              ],
+              "as": "Posting_Date"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Posting_Month"
+              ],
+              "as": "Posting_Month"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Current_Stock"
+              ],
+              "as": "Current_Stock"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Opening_Stock"
+              ],
+              "as": "Opening_Stock"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Receipts"
+              ],
+              "as": "Receipts"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "Issues"
+              ],
+              "as": "Issues"
+            },
+            {
+              "ref": [
+                "FV_os_cs",
+                "closing_stock"
+              ],
+              "as": "closing_stock"
+            }
+          ],
+          "mixin": {}
+        }
+      },
+      "params": {
+        "START_DATE": {
+          "@EndUserText.label": "START_DATE",
+          "@AnalyticsDetails.query.variableSequence": 2
+        },
+        "CLOSE_DATE": {
+          "@EndUserText.label": "CLOSE_DATE",
+          "@AnalyticsDetails.query.variableSequence": 1
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_UFUDOHBR"
+        }
+      }
+    },
+    "RAD_S3P": {
+      "kind": "context",
+      "@EndUserText.label": "RAD_S3P",
+      "@DataWarehouse.space.schema": "RAD_S3P",
+      "@DataWarehouse.space.name": "RAD_S3P"
+    },
+    "RAD_S3P.Z01_SOH_MATDOCC": {
+      "kind": "entity",
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "Z01_SOH_MATDOCC_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "Key1": {
+          "@EndUserText.label": "Key1",
+          "type": "cds.Binary",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "Key2": {
+          "@EndUserText.label": "Key2",
+          "type": "cds.Binary",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "Key3": {
+          "@EndUserText.label": "Key3",
+          "type": "cds.Binary",
+          "length": 5,
+          "key": true,
+          "notNull": true
+        },
+        "Key4": {
+          "@EndUserText.label": "Key4",
+          "type": "cds.Binary",
+          "length": 1,
+          "key": true,
+          "notNull": true
+        },
+        "Key5": {
+          "@EndUserText.label": "Key5",
+          "type": "cds.Binary",
+          "length": 1,
+          "key": true,
+          "notNull": true
+        },
+        "Key6": {
+          "@EndUserText.label": "Key6",
+          "type": "cds.Binary",
+          "length": 1,
+          "key": true,
+          "notNull": true
+        },
+        "MaterialDocument": {
+          "@EndUserText.label": "Number of material document",
+          "type": "cds.String",
+          "length": 10
+        },
+        "MaterialDocumentYear": {
+          "@EndUserText.label": "Material document year",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MaterialDocumentItem": {
+          "@EndUserText.label": "Item in material document",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Batch": {
+          "@EndUserText.label": "Batch number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Supplier": {
+          "@EndUserText.label": "Supplier's account number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Material": {
+          "@EndUserText.label": "Material in respect of which stock is managed",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Plant": {
+          "@EndUserText.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorageLocation": {
+          "@EndUserText.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "GoodsMovementType": {
+          "@EndUserText.label": "Movement type (inventory management)",
+          "type": "cds.String",
+          "length": 3
+        },
+        "DebitCreditCode": {
+          "@EndUserText.label": "Debit/credit indicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PostingDate": {
+          "@EndUserText.label": "Posting date in the document",
+          "type": "cds.String",
+          "length": 8
+        },
+        "QuantityInBaseUnit": {
+          "@EndUserText.label": "Quantity",
+          "precision": 13,
+          "scale": 3,
+          "type": "cds.Decimal"
+        },
+        "BaseUnit": {
+          "@EndUserText.label": "Base unit of measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "StockValueInCCCurrency": {
+          "@EndUserText.label": "Amount in local currency",
+          "precision": 38,
+          "scale": 6,
+          "type": "cds.Decimal"
+        },
+        "CompanyCodeCurrency": {
+          "@EndUserText.label": "Currency key",
+          "type": "cds.String",
+          "length": 5
+        },
+        "CompanyCode": {
+          "@EndUserText.label": "Company code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "InventorySpecialStockType": {
+          "@EndUserText.label": "Special stock indicator",
+          "type": "cds.String",
+          "length": 1
+        }
+      },
+      "@EndUserText.label": "Sohmatdoc",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@DataWarehouse.persistence.hdlf.enableDeletionVectors": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "RAD_S3P.Z01_SOH_MAKT_LT_01": {
+      "kind": "entity",
+      "@EndUserText.label": "Z01_SOH_MAKT_LT_01",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "Z01_SOH_MAKT_LT_01_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "Product": {
+          "@EndUserText.label": "Material number",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 40
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 2
+        },
+        "ProductDescription": {
+          "@EndUserText.label": "Material description",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "text_makt": {
+      "kind": "entity",
+      "elements": {
+        "Product": {
+          "@EndUserText.label": "Material number",
+          "type": "cds.String",
+          "length": 40,
+          "key": true,
+          "notNull": true,
+          "@Analytics.dimension": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "ProductDescription"
+            }
+          ]
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true,
+          "@Analytics.dimension": true,
+          "@Semantics.language": true
+        },
+        "ProductDescription": {
+          "@EndUserText.label": "Material description",
+          "type": "cds.String",
+          "length": 40,
+          "@Analytics.dimension": true,
+          "@Semantics.text": true
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "RAD_S3P.Z01_SOH_MAKT_LT_01"
+            ],
+            "as": "Z01_SOH_MAKT_LT_01"
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "Product"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "Language"
+              ]
+            },
+            {
+              "ref": [
+                "ProductDescription"
+              ]
+            }
+          ]
+        }
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "LANGUAGE_DEPENDENT_TEXT"
+        }
+      ],
+      "@EndUserText.label": "text_makt",
+      "@ObjectModel.modelingPattern": {
+        "#": "LANGUAGE_DEPENDENT_TEXT"
+      },
+      "@DataWarehouse.consumption.external": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      }
+    },
+    "FV_os_cs": {
+      "kind": "entity",
+      "elements": {
+        "BaseUnit": {
+          "@EndUserText.label": "Base unit of measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "QuantityInBaseUnit": {
+          "@EndUserText.label": "Quantity",
+          "precision": 13,
+          "scale": 3,
+          "type": "cds.Decimal"
+        },
+        "GoodsMovementType": {
+          "@EndUserText.label": "Movement type (inventory management)",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Plant": {
+          "@EndUserText.label": "Plant",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "Current_Stock": {
+          "@EndUserText.label": "Current_Stock",
+          "precision": 14,
+          "scale": 3,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Opening_Stock": {
+          "@EndUserText.label": "Opening_Stock",
+          "precision": 14,
+          "scale": 3,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Material": {
+          "@EndUserText.label": "Material in respect of which stock is managed",
+          "type": "cds.String",
+          "length": 40,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.association": {
+            "=": "_text_makt"
+          }
+        },
+        "DebitCreditCode": {
+          "@EndUserText.label": "Debit/credit indicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Receipts": {
+          "@EndUserText.label": "Receipts",
+          "precision": 13,
+          "scale": 3,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Issues": {
+          "@EndUserText.label": "Issues",
+          "precision": 13,
+          "scale": 3,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "PostingDate": {
+          "@EndUserText.label": "Posting date in the document",
+          "type": "cds.String",
+          "length": 8
+        },
+        "closing_stock": {
+          "@EndUserText.label": "closing_stock",
+          "precision": 14,
+          "scale": 3,
+          "type": "cds.Decimal",
+          "@AnalyticsDetails.measureType": {
+            "#": "BASE"
+          },
+          "@Aggregation.default": {
+            "#": "SUM"
+          }
+        },
+        "Posting_Date": {
+          "@EndUserText.label": "Posting_Date",
+          "type": "cds.Date"
+        },
+        "Posting_Month": {
+          "@EndUserText.label": "Posting_Month",
+          "type": "cds.String",
+          "length": 5000
+        },
+        "_text_makt": {
+          "type": "cds.Association",
+          "@EndUserText.label": "FV_os_cs to text_makt",
+          "on": [
+            {
+              "ref": [
+                "Material"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "_text_makt",
+                "Product"
+              ]
+            }
+          ],
+          "target": "text_makt"
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "SELECT": {
+              "from": {
+                "ref": [
+                  "RAD_S3P.Z01_SOH_MATDOCC"
+                ],
+                "as": "Z01_SOH_MATDOCC"
+              },
+              "columns": [
+                {
+                  "xpr": [
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "Z01_SOH_MATDOCC",
+                        "DebitCreditCode"
+                      ]
+                    },
+                    "=",
+                    {
+                      "val": "S"
+                    },
+                    "then",
+                    {
+                      "func": "IFNULL",
+                      "args": [
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "QuantityInBaseUnit"
+                          ]
+                        },
+                        {
+                          "val": 0
+                        }
+                      ]
+                    },
+                    "when",
+                    {
+                      "ref": [
+                        "Z01_SOH_MATDOCC",
+                        "DebitCreditCode"
+                      ]
+                    },
+                    "=",
+                    {
+                      "val": "H"
+                    },
+                    "then",
+                    {
+                      "func": "IFNULL",
+                      "args": [
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "QuantityInBaseUnit"
+                          ]
+                        },
+                        {
+                          "val": 0
+                        }
+                      ]
+                    },
+                    "*",
+                    {
+                      "val": -1
+                    },
+                    "else",
+                    {
+                      "val": 0
+                    },
+                    "end"
+                  ],
+                  "as": "Current_Stock"
+                },
+                {
+                  "xpr": [
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    "<",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "START_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "then",
+                    {
+                      "xpr": [
+                        "case",
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "S"
+                        },
+                        "then",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "QuantityInBaseUnit"
+                          ]
+                        },
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "H"
+                        },
+                        "then",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "QuantityInBaseUnit"
+                          ]
+                        },
+                        "*",
+                        {
+                          "val": -1
+                        },
+                        "else",
+                        {
+                          "val": 0
+                        },
+                        "end"
+                      ]
+                    },
+                    "else",
+                    {
+                      "val": 0
+                    },
+                    "end"
+                  ],
+                  "as": "Opening_Stock"
+                },
+                {
+                  "xpr": [
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    "<=",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "CLOSE_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "then",
+                    {
+                      "xpr": [
+                        "case",
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "S"
+                        },
+                        "then",
+                        {
+                          "func": "IFNULL",
+                          "args": [
+                            {
+                              "ref": [
+                                "Z01_SOH_MATDOCC",
+                                "QuantityInBaseUnit"
+                              ]
+                            },
+                            {
+                              "val": 0
+                            }
+                          ]
+                        },
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "H"
+                        },
+                        "then",
+                        {
+                          "func": "IFNULL",
+                          "args": [
+                            {
+                              "ref": [
+                                "Z01_SOH_MATDOCC",
+                                "QuantityInBaseUnit"
+                              ]
+                            },
+                            {
+                              "val": 0
+                            }
+                          ]
+                        },
+                        "*",
+                        {
+                          "val": -1
+                        },
+                        "else",
+                        {
+                          "val": 0
+                        },
+                        "end"
+                      ]
+                    },
+                    "else",
+                    {
+                      "val": 0
+                    },
+                    "end"
+                  ],
+                  "as": "closing_stock"
+                },
+                {
+                  "xpr": [
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    ">=",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "START_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "and",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    "<=",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "CLOSE_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "then",
+                    {
+                      "xpr": [
+                        "case",
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "S"
+                        },
+                        "then",
+                        {
+                          "func": "IFNULL",
+                          "args": [
+                            {
+                              "ref": [
+                                "Z01_SOH_MATDOCC",
+                                "QuantityInBaseUnit"
+                              ]
+                            },
+                            {
+                              "val": 0
+                            }
+                          ]
+                        },
+                        "else",
+                        {
+                          "val": 0
+                        },
+                        "end"
+                      ]
+                    },
+                    "else",
+                    {
+                      "val": 0
+                    },
+                    "end"
+                  ],
+                  "as": "Receipts"
+                },
+                {
+                  "xpr": [
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    ">=",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "START_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "and",
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    "<=",
+                    {
+                      "func": "TO_DATE",
+                      "args": [
+                        {
+                          "ref": [
+                            "CLOSE_DATE"
+                          ],
+                          "param": true
+                        },
+                        {
+                          "val": "YYYY-MM-DD"
+                        }
+                      ]
+                    },
+                    "then",
+                    {
+                      "xpr": [
+                        "case",
+                        "when",
+                        {
+                          "ref": [
+                            "Z01_SOH_MATDOCC",
+                            "DebitCreditCode"
+                          ]
+                        },
+                        "=",
+                        {
+                          "val": "H"
+                        },
+                        "then",
+                        {
+                          "func": "IFNULL",
+                          "args": [
+                            {
+                              "ref": [
+                                "Z01_SOH_MATDOCC",
+                                "QuantityInBaseUnit"
+                              ]
+                            },
+                            {
+                              "val": 0
+                            }
+                          ]
+                        },
+                        "else",
+                        {
+                          "val": 0
+                        },
+                        "end"
+                      ]
+                    },
+                    "else",
+                    {
+                      "val": 0
+                    },
+                    "end"
+                  ],
+                  "as": "Issues"
+                },
+                {
+                  "func": "TO_DATE",
+                  "args": [
+                    {
+                      "ref": [
+                        "Z01_SOH_MATDOCC",
+                        "PostingDate"
+                      ]
+                    },
+                    {
+                      "val": "YYYYMMDD"
+                    }
+                  ],
+                  "as": "Posting_Date"
+                },
+                {
+                  "func": "TO_VARCHAR",
+                  "args": [
+                    {
+                      "ref": [
+                        "$projection",
+                        "Posting_Date"
+                      ]
+                    },
+                    {
+                      "val": "YYYYMM"
+                    }
+                  ],
+                  "as": "Posting_Month"
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "GoodsMovementType"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "QuantityInBaseUnit"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "BaseUnit"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "Material"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "Plant"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "PostingDate"
+                  ]
+                },
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "DebitCreditCode"
+                  ]
+                }
+              ],
+              "where": [
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "Material"
+                  ]
+                },
+                "is",
+                "not",
+                "null",
+                "and",
+                {
+                  "ref": [
+                    "Z01_SOH_MATDOCC",
+                    "Material"
+                  ]
+                },
+                "<>",
+                {
+                  "val": ""
+                }
+              ]
+            },
+            "as": "Calculated Columns 1"
+          },
+          "columns": [
+            {
+              "ref": [
+                "BaseUnit"
+              ]
+            },
+            {
+              "ref": [
+                "QuantityInBaseUnit"
+              ]
+            },
+            {
+              "ref": [
+                "GoodsMovementType"
+              ]
+            },
+            {
+              "ref": [
+                "Plant"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "Current_Stock"
+              ]
+            },
+            {
+              "ref": [
+                "Opening_Stock"
+              ]
+            },
+            {
+              "ref": [
+                "Material"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "DebitCreditCode"
+              ]
+            },
+            {
+              "ref": [
+                "Receipts"
+              ]
+            },
+            {
+              "ref": [
+                "Issues"
+              ]
+            },
+            {
+              "ref": [
+                "PostingDate"
+              ]
+            },
+            {
+              "ref": [
+                "closing_stock"
+              ]
+            },
+            {
+              "ref": [
+                "Posting_Date"
+              ]
+            },
+            {
+              "ref": [
+                "Posting_Month"
+              ]
+            },
+            {
+              "ref": [
+                "_text_makt"
+              ]
+            }
+          ],
+          "mixin": {
+            "_text_makt": {
+              "on": [
+                {
+                  "ref": [
+                    "$projection",
+                    "Material"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "_text_makt",
+                    "Product"
+                  ]
+                }
+              ],
+              "target": "text_makt",
+              "type": "cds.Association"
+            }
+          }
+        }
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@EndUserText.label": "FV_os_cs",
+      "@ObjectModel.modelingPattern": {
+        "#": "ANALYTICAL_FACT"
+      },
+      "params": {
+        "START_DATE": {
+          "@EndUserText.label": "START_DATE",
+          "type": "cds.Date"
+        },
+        "CLOSE_DATE": {
+          "@EndUserText.label": "CLOSE_DATE",
+          "type": "cds.Date"
+        }
+      },
+      "@DataWarehouse.consumption.external": true,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      }
+    }
+  },
+  "version": {
+    "csn": "1.0"
+  },
+  "meta": {
+    "creator": "CDS Compiler v1.19.2"
+  },
+  "businessLayerDefinitions": {
+    "AM_OS_CS": {
+      "identifier": {
+        "key": "AM_OS_CS"
+      },
+      "text": "AM_OS_CS",
+      "sourceModel": {
+        "factSources": {
+          "FV_os_cs": {
+            "text": "FV_os_cs",
+            "dataEntity": {
+              "key": "FV_os_cs"
+            },
+            "parameterMappings": {
+              "START_DATE": {
+                "mappingType": "AnalyticModelSourceParameterMappingType.MapToSourceParameter",
+                "variableName": "START_DATE"
+              },
+              "CLOSE_DATE": {
+                "mappingType": "AnalyticModelSourceParameterMappingType.MapToSourceParameter",
+                "variableName": "CLOSE_DATE"
+              }
+            }
+          }
+        },
+        "dimensionSources": {}
+      },
+      "exposedAssociations": {},
+      "attributes": {
+        "PostingDate": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "PostingDate"
+            }
+          },
+          "text": "Posting date in the document",
+          "duplicated": false
+        },
+        "BaseUnit": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "BaseUnit"
+            }
+          },
+          "text": "Base unit of measure",
+          "duplicated": false
+        },
+        "QuantityInBaseUnit": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "QuantityInBaseUnit"
+            }
+          },
+          "text": "Quantity",
+          "duplicated": false
+        },
+        "GoodsMovementType": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "GoodsMovementType"
+            }
+          },
+          "text": "Movement type (inventory management)",
+          "duplicated": false
+        },
+        "Plant": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "Plant"
+            }
+          },
+          "text": "Plant",
+          "duplicated": false
+        },
+        "Material": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "Material"
+            }
+          },
+          "text": "Material in respect of which stock is managed",
+          "duplicated": false
+        },
+        "DebitCreditCode": {
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "DebitCreditCode"
+            }
+          },
+          "text": "Debit/credit indicator",
+          "duplicated": false
+        },
+        "Posting_Date": {
+          "text": "Posting_Date",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "Posting_Date"
+            }
+          },
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "duplicated": false
+        },
+        "Posting_Month": {
+          "text": "Posting_Month",
+          "attributeMapping": {
+            "FV_os_cs": {
+              "key": "Posting_Month"
+            }
+          },
+          "attributeType": "AnalyticModelAttributeType.FactSourceAttribute",
+          "duplicated": false
+        }
+      },
+      "measures": {
+        "Current_Stock": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "FV_os_cs": {
+              "key": "Current_Stock"
+            }
+          },
+          "text": "Current_Stock",
+          "isAuxiliary": false
+        },
+        "Opening_Stock": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "FV_os_cs": {
+              "key": "Opening_Stock"
+            }
+          },
+          "text": "Opening_Stock",
+          "isAuxiliary": false
+        },
+        "Receipts": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "FV_os_cs": {
+              "key": "Receipts"
+            }
+          },
+          "text": "Receipts",
+          "isAuxiliary": false
+        },
+        "Issues": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "FV_os_cs": {
+              "key": "Issues"
+            }
+          },
+          "text": "Issues",
+          "isAuxiliary": false
+        },
+        "closing_stock": {
+          "measureType": "AnalyticModelMeasureType.FactSourceMeasure",
+          "measureMapping": {
+            "FV_os_cs": {
+              "key": "closing_stock"
+            }
+          },
+          "text": "closing_stock",
+          "isAuxiliary": false
+        }
+      },
+      "crossCalculations": {},
+      "version": "1.7.2",
+      "supportedCapabilities": {},
+      "variables": {
+        "START_DATE": {
+          "parameterType": "AnalyticModelParameterType.Input",
+          "text": "START_DATE",
+          "order": 2
+        },
+        "CLOSE_DATE": {
+          "parameterType": "AnalyticModelParameterType.Input",
+          "text": "CLOSE_DATE",
+          "order": 1
+        }
+      }
+    }
+  },
+  "editorSettings": {
+    "text_makt": {
+      "editor": {
+        "lastModifier": "GRAPHICALVIEWBUILDER",
+        "default": "GRAPHICALVIEWBUILDER"
+      },
+      "uiModel": "{\"contents\":{\"91827456-967f-4e22-83ca-5eb5edcdc953\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"text_makt\",\"label\":\"text_makt\",\"modificationDate\":1785409396883,\"deploymentDate\":1785408229905,\"#objectStatus\":\"2\",\"output\":\"7b980b16-a5cf-469a-9cb6-9c4f27c89ca0\",\"nodes\":{\"7b980b16-a5cf-469a-9cb6-9c4f27c89ca0\":{\"name\":\"View_1\"},\"ec272044-ae1a-4b1c-8500-eba7986e2846\":{\"name\":\"RAD_S3P.Z01_SOH_MAKT_LT_01\"}},\"contexts\":{\"9c32083f-6391-4f51-a6fd-f5174baaae80\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"0a6eb659-bb32-4df7-824a-ad3ef97dbc7d\":{}}},\"7b980b16-a5cf-469a-9cb6-9c4f27c89ca0\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"View_1\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1785409396883,\"deploymentDate\":1785408229905,\"#objectStatus\":\"2\",\"elements\":{\"a798cc52-7ef0-46f7-8754-2ef1618d6b96\":{\"name\":\"Product\"},\"e8caf0fd-057d-423e-b88d-c26d4f492fe1\":{\"name\":\"Language\"},\"69747bc2-db71-4886-9478-c8bd81f9fd95\":{\"name\":\"ProductDescription\"}}},\"ec272044-ae1a-4b1c-8500-eba7986e2846\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.Z01_SOH_MAKT_LT_01\",\"label\":\"Z01_SOH_MAKT_LT_01\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1785318837612,\"deploymentDate\":1785318937758,\"#objectStatus\":\"1\",\"alias\":\"Z01_SOH_MAKT_LT_01\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"Z01_SOH_MAKT_LT_01_Delta\"]},\"context\":\"9c32083f-6391-4f51-a6fd-f5174baaae80\",\"elements\":{\"590b909f-37c6-470b-a107-acbe7a629497\":{\"name\":\"Product\"},\"47f09890-c54d-4702-a2c1-7afb9edbc732\":{\"name\":\"Language\"},\"50215868-0a30-4088-b0e8-86d77faa2910\":{\"name\":\"ProductDescription\"}},\"successorNode\":\"7b980b16-a5cf-469a-9cb6-9c4f27c89ca0\"},\"9c32083f-6391-4f51-a6fd-f5174baaae80\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"0a6eb659-bb32-4df7-824a-ad3ef97dbc7d\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"5169f02d-20e4-44c9-a281-e48acffeb4b2\":{},\"b3086d28-1aa6-42ee-afa5-9491d3c64d65\":{\"name\":\"Entity Symbol 1\"},\"288f3df0-9caa-468a-810e-dd9e273e1ba9\":{}}},\"a798cc52-7ef0-46f7-8754-2ef1618d6b96\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Product\",\"label\":\"Material number\",\"newName\":\"Product\",\"indexOrder\":0,\"isKey\":true,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"isNotNull\":true,\"labelElement\":\"69747bc2-db71-4886-9478-c8bd81f9fd95\"},\"e8caf0fd-057d-423e-b88d-c26d4f492fe1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":1,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"69747bc2-db71-4886-9478-c8bd81f9fd95\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProductDescription\",\"label\":\"Material description\",\"newName\":\"ProductDescription\",\"indexOrder\":2,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"semanticType\":\"@Semantics.text\"},\"590b909f-37c6-470b-a107-acbe7a629497\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Product\",\"label\":\"Material number\",\"newName\":\"Product\",\"indexOrder\":0,\"isKey\":true,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"a798cc52-7ef0-46f7-8754-2ef1618d6b96\"},\"47f09890-c54d-4702-a2c1-7afb9edbc732\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":1,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"e8caf0fd-057d-423e-b88d-c26d4f492fe1\"},\"50215868-0a30-4088-b0e8-86d77faa2910\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProductDescription\",\"label\":\"Material description\",\"newName\":\"ProductDescription\",\"indexOrder\":2,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"69747bc2-db71-4886-9478-c8bd81f9fd95\"},\"5169f02d-20e4-44c9-a281-e48acffeb4b2\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"7b980b16-a5cf-469a-9cb6-9c4f27c89ca0\"},\"b3086d28-1aa6-42ee-afa5-9491d3c64d65\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"ec272044-ae1a-4b1c-8500-eba7986e2846\"},\"288f3df0-9caa-468a-810e-dd9e273e1ba9\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"b3086d28-1aa6-42ee-afa5-9491d3c64d65\",\"targetSymbol\":\"5169f02d-20e4-44c9-a281-e48acffeb4b2\"}}}"
+    },
+    "FV_os_cs": {
+      "editor": {
+        "lastModifier": "GRAPHICALVIEWBUILDER",
+        "default": "GRAPHICALVIEWBUILDER"
+      },
+      "uiModel": "{\"contents\":{\"797f91d5-f07b-4ea1-a4b7-3f6a64c0c930\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"FV_os_cs\",\"label\":\"FV_os_cs\",\"modificationDate\":1786368123126,\"deploymentDate\":1786368133246,\"#objectStatus\":\"1\",\"output\":\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\",\"nodes\":{\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\":{\"name\":\"GV_os_cs\"},\"4e38f81d-2b93-4f6a-adaa-7297e2599bc8\":{\"name\":\"RAD_S3P.Z01_SOH_MATDOCC\"},\"d7ae725f-18ef-4d41-8c98-9977f8ea53b4\":{\"name\":\"Projection 1\"},\"116ecb6d-c722-4311-adf1-927c3e099408\":{\"name\":\"Calculated Columns 1\"},\"2b5f4b16-659f-49e3-8e5d-c0edadd77502\":{\"name\":\"Filter 1\"},\"74485231-1bab-4c16-945c-429e3815b16f\":{\"name\":\"text_makt\"}},\"associations\":{\"98233825-78cf-48a2-a644-3071ff8f8ed0\":{\"name\":\"_text_makt\"}},\"contexts\":{\"7d0e545b-03ce-4bdd-8d48-e3138257c33c\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"a491de31-715a-4e74-937a-9524a4ec8ce4\":{}}},\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"GV_os_cs\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"SQLFACT\",\"modificationDate\":1786368123126,\"deploymentDate\":1786368133246,\"#objectStatus\":\"1\",\"elements\":{\"69df8d1a-62e7-4bbe-a768-fe6328a1422a\":{\"name\":\"BaseUnit\"},\"31b00fc6-3a86-4c2b-932b-0f68dba0c05e\":{\"name\":\"QuantityInBaseUnit\"},\"b3fc6ab2-7b32-4917-854b-0f24a68d0bab\":{\"name\":\"GoodsMovementType\"},\"f2e68ac4-57e8-4c2f-a462-9d969c9adf0f\":{\"name\":\"Calculated_1\"},\"077f4374-70e4-4667-8686-4f22a70ada04\":{\"name\":\"Calculated_1\"},\"8b70996b-202e-4949-805f-a97441f944c6\":{\"name\":\"Calculated_1\"},\"d12c5032-aa87-4b48-97e9-0853f11436d1\":{\"name\":\"Plant\"},\"595ee7c8-3ed1-45e0-b8cd-360defc5ba4e\":{\"name\":\"Material\"},\"b3c98527-6fbd-47c9-ade2-ddc3c8d30244\":{\"name\":\"DebitCreditCode\"},\"aa6ee19d-8d17-4ca2-8cf3-4b94f7384215\":{\"name\":\"Calculated_1\"},\"76b9d4ce-f549-4270-96d0-b15fb0f21dd8\":{\"name\":\"Calculated_1\"},\"0136c747-afb1-46ba-94e2-a17d6793ccac\":{\"name\":\"Calculated_1\"},\"81f5e7aa-f5f8-4659-84bf-3a0b106af6a5\":{\"name\":\"PostingDate\"},\"36db60a2-b71c-43a3-a99d-b95dc7f370fe\":{\"name\":\"Calculated_1\"}},\"parameters\":{\"84836e5b-2b42-45bd-a09d-fb0432704962\":{\"name\":\"START_DATE\"},\"631cef27-6039-4725-943c-4d575dbf3303\":{\"name\":\"CLOSE_DATE\"}},\"associations\":{\"98233825-78cf-48a2-a644-3071ff8f8ed0\":{\"name\":\"_text_makt\"}}},\"4e38f81d-2b93-4f6a-adaa-7297e2599bc8\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.Z01_SOH_MATDOCC\",\"label\":\"Sohmatdoc\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1785242663569,\"deploymentDate\":1785242741198,\"#objectStatus\":\"1\",\"alias\":\"Z01_SOH_MATDOCC\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"Z01_SOH_MATDOCC_Delta\"]},\"context\":\"7d0e545b-03ce-4bdd-8d48-e3138257c33c\",\"elements\":{\"0bb27916-c19b-49a6-9705-aff8e8669eed\":{\"name\":\"Key1\"},\"991ee7f3-22ea-40e3-879d-37e41b93abe5\":{\"name\":\"Key2\"},\"24777fd3-395f-4886-89b4-dcaed1fd0a78\":{\"name\":\"Key3\"},\"6ab1136b-ba01-433c-a376-61ac0a6ff1ee\":{\"name\":\"Key4\"},\"75f6e343-8d23-46b6-a2cb-208c371beb34\":{\"name\":\"Key5\"},\"53d6726e-bb1b-4225-a390-fb98523f5a43\":{\"name\":\"Key6\"},\"16a913aa-7cae-4516-949f-bf879a9a9162\":{\"name\":\"MaterialDocument\"},\"6c78cf36-cdbc-4a04-9ded-7b19465b2797\":{\"name\":\"MaterialDocumentYear\"},\"ffaf1216-aa64-4a11-9ea3-b31843ada8d1\":{\"name\":\"MaterialDocumentItem\"},\"872a011f-db76-4ec0-99b3-551796e17672\":{\"name\":\"Batch\"},\"9b570691-7c1f-4608-870f-810bd2bf4be4\":{\"name\":\"Supplier\"},\"8a16d31a-fb49-4b67-bcc1-72a51e5d0f52\":{\"name\":\"Material\"},\"7ebb805a-8d47-4215-9781-3815db178212\":{\"name\":\"Plant\"},\"f19c6180-0117-40aa-86bd-efacd508d50b\":{\"name\":\"StorageLocation\"},\"7dffbf74-d25a-4eed-afd0-1ce955d50aff\":{\"name\":\"GoodsMovementType\"},\"93e0e37e-9ebd-4483-a8f0-a659dbb72641\":{\"name\":\"DebitCreditCode\"},\"8114d908-028e-4977-9850-9b995aae55ce\":{\"name\":\"PostingDate\"},\"c9733506-6861-4041-b037-1fe66302ff43\":{\"name\":\"QuantityInBaseUnit\"},\"8ca97c43-7f4e-442a-b1f2-1ecc5c436e81\":{\"name\":\"BaseUnit\"},\"a17c78c1-e0ed-4023-baf3-84d43c79cd29\":{\"name\":\"StockValueInCCCurrency\"},\"64feb06b-a0b6-4765-a266-f06d8fa670ac\":{\"name\":\"CompanyCodeCurrency\"},\"df1103cc-3738-4156-a6ea-8e46d56d22d9\":{\"name\":\"CompanyCode\"},\"30631512-a268-414d-8e36-572a24a73ef0\":{\"name\":\"InventorySpecialStockType\"}},\"successorNode\":\"d7ae725f-18ef-4d41-8c98-9977f8ea53b4\"},\"d7ae725f-18ef-4d41-8c98-9977f8ea53b4\":{\"classDefinition\":\"sap.cdw.querybuilder.RenameElements\",\"_isProjectionNode\":false,\"name\":\"Projection 1\",\"elements\":{\"b9e0a5b2-a857-4de5-904d-64abf0e1b363\":{\"name\":\"Key1\"},\"504bce8d-a80c-4b4a-9dee-bc78db38d9ba\":{\"name\":\"Key2\"},\"398d0d96-14f5-4bbf-92c3-0fc41fe1f0fb\":{\"name\":\"Key3\"},\"b9c298ea-fbc8-474d-9803-9bbfefb76e0f\":{\"name\":\"Key4\"},\"fb02c9d4-fb9b-4e2a-8535-1af54a0d139c\":{\"name\":\"Key5\"},\"cc903806-09cf-4d65-ba25-862597417f32\":{\"name\":\"Key6\"},\"a50c519c-f38a-4aa3-8109-3be25def4698\":{\"name\":\"MaterialDocument\"},\"3969bf35-8a6c-46c6-b6ad-106ef94da6f7\":{\"name\":\"MaterialDocumentYear\"},\"8145d9f4-2014-41f8-9587-2d53754bae61\":{\"name\":\"MaterialDocumentItem\"},\"3809f305-76c3-465c-9459-32afb2c64377\":{\"name\":\"Batch\"},\"7fd589c6-7e03-42f9-b7fd-a138c1d0c5b8\":{\"name\":\"Supplier\"},\"38405a9a-b67f-47c8-acc8-54a43b42449a\":{\"name\":\"Material\"},\"cc22973f-97ea-45d2-9cbf-1434d0076b84\":{\"name\":\"Plant\"},\"da4d9fbd-d876-48f2-91e6-d0e2355e05dd\":{\"name\":\"StorageLocation\"},\"8cf29eaa-b639-4ebf-bf09-e140322d4832\":{\"name\":\"GoodsMovementType\"},\"9247e022-1b2a-4bda-af5f-ee6caa945215\":{\"name\":\"DebitCreditCode\"},\"5a9ffa77-b6bf-4826-a7e3-ef39173014fe\":{\"name\":\"PostingDate\"},\"56287235-ceca-48a8-8236-52f3d4a7056d\":{\"name\":\"QuantityInBaseUnit\"},\"e2b59b04-587e-4825-9045-81bf3fced25a\":{\"name\":\"BaseUnit\"},\"37b12ab4-ae51-42f0-807b-baf43ade17bb\":{\"name\":\"StockValueInCCCurrency\"},\"2ee716c8-eba1-4c39-9f70-d1d19be8535b\":{\"name\":\"CompanyCodeCurrency\"},\"e3022f4b-e1d1-4041-bd76-3ad622e7d6f3\":{\"name\":\"CompanyCode\"},\"9a73ee3d-90e2-4cbd-9734-430fcb2b6d43\":{\"name\":\"InventorySpecialStockType\"}},\"successorNode\":\"2b5f4b16-659f-49e3-8e5d-c0edadd77502\"},\"116ecb6d-c722-4311-adf1-927c3e099408\":{\"classDefinition\":\"sap.cdw.querybuilder.CalculatedElements\",\"name\":\"Calculated Columns 1\",\"elements\":{\"3cad9fe5-d930-4b9d-9fba-786ed51b3c82\":{\"name\":\"GoodsMovementType\"},\"bbb80354-2507-4f14-92e5-580761e0c923\":{\"name\":\"QuantityInBaseUnit\"},\"6954c76f-b989-4d42-9596-153f4c1f52b7\":{\"name\":\"BaseUnit\"},\"d938768f-ab64-4b3f-b7c1-8c3c20237284\":{\"name\":\"Calculated_1\"},\"45186db2-5604-4d00-9800-12b1712d8707\":{\"name\":\"Calculated_1\"},\"12ddfa87-b597-43eb-a67e-52d178c7d989\":{\"name\":\"Calculated_1\"},\"f0b07726-7da1-40c9-a9aa-aba9d837e732\":{\"name\":\"Plant\"},\"681d1e65-3c3a-4048-b13e-8c6bcd9c1628\":{\"name\":\"Material\"},\"abdfd042-a931-4d86-92e6-8081df9990d5\":{\"name\":\"DebitCreditCode\"},\"b86b0087-7425-4dda-a929-73314c98b664\":{\"name\":\"Calculated_1\"},\"f1fdc721-a77c-4496-a1d7-fca375c77cd2\":{\"name\":\"Calculated_1\"},\"e5390f37-50bd-48d2-bf4e-c4466840cd06\":{\"name\":\"Calculated_1\"},\"853cd716-c3fa-4f5f-8268-f0434447955a\":{\"name\":\"PostingDate\"},\"dd59f938-2fff-414a-918c-bbc6dc0aa20d\":{\"name\":\"Calculated_1\"}},\"successorNode\":\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\"},\"2b5f4b16-659f-49e3-8e5d-c0edadd77502\":{\"classDefinition\":\"sap.cdw.querybuilder.Filter\",\"condition\":\"\\\"Material\\\" IS NOT NULL AND \\\"Material\\\" <> ''\",\"name\":\"Filter 1\",\"elements\":{\"f0398abf-77c4-4104-b03c-024334c379b5\":{\"name\":\"Material\"},\"2366b27c-e8d9-4906-8e7a-389a7ee8ef6e\":{\"name\":\"Plant\"},\"09a21e1a-a227-40bc-8fb5-b4c5edfabff3\":{\"name\":\"GoodsMovementType\"},\"e93fb7b7-5ef7-462b-b710-7d4583170bd2\":{\"name\":\"DebitCreditCode\"},\"41dd21f8-3fa1-4c5d-bc91-66d26893fc7d\":{\"name\":\"QuantityInBaseUnit\"},\"295da989-f871-46bb-8c48-5d50e4cece65\":{\"name\":\"BaseUnit\"},\"0ac24fb9-1a36-4d04-8e4f-4e1c9d9ed43c\":{\"name\":\"PostingDate\"}},\"successorNode\":\"116ecb6d-c722-4311-adf1-927c3e099408\"},\"7d0e545b-03ce-4bdd-8d48-e3138257c33c\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"a491de31-715a-4e74-937a-9524a4ec8ce4\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"1b89b658-7e03-4eed-9361-f947a8cd38a5\":{},\"5803867b-be3e-490e-a80e-758977b586b0\":{\"name\":\"Entity Symbol 1\"},\"3bfdc64d-3baa-4fc1-af12-7c8ed2856a9c\":{},\"dd0ae762-9d3f-412a-822c-a3877d4a9abf\":{},\"f6ffc718-fbeb-43df-897b-7e6c37e6f2b9\":{},\"c6176bba-19d9-4a76-aca9-719d6e78daff\":{},\"0cbc1408-7c82-4288-b75d-fe7cafbb9ad8\":{},\"bdf26d32-909a-419c-9947-7eaa674e2366\":{},\"1d57abe7-cc1b-473c-8f45-d3bc2e51dea5\":{},\"f1e82459-7408-4da4-9000-d8c03b215768\":{}}},\"69df8d1a-62e7-4bbe-a768-fe6328a1422a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BaseUnit\",\"label\":\"Base unit of measure\",\"newName\":\"BaseUnit\",\"indexOrder\":2,\"isCalculated\":true,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"31b00fc6-3a86-4c2b-932b-0f68dba0c05e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"QuantityInBaseUnit\",\"label\":\"Quantity\",\"newName\":\"QuantityInBaseUnit\",\"indexOrder\":3,\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b3fc6ab2-7b32-4917-854b-0f24a68d0bab\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GoodsMovementType\",\"label\":\"Movement type (inventory management)\",\"newName\":\"GoodsMovementType\",\"indexOrder\":5,\"isCalculated\":true,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"f2e68ac4-57e8-4c2f-a462-9d969c9adf0f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Current_Stock\",\"newName\":\"Current_Stock\",\"indexOrder\":9,\"expression\":\"\",\"isCalculated\":true,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"077f4374-70e4-4667-8686-4f22a70ada04\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Opening_Stock\",\"newName\":\"Opening_Stock\",\"indexOrder\":10,\"expression\":\"\",\"isCalculated\":true,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"8b70996b-202e-4949-805f-a97441f944c6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"closing_stock\",\"newName\":\"closing_stock\",\"indexOrder\":13,\"expression\":\"\",\"isCalculated\":true,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"d12c5032-aa87-4b48-97e9-0853f11436d1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Plant\",\"label\":\"Plant\",\"newName\":\"Plant\",\"indexOrder\":8,\"expression\":\"Plant\",\"isCalculated\":true,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"595ee7c8-3ed1-45e0-b8cd-360defc5ba4e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Material\",\"label\":\"Material in respect of which stock is managed\",\"newName\":\"Material\",\"indexOrder\":10,\"expression\":\"Material\",\"isCalculated\":true,\"isKey\":true,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"foreignText\":\"_text_makt\",\"isNotNull\":true},\"b3c98527-6fbd-47c9-ade2-ddc3c8d30244\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit indicator\",\"newName\":\"DebitCreditCode\",\"indexOrder\":10,\"expression\":\"DebitCreditCode\",\"isCalculated\":true,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"aa6ee19d-8d17-4ca2-8cf3-4b94f7384215\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Receipts\",\"newName\":\"Receipts\",\"indexOrder\":11,\"expression\":\"\",\"isCalculated\":true,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"76b9d4ce-f549-4270-96d0-b15fb0f21dd8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Issues\",\"newName\":\"Issues\",\"indexOrder\":12,\"expression\":\"\",\"isCalculated\":true,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"0136c747-afb1-46ba-94e2-a17d6793ccac\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Posting_Date\",\"newName\":\"Posting_Date\",\"indexOrder\":13,\"expression\":\"\",\"isCalculated\":true,\"dataType\":\"cds.Date\",\"length\":0,\"precision\":0,\"scale\":0,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"81f5e7aa-f5f8-4659-84bf-3a0b106af6a5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date in the document\",\"newName\":\"PostingDate\",\"indexOrder\":12,\"expression\":\"PostingDate\",\"isCalculated\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"84836e5b-2b42-45bd-a09d-fb0432704962\":{\"classDefinition\":\"sap.cdw.querybuilder.ViewParameter\",\"name\":\"START_DATE\",\"default\":\"\",\"defaultValue\":\"\",\"value\":\"\",\"dataType\":\"cds.Date\",\"length\":0,\"precision\":0,\"scale\":0,\"label\":\"START_DATE\",\"valueHelpDefinition\":\"8c5f89c6-fce6-4f0d-9967-3266b42872d6\"},\"631cef27-6039-4725-943c-4d575dbf3303\":{\"classDefinition\":\"sap.cdw.querybuilder.ViewParameter\",\"name\":\"CLOSE_DATE\",\"default\":\"\",\"defaultValue\":\"\",\"value\":\"\",\"dataType\":\"cds.Date\",\"length\":0,\"precision\":0,\"scale\":0,\"label\":\"CLOSE_DATE\",\"valueHelpDefinition\":\"e04435ca-ce1a-4e0e-b3db-bb228ccf60fe\"},\"0bb27916-c19b-49a6-9705-aff8e8669eed\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key1\",\"label\":\"Key1\",\"newName\":\"Key1\",\"indexOrder\":0,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"b9e0a5b2-a857-4de5-904d-64abf0e1b363\"},\"991ee7f3-22ea-40e3-879d-37e41b93abe5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key2\",\"label\":\"Key2\",\"newName\":\"Key2\",\"indexOrder\":1,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"504bce8d-a80c-4b4a-9dee-bc78db38d9ba\"},\"24777fd3-395f-4886-89b4-dcaed1fd0a78\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key3\",\"label\":\"Key3\",\"newName\":\"Key3\",\"indexOrder\":2,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"398d0d96-14f5-4bbf-92c3-0fc41fe1f0fb\"},\"6ab1136b-ba01-433c-a376-61ac0a6ff1ee\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key4\",\"label\":\"Key4\",\"newName\":\"Key4\",\"indexOrder\":3,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"b9c298ea-fbc8-474d-9803-9bbfefb76e0f\"},\"75f6e343-8d23-46b6-a2cb-208c371beb34\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key5\",\"label\":\"Key5\",\"newName\":\"Key5\",\"indexOrder\":4,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"fb02c9d4-fb9b-4e2a-8535-1af54a0d139c\"},\"53d6726e-bb1b-4225-a390-fb98523f5a43\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key6\",\"label\":\"Key6\",\"newName\":\"Key6\",\"indexOrder\":5,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"cc903806-09cf-4d65-ba25-862597417f32\"},\"16a913aa-7cae-4516-949f-bf879a9a9162\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocument\",\"label\":\"Number of material document\",\"newName\":\"MaterialDocument\",\"indexOrder\":6,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a50c519c-f38a-4aa3-8109-3be25def4698\"},\"6c78cf36-cdbc-4a04-9ded-7b19465b2797\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocumentYear\",\"label\":\"Material document year\",\"newName\":\"MaterialDocumentYear\",\"indexOrder\":7,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"3969bf35-8a6c-46c6-b6ad-106ef94da6f7\"},\"ffaf1216-aa64-4a11-9ea3-b31843ada8d1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocumentItem\",\"label\":\"Item in material document\",\"newName\":\"MaterialDocumentItem\",\"indexOrder\":8,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8145d9f4-2014-41f8-9587-2d53754bae61\"},\"872a011f-db76-4ec0-99b3-551796e17672\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Batch\",\"label\":\"Batch number\",\"newName\":\"Batch\",\"indexOrder\":9,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"3809f305-76c3-465c-9459-32afb2c64377\"},\"9b570691-7c1f-4608-870f-810bd2bf4be4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Supplier's account number\",\"newName\":\"Supplier\",\"indexOrder\":10,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"7fd589c6-7e03-42f9-b7fd-a138c1d0c5b8\"},\"8a16d31a-fb49-4b67-bcc1-72a51e5d0f52\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Material\",\"label\":\"Material in respect of which stock is managed\",\"newName\":\"Material\",\"indexOrder\":11,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"38405a9a-b67f-47c8-acc8-54a43b42449a\"},\"7ebb805a-8d47-4215-9781-3815db178212\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Plant\",\"label\":\"Plant\",\"newName\":\"Plant\",\"indexOrder\":12,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cc22973f-97ea-45d2-9cbf-1434d0076b84\"},\"f19c6180-0117-40aa-86bd-efacd508d50b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StorageLocation\",\"label\":\"Storage location\",\"newName\":\"StorageLocation\",\"indexOrder\":13,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"da4d9fbd-d876-48f2-91e6-d0e2355e05dd\"},\"7dffbf74-d25a-4eed-afd0-1ce955d50aff\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GoodsMovementType\",\"label\":\"Movement type (inventory management)\",\"newName\":\"GoodsMovementType\",\"indexOrder\":14,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8cf29eaa-b639-4ebf-bf09-e140322d4832\"},\"93e0e37e-9ebd-4483-a8f0-a659dbb72641\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit indicator\",\"newName\":\"DebitCreditCode\",\"indexOrder\":15,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9247e022-1b2a-4bda-af5f-ee6caa945215\"},\"8114d908-028e-4977-9850-9b995aae55ce\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date in the document\",\"newName\":\"PostingDate\",\"indexOrder\":16,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5a9ffa77-b6bf-4826-a7e3-ef39173014fe\"},\"c9733506-6861-4041-b037-1fe66302ff43\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"QuantityInBaseUnit\",\"label\":\"Quantity\",\"newName\":\"QuantityInBaseUnit\",\"indexOrder\":17,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"56287235-ceca-48a8-8236-52f3d4a7056d\"},\"8ca97c43-7f4e-442a-b1f2-1ecc5c436e81\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BaseUnit\",\"label\":\"Base unit of measure\",\"newName\":\"BaseUnit\",\"indexOrder\":18,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"e2b59b04-587e-4825-9045-81bf3fced25a\"},\"a17c78c1-e0ed-4023-baf3-84d43c79cd29\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StockValueInCCCurrency\",\"label\":\"Amount in local currency\",\"newName\":\"StockValueInCCCurrency\",\"indexOrder\":19,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"37b12ab4-ae51-42f0-807b-baf43ade17bb\"},\"64feb06b-a0b6-4765-a266-f06d8fa670ac\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCodeCurrency\",\"label\":\"Currency key\",\"newName\":\"CompanyCodeCurrency\",\"indexOrder\":20,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"2ee716c8-eba1-4c39-9f70-d1d19be8535b\"},\"df1103cc-3738-4156-a6ea-8e46d56d22d9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCode\",\"label\":\"Company code\",\"newName\":\"CompanyCode\",\"indexOrder\":21,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"e3022f4b-e1d1-4041-bd76-3ad622e7d6f3\"},\"30631512-a268-414d-8e36-572a24a73ef0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InventorySpecialStockType\",\"label\":\"Special stock indicator\",\"newName\":\"InventorySpecialStockType\",\"indexOrder\":22,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9a73ee3d-90e2-4cbd-9734-430fcb2b6d43\"},\"b9e0a5b2-a857-4de5-904d-64abf0e1b363\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key1\",\"label\":\"Key1\",\"newName\":\"Key1\",\"isRemoved\":true,\"indexOrder\":0,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"504bce8d-a80c-4b4a-9dee-bc78db38d9ba\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key2\",\"label\":\"Key2\",\"newName\":\"Key2\",\"isRemoved\":true,\"indexOrder\":2,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"398d0d96-14f5-4bbf-92c3-0fc41fe1f0fb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key3\",\"label\":\"Key3\",\"newName\":\"Key3\",\"isRemoved\":true,\"indexOrder\":4,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"b9c298ea-fbc8-474d-9803-9bbfefb76e0f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key4\",\"label\":\"Key4\",\"newName\":\"Key4\",\"isRemoved\":true,\"indexOrder\":6,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"fb02c9d4-fb9b-4e2a-8535-1af54a0d139c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key5\",\"label\":\"Key5\",\"newName\":\"Key5\",\"isRemoved\":true,\"indexOrder\":8,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"cc903806-09cf-4d65-ba25-862597417f32\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Key6\",\"label\":\"Key6\",\"newName\":\"Key6\",\"isRemoved\":true,\"indexOrder\":10,\"isKey\":true,\"dataType\":\"cds.Binary\",\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"a50c519c-f38a-4aa3-8109-3be25def4698\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocument\",\"label\":\"Number of material document\",\"newName\":\"MaterialDocument\",\"isRemoved\":true,\"indexOrder\":12,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"3969bf35-8a6c-46c6-b6ad-106ef94da6f7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocumentYear\",\"label\":\"Material document year\",\"newName\":\"MaterialDocumentYear\",\"isRemoved\":true,\"indexOrder\":14,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8145d9f4-2014-41f8-9587-2d53754bae61\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MaterialDocumentItem\",\"label\":\"Item in material document\",\"newName\":\"MaterialDocumentItem\",\"isRemoved\":true,\"indexOrder\":16,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"3809f305-76c3-465c-9459-32afb2c64377\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Batch\",\"label\":\"Batch number\",\"newName\":\"Batch\",\"isRemoved\":true,\"indexOrder\":18,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"7fd589c6-7e03-42f9-b7fd-a138c1d0c5b8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Supplier's account number\",\"newName\":\"Supplier\",\"isRemoved\":true,\"indexOrder\":20,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"38405a9a-b67f-47c8-acc8-54a43b42449a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Material\",\"label\":\"Material in respect of which stock is managed\",\"newName\":\"Material\",\"indexOrder\":22,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f0398abf-77c4-4104-b03c-024334c379b5\"},\"cc22973f-97ea-45d2-9cbf-1434d0076b84\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Plant\",\"label\":\"Plant\",\"newName\":\"Plant\",\"indexOrder\":24,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"2366b27c-e8d9-4906-8e7a-389a7ee8ef6e\"},\"da4d9fbd-d876-48f2-91e6-d0e2355e05dd\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StorageLocation\",\"label\":\"Storage location\",\"newName\":\"StorageLocation\",\"isRemoved\":true,\"indexOrder\":26,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8cf29eaa-b639-4ebf-bf09-e140322d4832\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GoodsMovementType\",\"label\":\"Movement type (inventory management)\",\"newName\":\"GoodsMovementType\",\"indexOrder\":28,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"09a21e1a-a227-40bc-8fb5-b4c5edfabff3\"},\"9247e022-1b2a-4bda-af5f-ee6caa945215\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit indicator\",\"newName\":\"DebitCreditCode\",\"indexOrder\":30,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"e93fb7b7-5ef7-462b-b710-7d4583170bd2\"},\"5a9ffa77-b6bf-4826-a7e3-ef39173014fe\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date in the document\",\"newName\":\"PostingDate\",\"indexOrder\":31,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0ac24fb9-1a36-4d04-8e4f-4e1c9d9ed43c\"},\"56287235-ceca-48a8-8236-52f3d4a7056d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"QuantityInBaseUnit\",\"label\":\"Quantity\",\"newName\":\"QuantityInBaseUnit\",\"indexOrder\":32,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"41dd21f8-3fa1-4c5d-bc91-66d26893fc7d\"},\"e2b59b04-587e-4825-9045-81bf3fced25a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BaseUnit\",\"label\":\"Base unit of measure\",\"newName\":\"BaseUnit\",\"indexOrder\":33,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"295da989-f871-46bb-8c48-5d50e4cece65\"},\"37b12ab4-ae51-42f0-807b-baf43ade17bb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"StockValueInCCCurrency\",\"label\":\"Amount in local currency\",\"newName\":\"StockValueInCCCurrency\",\"isRemoved\":true,\"indexOrder\":34,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"2ee716c8-eba1-4c39-9f70-d1d19be8535b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCodeCurrency\",\"label\":\"Currency key\",\"newName\":\"CompanyCodeCurrency\",\"isRemoved\":true,\"indexOrder\":35,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"e3022f4b-e1d1-4041-bd76-3ad622e7d6f3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCode\",\"label\":\"Company code\",\"newName\":\"CompanyCode\",\"isRemoved\":true,\"indexOrder\":36,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"9a73ee3d-90e2-4cbd-9734-430fcb2b6d43\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"InventorySpecialStockType\",\"label\":\"Special stock indicator\",\"newName\":\"InventorySpecialStockType\",\"isRemoved\":true,\"indexOrder\":37,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"3cad9fe5-d930-4b9d-9fba-786ed51b3c82\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GoodsMovementType\",\"label\":\"Movement type (inventory management)\",\"newName\":\"GoodsMovementType\",\"indexOrder\":14,\"expression\":\"GoodsMovementType\",\"isCalculated\":true,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b3fc6ab2-7b32-4917-854b-0f24a68d0bab\"},\"bbb80354-2507-4f14-92e5-580761e0c923\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"QuantityInBaseUnit\",\"label\":\"Quantity\",\"newName\":\"QuantityInBaseUnit\",\"indexOrder\":20,\"expression\":\"QuantityInBaseUnit\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"31b00fc6-3a86-4c2b-932b-0f68dba0c05e\"},\"6954c76f-b989-4d42-9596-153f4c1f52b7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BaseUnit\",\"label\":\"Base unit of measure\",\"newName\":\"BaseUnit\",\"indexOrder\":22,\"expression\":\"BaseUnit\",\"isCalculated\":true,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"69df8d1a-62e7-4bbe-a768-fe6328a1422a\"},\"d938768f-ab64-4b3f-b7c1-8c3c20237284\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Current_Stock\",\"newName\":\"Current_Stock\",\"indexOrder\":9,\"expression\":\"CASE WHEN \\\"DebitCreditCode\\\" = 'S' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) WHEN \\\"DebitCreditCode\\\" = 'H' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) * -1 ELSE 0 END\\n\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f2e68ac4-57e8-4c2f-a462-9d969c9adf0f\"},\"45186db2-5604-4d00-9800-12b1712d8707\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Opening_Stock\",\"newName\":\"Opening_Stock\",\"indexOrder\":9,\"expression\":\"CASE WHEN \\\"Posting_Date\\\" < TO_DATE(:START_DATE, 'YYYY-MM-DD') THEN ( CASE WHEN \\\"DebitCreditCode\\\" = 'S' THEN \\\"QuantityInBaseUnit\\\" WHEN \\\"DebitCreditCode\\\" = 'H' THEN \\\"QuantityInBaseUnit\\\" * -1 ELSE 0 END ) ELSE 0 END\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"077f4374-70e4-4667-8686-4f22a70ada04\"},\"12ddfa87-b597-43eb-a67e-52d178c7d989\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"closing_stock\",\"newName\":\"closing_stock\",\"indexOrder\":9,\"expression\":\"CASE WHEN \\\"Posting_Date\\\" <= TO_DATE(:CLOSE_DATE, 'YYYY-MM-DD') THEN ( CASE WHEN \\\"DebitCreditCode\\\" = 'S' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) WHEN \\\"DebitCreditCode\\\" = 'H' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) * -1 ELSE 0 END ) ELSE 0 END\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":14,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"8b70996b-202e-4949-805f-a97441f944c6\"},\"f0b07726-7da1-40c9-a9aa-aba9d837e732\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Plant\",\"label\":\"Plant\",\"newName\":\"Plant\",\"indexOrder\":27,\"expression\":\"Plant\",\"isCalculated\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d12c5032-aa87-4b48-97e9-0853f11436d1\"},\"681d1e65-3c3a-4048-b13e-8c6bcd9c1628\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Material\",\"label\":\"Material in respect of which stock is managed\",\"newName\":\"Material\",\"indexOrder\":25,\"expression\":\"Material\",\"isCalculated\":true,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"595ee7c8-3ed1-45e0-b8cd-360defc5ba4e\"},\"abdfd042-a931-4d86-92e6-8081df9990d5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit indicator\",\"newName\":\"DebitCreditCode\",\"indexOrder\":33,\"expression\":\"DebitCreditCode\",\"isCalculated\":true,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b3c98527-6fbd-47c9-ade2-ddc3c8d30244\"},\"b86b0087-7425-4dda-a929-73314c98b664\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Receipts\",\"newName\":\"Receipts\",\"indexOrder\":9,\"expression\":\"CASE WHEN \\\"Posting_Date\\\" >= TO_DATE(:START_DATE, 'YYYY-MM-DD') AND \\\"Posting_Date\\\" <= TO_DATE(:CLOSE_DATE, 'YYYY-MM-DD') THEN ( CASE WHEN \\\"DebitCreditCode\\\" = 'S' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) ELSE 0 END ) ELSE 0 END\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"aa6ee19d-8d17-4ca2-8cf3-4b94f7384215\"},\"f1fdc721-a77c-4496-a1d7-fca375c77cd2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Issues\",\"newName\":\"Issues\",\"indexOrder\":9,\"expression\":\"CASE WHEN \\\"Posting_Date\\\" >= TO_DATE(:START_DATE, 'YYYY-MM-DD') AND \\\"Posting_Date\\\" <= TO_DATE(:CLOSE_DATE, 'YYYY-MM-DD') THEN ( CASE WHEN \\\"DebitCreditCode\\\" = 'H' THEN IFNULL(\\\"QuantityInBaseUnit\\\", 0) ELSE 0 END ) ELSE 0 END\",\"isCalculated\":true,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"76b9d4ce-f549-4270-96d0-b15fb0f21dd8\"},\"e5390f37-50bd-48d2-bf4e-c4466840cd06\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Posting_Date\",\"newName\":\"Posting_Date\",\"indexOrder\":9,\"expression\":\"TO_DATE(\\\"PostingDate\\\", 'YYYYMMDD')\",\"isCalculated\":true,\"dataType\":\"cds.Date\",\"length\":0,\"precision\":0,\"scale\":0,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"0136c747-afb1-46ba-94e2-a17d6793ccac\"},\"853cd716-c3fa-4f5f-8268-f0434447955a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date in the document\",\"newName\":\"PostingDate\",\"indexOrder\":31,\"expression\":\"PostingDate\",\"isCalculated\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"81f5e7aa-f5f8-4659-84bf-3a0b106af6a5\"},\"f0398abf-77c4-4104-b03c-024334c379b5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Material\",\"label\":\"Material in respect of which stock is managed\",\"newName\":\"Material\",\"indexOrder\":22,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"681d1e65-3c3a-4048-b13e-8c6bcd9c1628\"},\"2366b27c-e8d9-4906-8e7a-389a7ee8ef6e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Plant\",\"label\":\"Plant\",\"newName\":\"Plant\",\"indexOrder\":24,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f0b07726-7da1-40c9-a9aa-aba9d837e732\"},\"09a21e1a-a227-40bc-8fb5-b4c5edfabff3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GoodsMovementType\",\"label\":\"Movement type (inventory management)\",\"newName\":\"GoodsMovementType\",\"indexOrder\":28,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"3cad9fe5-d930-4b9d-9fba-786ed51b3c82\"},\"e93fb7b7-5ef7-462b-b710-7d4583170bd2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit indicator\",\"newName\":\"DebitCreditCode\",\"indexOrder\":30,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"abdfd042-a931-4d86-92e6-8081df9990d5\"},\"41dd21f8-3fa1-4c5d-bc91-66d26893fc7d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"QuantityInBaseUnit\",\"label\":\"Quantity\",\"newName\":\"QuantityInBaseUnit\",\"indexOrder\":32,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":13,\"scale\":3,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"bbb80354-2507-4f14-92e5-580761e0c923\"},\"295da989-f871-46bb-8c48-5d50e4cece65\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BaseUnit\",\"label\":\"Base unit of measure\",\"newName\":\"BaseUnit\",\"indexOrder\":33,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6954c76f-b989-4d42-9596-153f4c1f52b7\"},\"0ac24fb9-1a36-4d04-8e4f-4e1c9d9ed43c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date in the document\",\"newName\":\"PostingDate\",\"indexOrder\":31,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"853cd716-c3fa-4f5f-8268-f0434447955a\"},\"1b89b658-7e03-4eed-9361-f947a8cd38a5\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":203.99999940395355,\"y\":-20.06592414922033,\"width\":140,\"height\":40,\"object\":\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\"},\"5803867b-be3e-490e-a80e-758977b586b0\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-319.99999940395355,\"y\":-19.93407585077967,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"4e38f81d-2b93-4f6a-adaa-7297e2599bc8\"},\"3bfdc64d-3baa-4fc1-af12-7c8ed2856a9c\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.JoinSymbol\",\"font\":\"bold 11px \\\"72\\\",\\\"72full\\\",Arial,Helvetica,sans-serif\",\"x\":-100,\"y\":-29.290088357492493,\"isHidden\":true},\"dd0ae762-9d3f-412a-822c-a3877d4a9abf\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.RenameSymbol\",\"font\":\"bold 11px \\\"72\\\",\\\"72full\\\",Arial,Helvetica,sans-serif\",\"x\":-109.99999940395355,\"y\":-15.93407585077967,\"object\":\"d7ae725f-18ef-4d41-8c98-9977f8ea53b4\"},\"f6ffc718-fbeb-43df-897b-7e6c37e6f2b9\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.CalculatedSymbol\",\"font\":\"bold 11px \\\"72\\\",\\\"72full\\\",Arial,Helvetica,sans-serif\",\"x\":105.99999940395355,\"y\":-16.065924149220333,\"object\":\"116ecb6d-c722-4311-adf1-927c3e099408\"},\"c6176bba-19d9-4a76-aca9-719d6e78daff\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"153.99999940395355,-0.06592414922033285 203.99999940395355,-0.06592414922033285\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"f6ffc718-fbeb-43df-897b-7e6c37e6f2b9\",\"targetSymbol\":\"1b89b658-7e03-4eed-9361-f947a8cd38a5\"},\"0cbc1408-7c82-4288-b75d-fe7cafbb9ad8\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-159.99999940395355,0.0659241492203293 -109.99999940395355,0.0659241492203293\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"5803867b-be3e-490e-a80e-758977b586b0\",\"targetSymbol\":\"dd0ae762-9d3f-412a-822c-a3877d4a9abf\"},\"bdf26d32-909a-419c-9947-7eaa674e2366\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.FilterSymbol\",\"font\":\"bold 11px \\\"72\\\",\\\"72full\\\",Arial,Helvetica,sans-serif\",\"x\":7.999999403953552,\"y\":-16.06592414922033,\"object\":\"2b5f4b16-659f-49e3-8e5d-c0edadd77502\"},\"1d57abe7-cc1b-473c-8f45-d3bc2e51dea5\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-61.99999940395355,0.0659241492203293 -27,0.0659241492203293 -27,-0.06592414922033285 7.999999403953552,-0.06592414922033285\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"dd0ae762-9d3f-412a-822c-a3877d4a9abf\",\"targetSymbol\":\"bdf26d32-909a-419c-9947-7eaa674e2366\"},\"f1e82459-7408-4da4-9000-d8c03b215768\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"55.99999940395355,-0.06592414922033285 105.99999940395355,-0.06592414922033285\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"bdf26d32-909a-419c-9947-7eaa674e2366\",\"targetSymbol\":\"f6ffc718-fbeb-43df-897b-7e6c37e6f2b9\"},\"8c5f89c6-fce6-4f0d-9967-3266b42872d6\":{\"classDefinition\":\"sap.cdw.commonmodel.ReferenceEntity\"},\"e04435ca-ce1a-4e0e-b3db-bb228ccf60fe\":{\"classDefinition\":\"sap.cdw.commonmodel.ReferenceEntity\"},\"74485231-1bab-4c16-945c-429e3815b16f\":{\"classDefinition\":\"sap.cdw.querybuilder.DimensionNode\",\"name\":\"text_makt\",\"label\":\"text_makt\",\"type\":\"View (Text)\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1785409408110,\"deploymentDate\":1785409418522,\"#objectStatus\":\"1\",\"elements\":{\"f138cd98-6a88-46aa-ba1e-6054b3729fc2\":{\"name\":\"Product\"},\"be495ac0-08b9-498f-8f80-974bfe2b03d7\":{\"name\":\"Language\"},\"b81ae6de-852c-4aa0-9795-7f398efe41e1\":{\"name\":\"ProductDescription\"}}},\"f138cd98-6a88-46aa-ba1e-6054b3729fc2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Product\",\"label\":\"Material number\",\"newName\":\"Product\",\"indexOrder\":0,\"isKey\":true,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"isNotNull\":true,\"labelElement\":\"b81ae6de-852c-4aa0-9795-7f398efe41e1\"},\"be495ac0-08b9-498f-8f80-974bfe2b03d7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":1,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"b81ae6de-852c-4aa0-9795-7f398efe41e1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProductDescription\",\"label\":\"Material description\",\"newName\":\"ProductDescription\",\"indexOrder\":2,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isDimension\":true,\"semanticType\":\"@Semantics.text\"},\"98233825-78cf-48a2-a644-3071ff8f8ed0\":{\"classDefinition\":\"sap.cdw.querybuilder.Association\",\"name\":\"_text_makt\",\"label\":\"FV_os_cs to text_makt\",\"source\":\"9393ed22-6e9f-409c-87c7-d2dca5b026c0\",\"target\":\"74485231-1bab-4c16-945c-429e3815b16f\",\"mappings\":{\"5c7b45fe-6f1e-4723-80ad-7acb314e1760\":{}}},\"5c7b45fe-6f1e-4723-80ad-7acb314e1760\":{\"classDefinition\":\"sap.cdw.commonmodel.ElementMapping\",\"source\":\"595ee7c8-3ed1-45e0-b8cd-360defc5ba4e\",\"target\":\"f138cd98-6a88-46aa-ba1e-6054b3729fc2\"},\"dd59f938-2fff-414a-918c-bbc6dc0aa20d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Posting_Month\",\"newName\":\"Posting_Month\",\"indexOrder\":13,\"expression\":\"TO_VARCHAR(\\\"Posting_Date\\\", 'YYYYMM')\",\"isCalculated\":true,\"length\":5000,\"precision\":0,\"scale\":0,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"36db60a2-b71c-43a3-a99d-b95dc7f370fe\"},\"36db60a2-b71c-43a3-a99d-b95dc7f370fe\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Calculated_1\",\"label\":\"Posting_Month\",\"newName\":\"Posting_Month\",\"indexOrder\":13,\"expression\":\"\",\"isCalculated\":true,\"length\":5000,\"precision\":0,\"scale\":0,\"precisionsTable\":\"SAP.CURRENCY.VIEW.TCURX\",\"configurationTable\":\"SAP.CURRENCY.VIEW.TCURV\",\"prefactorsTable\":\"SAP.CURRENCY.VIEW.TCURF\",\"ratesTable\":\"SAP.CURRENCY.VIEW.TCURR\",\"notationsTable\":\"SAP.CURRENCY.VIEW.TCURN\",\"conversionCodesTable\":\"SAP.CURRENCY.VIEW.TCURC\",\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false}}}"
+    }
+  },
+  "$version": "1.0"
+}
