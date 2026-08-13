@@ -564,6 +564,380 @@
       "@DataWarehouse.space.schema": "RAD_S3P",
       "@DataWarehouse.space.name": "RAD_S3P"
     },
+    "RAD_S3P.ZFI_LT_I_ProfitCenterText": {
+      "kind": "entity",
+      "@EndUserText.label": "ZFI_LT_I_ProfitCenterText",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "ZFI_LT_I_ProfitCenterText_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 2
+        },
+        "ControllingArea": {
+          "@EndUserText.label": "Controlling area",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 4
+        },
+        "ProfitCenter": {
+          "@EndUserText.label": "Profit center",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 10
+        },
+        "ValidityEndDate": {
+          "@EndUserText.label": "Valid to date",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 8
+        },
+        "ProfitCenterName": {
+          "@EndUserText.label": "General name",
+          "type": "cds.String",
+          "key": false,
+          "length": 20
+        },
+        "ProfitCenterLongText": {
+          "@EndUserText.label": "Long text",
+          "type": "cds.String",
+          "key": false,
+          "length": 40
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_GXYBQJWL"
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "ZFI_IL_I_ProfitCenterText": {
+      "kind": "entity",
+      "elements": {
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true,
+          "@Semantics.language": true
+        },
+        "ControllingArea": {
+          "@EndUserText.label": "Controlling area",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "ProfitCenter": {
+          "@EndUserText.label": "Profit center",
+          "type": "cds.String",
+          "length": 10,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "ProfitCenterLongText"
+            }
+          ]
+        },
+        "ValidityEndDate": {
+          "@EndUserText.label": "Valid to date",
+          "type": "cds.String",
+          "length": 8,
+          "key": true,
+          "notNull": true
+        },
+        "ProfitCenterName": {
+          "@EndUserText.label": "General name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ProfitCenterLongText": {
+          "@EndUserText.label": "Long text",
+          "type": "cds.String",
+          "length": 40,
+          "@Semantics.text": true
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "RAD_S3P.ZFI_LT_I_ProfitCenterText"
+            ],
+            "as": "ZFI_LT_I_ProfitCenterText"
+          },
+          "columns": [
+            {
+              "ref": [
+                "Language"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "ControllingArea"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "ProfitCenter"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "ValidityEndDate"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "ProfitCenterName"
+              ]
+            },
+            {
+              "ref": [
+                "ProfitCenterLongText"
+              ]
+            }
+          ]
+        }
+      },
+      "@EndUserText.label": "ZFI_IL_I_ProfitCenterText",
+      "@ObjectModel.modelingPattern": {
+        "#": "LANGUAGE_DEPENDENT_TEXT"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "LANGUAGE_DEPENDENT_TEXT"
+        }
+      ],
+      "@DataWarehouse.consumption.external": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_CREUCEJB"
+        }
+      }
+    },
+    "RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET": {
+      "kind": "entity",
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "ZI_GLACCOUNTTEXTRAWDATA_NET_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "ChartOfAccounts": {
+          "@EndUserText.label": "Chart of accounts",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "GLAccount": {
+          "@EndUserText.label": "G/l account number",
+          "type": "cds.String",
+          "length": 10,
+          "key": true,
+          "notNull": true
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true
+        },
+        "GLAccountName": {
+          "@EndUserText.label": "G/l account name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "GLAccountLongName": {
+          "@EndUserText.label": "G/l account long name",
+          "type": "cds.String",
+          "length": 50
+        },
+        "LastChangeDateTime": {
+          "@EndUserText.label": "Utc time stamp in short form (yyyymmddhhmmss)",
+          "precision": 15,
+          "scale": 0,
+          "type": "cds.Decimal"
+        }
+      },
+      "@EndUserText.label": "ZFI_LT_I_GLACCOUNTTEXTRAWDATA",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@DataWarehouse.persistence.hdlf.enableDeletionVectors": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_GXYBQJWL"
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "GV_GLT_NET": {
+      "kind": "entity",
+      "elements": {
+        "ChartOfAccounts": {
+          "@EndUserText.label": "Chart of accounts",
+          "type": "cds.String",
+          "length": 4,
+          "key": true,
+          "notNull": true
+        },
+        "GLAccount": {
+          "@EndUserText.label": "G/l account number",
+          "type": "cds.String",
+          "length": 10,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "GLAccountLongName"
+            }
+          ]
+        },
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true,
+          "@Semantics.language": true
+        },
+        "GLAccountName": {
+          "@EndUserText.label": "G/l account name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "GLAccountLongName": {
+          "@EndUserText.label": "G/l account long name",
+          "type": "cds.String",
+          "length": 50,
+          "@Semantics.text": true
+        },
+        "LastChangeDateTime": {
+          "@EndUserText.label": "Utc time stamp in short form (yyyymmddhhmmss)",
+          "precision": 15,
+          "scale": 0,
+          "type": "cds.Decimal"
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET"
+            ],
+            "as": "ZI_GLACCOUNTTEXTRAWDATA_NET"
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "ChartOfAccounts"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "GLAccount"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "Language"
+              ]
+            },
+            {
+              "ref": [
+                "GLAccountName"
+              ]
+            },
+            {
+              "ref": [
+                "GLAccountLongName"
+              ]
+            },
+            {
+              "ref": [
+                "LastChangeDateTime"
+              ]
+            }
+          ]
+        }
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "LANGUAGE_DEPENDENT_TEXT"
+        }
+      ],
+      "@ObjectModel.representativeKey": {
+        "=": "GLAccount"
+      },
+      "@DataWarehouse.compoundKeySequence": [
+        {
+          "=": "ChartOfAccounts"
+        },
+        {
+          "=": "Language"
+        },
+        {
+          "=": "GLAccount"
+        }
+      ],
+      "@EndUserText.label": "GV_GLT_NET",
+      "@ObjectModel.modelingPattern": {
+        "#": "LANGUAGE_DEPENDENT_TEXT"
+      },
+      "@DataWarehouse.consumption.external": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": null
+        }
+      }
+    },
     "RAD_S3P.ZCDS_I_TB_TEST": {
       "kind": "entity",
       "@EndUserText.label": "Trail balane",
@@ -2256,6 +2630,132 @@
         }
       }
     },
+    "RAD_S3P.ZFI_LT_I_FunctionalAreaText": {
+      "kind": "entity",
+      "@EndUserText.label": "ZFI_LT_I_FunctionalAreaText",
+      "@ObjectModel.modelingPattern": {
+        "#": "DATA_STRUCTURE"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "DATA_STRUCTURE"
+        }
+      ],
+      "@DataWarehouse.delta": {
+        "type": {
+          "#": "ACTIVE"
+        },
+        "deltaFromEntities": [
+          "ZFI_LT_I_FunctionalAreaText_Delta"
+        ]
+      },
+      "@DataWarehouse.persistence.hdlf.tableFormat": {
+        "#": "DELTA_LAKE"
+      },
+      "elements": {
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 2
+        },
+        "FunctionalArea": {
+          "@EndUserText.label": "Functional area",
+          "type": "cds.String",
+          "key": true,
+          "notNull": true,
+          "length": 16
+        },
+        "FunctionalAreaName": {
+          "@EndUserText.label": "Name of the functional area",
+          "type": "cds.String",
+          "key": false,
+          "length": 25
+        }
+      },
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_GXYBQJWL"
+        }
+      },
+      "@cds.persistence.exists": true
+    },
+    "ZFI_IL_I_FunctionalAreaText": {
+      "kind": "entity",
+      "elements": {
+        "Language": {
+          "@EndUserText.label": "Language key",
+          "type": "cds.String",
+          "length": 2,
+          "key": true,
+          "notNull": true,
+          "@Semantics.language": true
+        },
+        "FunctionalArea": {
+          "@EndUserText.label": "Functional area",
+          "type": "cds.String",
+          "length": 16,
+          "key": true,
+          "notNull": true,
+          "@ObjectModel.text.element": [
+            {
+              "=": "FunctionalAreaName"
+            }
+          ]
+        },
+        "FunctionalAreaName": {
+          "@EndUserText.label": "Name of the functional area",
+          "type": "cds.String",
+          "length": 25,
+          "@Semantics.text": true
+        }
+      },
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "RAD_S3P.ZFI_LT_I_FunctionalAreaText"
+            ],
+            "as": "ZFI_LT_I_FunctionalAreaText"
+          },
+          "columns": [
+            {
+              "ref": [
+                "Language"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "FunctionalArea"
+              ],
+              "key": true
+            },
+            {
+              "ref": [
+                "FunctionalAreaName"
+              ]
+            }
+          ]
+        }
+      },
+      "@EndUserText.label": "ZFI_IL_I_FunctionalAreaText",
+      "@ObjectModel.modelingPattern": {
+        "#": "LANGUAGE_DEPENDENT_TEXT"
+      },
+      "@ObjectModel.supportedCapabilities": [
+        {
+          "#": "LANGUAGE_DEPENDENT_TEXT"
+        }
+      ],
+      "@DataWarehouse.consumption.external": false,
+      "_meta": {
+        "dependencies": {
+          "folderAssignment": "Folder_CREUCEJB"
+        }
+      }
+    },
     "RAD_S3P.ZFI_LT_I_CostCenterText": {
       "kind": "entity",
       "@EndUserText.label": "ZFI_LT_I_CostCenterText",
@@ -2435,198 +2935,6 @@
       "_meta": {
         "dependencies": {
           "folderAssignment": "Folder_CREUCEJB"
-        }
-      }
-    },
-    "RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET": {
-      "kind": "entity",
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "@DataWarehouse.delta": {
-        "type": {
-          "#": "ACTIVE"
-        },
-        "deltaFromEntities": [
-          "ZI_GLACCOUNTTEXTRAWDATA_NET_Delta"
-        ]
-      },
-      "@DataWarehouse.persistence.hdlf.tableFormat": {
-        "#": "DELTA_LAKE"
-      },
-      "elements": {
-        "ChartOfAccounts": {
-          "@EndUserText.label": "Chart of accounts",
-          "type": "cds.String",
-          "length": 4,
-          "key": true,
-          "notNull": true
-        },
-        "GLAccount": {
-          "@EndUserText.label": "G/l account number",
-          "type": "cds.String",
-          "length": 10,
-          "key": true,
-          "notNull": true
-        },
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "length": 2,
-          "key": true,
-          "notNull": true
-        },
-        "GLAccountName": {
-          "@EndUserText.label": "G/l account name",
-          "type": "cds.String",
-          "length": 20
-        },
-        "GLAccountLongName": {
-          "@EndUserText.label": "G/l account long name",
-          "type": "cds.String",
-          "length": 50
-        },
-        "LastChangeDateTime": {
-          "@EndUserText.label": "Utc time stamp in short form (yyyymmddhhmmss)",
-          "precision": 15,
-          "scale": 0,
-          "type": "cds.Decimal"
-        }
-      },
-      "@EndUserText.label": "ZFI_LT_I_GLACCOUNTTEXTRAWDATA",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@DataWarehouse.persistence.hdlf.enableDeletionVectors": false,
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": "Folder_GXYBQJWL"
-        }
-      },
-      "@cds.persistence.exists": true
-    },
-    "GV_GLT_NET": {
-      "kind": "entity",
-      "elements": {
-        "ChartOfAccounts": {
-          "@EndUserText.label": "Chart of accounts",
-          "type": "cds.String",
-          "length": 4,
-          "key": true,
-          "notNull": true
-        },
-        "GLAccount": {
-          "@EndUserText.label": "G/l account number",
-          "type": "cds.String",
-          "length": 10,
-          "key": true,
-          "notNull": true,
-          "@ObjectModel.text.element": [
-            {
-              "=": "GLAccountLongName"
-            }
-          ]
-        },
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "length": 2,
-          "key": true,
-          "notNull": true,
-          "@Semantics.language": true
-        },
-        "GLAccountName": {
-          "@EndUserText.label": "G/l account name",
-          "type": "cds.String",
-          "length": 20
-        },
-        "GLAccountLongName": {
-          "@EndUserText.label": "G/l account long name",
-          "type": "cds.String",
-          "length": 50,
-          "@Semantics.text": true
-        },
-        "LastChangeDateTime": {
-          "@EndUserText.label": "Utc time stamp in short form (yyyymmddhhmmss)",
-          "precision": 15,
-          "scale": 0,
-          "type": "cds.Decimal"
-        }
-      },
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET"
-            ],
-            "as": "ZI_GLACCOUNTTEXTRAWDATA_NET"
-          },
-          "columns": [
-            {
-              "key": true,
-              "ref": [
-                "ChartOfAccounts"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "GLAccount"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "Language"
-              ]
-            },
-            {
-              "ref": [
-                "GLAccountName"
-              ]
-            },
-            {
-              "ref": [
-                "GLAccountLongName"
-              ]
-            },
-            {
-              "ref": [
-                "LastChangeDateTime"
-              ]
-            }
-          ]
-        }
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "LANGUAGE_DEPENDENT_TEXT"
-        }
-      ],
-      "@ObjectModel.representativeKey": {
-        "=": "GLAccount"
-      },
-      "@DataWarehouse.compoundKeySequence": [
-        {
-          "=": "ChartOfAccounts"
-        },
-        {
-          "=": "Language"
-        },
-        {
-          "=": "GLAccount"
-        }
-      ],
-      "@EndUserText.label": "GV_GLT_NET",
-      "@ObjectModel.modelingPattern": {
-        "#": "LANGUAGE_DEPENDENT_TEXT"
-      },
-      "@DataWarehouse.consumption.external": false,
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": null
         }
       }
     },
@@ -3110,314 +3418,6 @@
       },
       "@DataWarehouse.consumption.external": false,
       "@DataWarehouse.sqlEditor.query": "SELECT\n    SourceLedger,\n    CompanyCode,\n    LedgerFiscalYear,\n    GLAccount,\n    ChartOfAccounts,\n    ControllingArea,\n    ProfitCenter,\n    CostCenter,\n    Segment,\n    BusinessArea,\n    FunctionalArea,\n    Customer,\n    Supplier,\n    MasterFixedAsset,\n    FixedAsset,\n    AssetClass,\n    PartnerCompany,\n    PartnerProfitCenter,\n    PartnerCostCenter,\n    PartnerBusinessArea,\n    PartnerSegment,\n    CompanyCodeCurrency,\n    GlobalCurrency,\n \n    SUM(\"NetAmountInCoodeCrcy\")\n        AS OpeningBalanceInCoCodeCrcy,\n \n    SUM(\"NetAmountInGlobalCrcy\")\n        AS OpeningBalanceInGlobalCrcy\n \nFROM \"ZFI_HL_TrialBalance\"\n \nWHERE\n    \"LedgerFiscalYear\" < :IP_YEAR\n    OR\n    (\n        \"LedgerFiscalYear\"  = :IP_YEAR\n        AND\n        \"FiscalPeriod\" < :IP_PERIOD\n    )\n \nGROUP BY\n    SourceLedger,\n    CompanyCode,\n    LedgerFiscalYear,\n    GLAccount,\n    ChartOfAccounts,\n    ControllingArea,\n    ProfitCenter,\n    CostCenter,\n    Segment,\n    BusinessArea,\n    FunctionalArea,\n    Customer,\n    Supplier,\n    MasterFixedAsset,\n    FixedAsset,\n    AssetClass,\n    PartnerCompany,\n    PartnerProfitCenter,\n    PartnerCostCenter,\n    PartnerBusinessArea,\n    PartnerSegment,\n    CompanyCodeCurrency,\n    GlobalCurrency\n ",
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": "Folder_CREUCEJB"
-        }
-      }
-    },
-    "RAD_S3P.ZFI_LT_I_FunctionalAreaText": {
-      "kind": "entity",
-      "@EndUserText.label": "ZFI_LT_I_FunctionalAreaText",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "@DataWarehouse.delta": {
-        "type": {
-          "#": "ACTIVE"
-        },
-        "deltaFromEntities": [
-          "ZFI_LT_I_FunctionalAreaText_Delta"
-        ]
-      },
-      "@DataWarehouse.persistence.hdlf.tableFormat": {
-        "#": "DELTA_LAKE"
-      },
-      "elements": {
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 2
-        },
-        "FunctionalArea": {
-          "@EndUserText.label": "Functional area",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 16
-        },
-        "FunctionalAreaName": {
-          "@EndUserText.label": "Name of the functional area",
-          "type": "cds.String",
-          "key": false,
-          "length": 25
-        }
-      },
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": "Folder_GXYBQJWL"
-        }
-      },
-      "@cds.persistence.exists": true
-    },
-    "ZFI_IL_I_FunctionalAreaText": {
-      "kind": "entity",
-      "elements": {
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "length": 2,
-          "key": true,
-          "notNull": true,
-          "@Semantics.language": true
-        },
-        "FunctionalArea": {
-          "@EndUserText.label": "Functional area",
-          "type": "cds.String",
-          "length": 16,
-          "key": true,
-          "notNull": true,
-          "@ObjectModel.text.element": [
-            {
-              "=": "FunctionalAreaName"
-            }
-          ]
-        },
-        "FunctionalAreaName": {
-          "@EndUserText.label": "Name of the functional area",
-          "type": "cds.String",
-          "length": 25,
-          "@Semantics.text": true
-        }
-      },
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "RAD_S3P.ZFI_LT_I_FunctionalAreaText"
-            ],
-            "as": "ZFI_LT_I_FunctionalAreaText"
-          },
-          "columns": [
-            {
-              "ref": [
-                "Language"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "FunctionalArea"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "FunctionalAreaName"
-              ]
-            }
-          ]
-        }
-      },
-      "@EndUserText.label": "ZFI_IL_I_FunctionalAreaText",
-      "@ObjectModel.modelingPattern": {
-        "#": "LANGUAGE_DEPENDENT_TEXT"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "LANGUAGE_DEPENDENT_TEXT"
-        }
-      ],
-      "@DataWarehouse.consumption.external": false,
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": "Folder_CREUCEJB"
-        }
-      }
-    },
-    "RAD_S3P.ZFI_LT_I_ProfitCenterText": {
-      "kind": "entity",
-      "@EndUserText.label": "ZFI_LT_I_ProfitCenterText",
-      "@ObjectModel.modelingPattern": {
-        "#": "DATA_STRUCTURE"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "DATA_STRUCTURE"
-        }
-      ],
-      "@DataWarehouse.delta": {
-        "type": {
-          "#": "ACTIVE"
-        },
-        "deltaFromEntities": [
-          "ZFI_LT_I_ProfitCenterText_Delta"
-        ]
-      },
-      "@DataWarehouse.persistence.hdlf.tableFormat": {
-        "#": "DELTA_LAKE"
-      },
-      "elements": {
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 2
-        },
-        "ControllingArea": {
-          "@EndUserText.label": "Controlling area",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 4
-        },
-        "ProfitCenter": {
-          "@EndUserText.label": "Profit center",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 10
-        },
-        "ValidityEndDate": {
-          "@EndUserText.label": "Valid to date",
-          "type": "cds.String",
-          "key": true,
-          "notNull": true,
-          "length": 8
-        },
-        "ProfitCenterName": {
-          "@EndUserText.label": "General name",
-          "type": "cds.String",
-          "key": false,
-          "length": 20
-        },
-        "ProfitCenterLongText": {
-          "@EndUserText.label": "Long text",
-          "type": "cds.String",
-          "key": false,
-          "length": 40
-        }
-      },
-      "_meta": {
-        "dependencies": {
-          "folderAssignment": "Folder_GXYBQJWL"
-        }
-      },
-      "@cds.persistence.exists": true
-    },
-    "ZFI_IL_I_ProfitCenterText": {
-      "kind": "entity",
-      "elements": {
-        "Language": {
-          "@EndUserText.label": "Language key",
-          "type": "cds.String",
-          "length": 2,
-          "key": true,
-          "notNull": true,
-          "@Semantics.language": true
-        },
-        "ControllingArea": {
-          "@EndUserText.label": "Controlling area",
-          "type": "cds.String",
-          "length": 4,
-          "key": true,
-          "notNull": true
-        },
-        "ProfitCenter": {
-          "@EndUserText.label": "Profit center",
-          "type": "cds.String",
-          "length": 10,
-          "key": true,
-          "notNull": true,
-          "@ObjectModel.text.element": [
-            {
-              "=": "ProfitCenterLongText"
-            }
-          ]
-        },
-        "ValidityEndDate": {
-          "@EndUserText.label": "Valid to date",
-          "type": "cds.String",
-          "length": 8,
-          "key": true,
-          "notNull": true
-        },
-        "ProfitCenterName": {
-          "@EndUserText.label": "General name",
-          "type": "cds.String",
-          "length": 20
-        },
-        "ProfitCenterLongText": {
-          "@EndUserText.label": "Long text",
-          "type": "cds.String",
-          "length": 40,
-          "@Semantics.text": true
-        }
-      },
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "RAD_S3P.ZFI_LT_I_ProfitCenterText"
-            ],
-            "as": "ZFI_LT_I_ProfitCenterText"
-          },
-          "columns": [
-            {
-              "ref": [
-                "Language"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "ControllingArea"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "ProfitCenter"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "ValidityEndDate"
-              ],
-              "key": true
-            },
-            {
-              "ref": [
-                "ProfitCenterName"
-              ]
-            },
-            {
-              "ref": [
-                "ProfitCenterLongText"
-              ]
-            }
-          ]
-        }
-      },
-      "@EndUserText.label": "ZFI_IL_I_ProfitCenterText",
-      "@ObjectModel.modelingPattern": {
-        "#": "LANGUAGE_DEPENDENT_TEXT"
-      },
-      "@ObjectModel.supportedCapabilities": [
-        {
-          "#": "LANGUAGE_DEPENDENT_TEXT"
-        }
-      ],
-      "@DataWarehouse.consumption.external": false,
       "_meta": {
         "dependencies": {
           "folderAssignment": "Folder_CREUCEJB"
@@ -5899,6 +5899,20 @@
     }
   },
   "editorSettings": {
+    "ZFI_IL_I_ProfitCenterText": {
+      "editor": {
+        "lastModifier": "GRAPHICALVIEWBUILDER",
+        "default": "GRAPHICALVIEWBUILDER"
+      },
+      "uiModel": "{\"contents\":{\"a60f9379-f113-483f-8048-d16481278cf4\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_IL_I_ProfitCenterText\",\"label\":\"ZFI_IL_I_ProfitCenterText\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\",\"nodes\":{\"a3474c85-4173-47b8-891b-0f064ac7d09f\":{\"name\":\"ZFI_IL_I_ProfitCenterText\"},\"d2d30186-8612-432f-950e-8c8bbf364321\":{\"name\":\"RAD_S3P.ZFI_LT_I_ProfitCenterText\"}},\"contexts\":{\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"3ae125b6-6f5f-4220-bceb-c1330906ae72\":{}}},\"a3474c85-4173-47b8-891b-0f064ac7d09f\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_IL_I_ProfitCenterText\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"ac657707-0011-4ce1-a57c-a9e8881f6b55\":{\"name\":\"Language\"},\"24aa2167-e376-44b5-803b-56270e6e4f12\":{\"name\":\"ControllingArea\"},\"49a6626d-969d-4094-9afa-6cef2cc93e7c\":{\"name\":\"ProfitCenter\"},\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\":{\"name\":\"ValidityEndDate\"},\"5387eceb-529f-4c13-8764-31825b461df0\":{\"name\":\"ProfitCenterName\"},\"35be9ae5-62a2-49f6-8f00-a826421f02e6\":{\"name\":\"ProfitCenterLongText\"}}},\"3ae125b6-6f5f-4220-bceb-c1330906ae72\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"930ec2b4-5a30-4e2a-a346-650df0f60f10\":{},\"29362783-35e2-457f-a7d2-82e3a561d872\":{\"name\":\"Entity Symbol 1\"},\"fc056676-6637-4b5a-ae16-2e87947a5599\":{}}},\"930ec2b4-5a30-4e2a-a346-650df0f60f10\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\"},\"d2d30186-8612-432f-950e-8c8bbf364321\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZFI_LT_I_ProfitCenterText\",\"label\":\"ZFI_LT_I_ProfitCenterText\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1785392187000,\"#objectStatus\":\"1\",\"alias\":\"ZFI_LT_I_ProfitCenterText\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZFI_LT_I_ProfitCenterText_Delta\"]},\"context\":\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\",\"elements\":{\"1db3d6ed-5614-461b-983f-cf249534700a\":{\"name\":\"Language\"},\"f5ed51be-6c5c-4959-ac10-f392feda52cc\":{\"name\":\"ControllingArea\"},\"76f44204-8461-4a5b-907a-3324f6f2e04b\":{\"name\":\"ProfitCenter\"},\"506dd295-0a76-414e-93aa-0d68fe7a825b\":{\"name\":\"ValidityEndDate\"},\"f645e6d2-028c-4959-b3b7-b1eb4b910081\":{\"name\":\"ProfitCenterName\"},\"42b079a0-1073-48b6-8642-421a50d9c932\":{\"name\":\"ProfitCenterLongText\"}},\"successorNode\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\"},\"1db3d6ed-5614-461b-983f-cf249534700a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"ac657707-0011-4ce1-a57c-a9e8881f6b55\"},\"f5ed51be-6c5c-4959-ac10-f392feda52cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"24aa2167-e376-44b5-803b-56270e6e4f12\"},\"76f44204-8461-4a5b-907a-3324f6f2e04b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"49a6626d-969d-4094-9afa-6cef2cc93e7c\"},\"506dd295-0a76-414e-93aa-0d68fe7a825b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\"},\"f645e6d2-028c-4959-b3b7-b1eb4b910081\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterName\",\"label\":\"General name\",\"newName\":\"ProfitCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5387eceb-529f-4c13-8764-31825b461df0\"},\"42b079a0-1073-48b6-8642-421a50d9c932\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterLongText\",\"label\":\"Long text\",\"newName\":\"ProfitCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"35be9ae5-62a2-49f6-8f00-a826421f02e6\"},\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"29362783-35e2-457f-a7d2-82e3a561d872\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"d2d30186-8612-432f-950e-8c8bbf364321\"},\"ac657707-0011-4ce1-a57c-a9e8881f6b55\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"24aa2167-e376-44b5-803b-56270e6e4f12\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"49a6626d-969d-4094-9afa-6cef2cc93e7c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"35be9ae5-62a2-49f6-8f00-a826421f02e6\"},\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"5387eceb-529f-4c13-8764-31825b461df0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterName\",\"label\":\"General name\",\"newName\":\"ProfitCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"35be9ae5-62a2-49f6-8f00-a826421f02e6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterLongText\",\"label\":\"Long text\",\"newName\":\"ProfitCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"fc056676-6637-4b5a-ae16-2e87947a5599\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"29362783-35e2-457f-a7d2-82e3a561d872\",\"targetSymbol\":\"930ec2b4-5a30-4e2a-a346-650df0f60f10\"}}}"
+    },
+    "GV_GLT_NET": {
+      "editor": {
+        "lastModifier": "GRAPHICALVIEWBUILDER",
+        "default": "GRAPHICALVIEWBUILDER"
+      },
+      "uiModel": "{\"contents\":{\"53f2f0ad-68e7-4971-b81b-d0aa42324f33\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"GV_GLT_NET\",\"label\":\"GV_GLT_NET\",\"modificationDate\":1784689387784,\"deploymentDate\":1784689398604,\"#objectStatus\":\"1\",\"output\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\",\"nodes\":{\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\":{\"name\":\"GV_GLT_NET\"},\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\":{\"name\":\"RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET\"}},\"contexts\":{\"aead1cf8-aa79-4a04-9fee-414965d13a41\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"4bc2d507-2d18-4b4b-80ed-a239838fc009\":{}}},\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"GV_GLT_NET\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1784689387784,\"deploymentDate\":1784689398604,\"#objectStatus\":\"1\",\"elements\":{\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"name\":\"ChartOfAccounts\"},\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\":{\"name\":\"GLAccount\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"name\":\"Language\"},\"bb9d9455-b75a-4f34-bee6-5768df5919c3\":{\"name\":\"GLAccountName\"},\"06beaea6-2107-4ea9-9934-2ac2bc03c147\":{\"name\":\"GLAccountLongName\"},\"a055b199-a7f4-4339-8570-83c1c2ebddaa\":{\"name\":\"LastChangeDateTime\"}},\"representativeKey\":\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\",\"compoundKeySequence\":{\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"name\":\"ChartOfAccounts\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"name\":\"Language\"}}},\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET\",\"label\":\"Glaccount master data\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1784640036434,\"deploymentDate\":1784640214524,\"#objectStatus\":\"1\",\"alias\":\"ZI_GLACCOUNTTEXTRAWDATA_NET\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZI_GLACCOUNTTEXTRAWDATA_NET_Delta\"]},\"context\":\"aead1cf8-aa79-4a04-9fee-414965d13a41\",\"elements\":{\"dc2ea0f5-e43b-4f86-bf7b-8f030ee95728\":{\"name\":\"ChartOfAccounts\"},\"c0b491ef-ac0c-4d49-9202-48977f607d33\":{\"name\":\"GLAccount\"},\"dbe5b628-b0f3-4d98-b536-69a6b9d771b4\":{\"name\":\"Language\"},\"737fd968-cf35-42f2-86c0-53bcd3d36246\":{\"name\":\"GLAccountName\"},\"12cc0f7a-0f82-415f-9748-ced01993edce\":{\"name\":\"GLAccountLongName\"},\"7d0fff02-3274-4014-b81d-7d68ccf7f9cc\":{\"name\":\"LastChangeDateTime\"}},\"successorNode\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\"},\"aead1cf8-aa79-4a04-9fee-414965d13a41\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"4bc2d507-2d18-4b4b-80ed-a239838fc009\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"eb7fc564-f4f2-4066-b760-1903e9284b93\":{},\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\":{\"name\":\"Entity Symbol 1\"},\"3005da55-5054-47ea-9716-ac1f2caf32a5\":{}}},\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":0,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account number\",\"newName\":\"GLAccount\",\"indexOrder\":1,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"06beaea6-2107-4ea9-9934-2ac2bc03c147\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":2,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"bb9d9455-b75a-4f34-bee6-5768df5919c3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountName\",\"label\":\"G/l account name\",\"newName\":\"GLAccountName\",\"indexOrder\":3,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"06beaea6-2107-4ea9-9934-2ac2bc03c147\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountLongName\",\"label\":\"G/l account long name\",\"newName\":\"GLAccountLongName\",\"indexOrder\":4,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"a055b199-a7f4-4339-8570-83c1c2ebddaa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LastChangeDateTime\",\"label\":\"Utc time stamp in short form (yyyymmddhhmmss)\",\"newName\":\"LastChangeDateTime\",\"indexOrder\":5,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":15,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"eb7fc564-f4f2-4066-b760-1903e9284b93\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\"},\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\"},\"3005da55-5054-47ea-9716-ac1f2caf32a5\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\",\"targetSymbol\":\"eb7fc564-f4f2-4066-b760-1903e9284b93\"},\"dc2ea0f5-e43b-4f86-bf7b-8f030ee95728\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":0,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"9d2a9bec-0604-4805-800f-480b3538a249\"},\"c0b491ef-ac0c-4d49-9202-48977f607d33\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account number\",\"newName\":\"GLAccount\",\"indexOrder\":1,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\"},\"dbe5b628-b0f3-4d98-b536-69a6b9d771b4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":2,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"9fd2ec55-3191-44b2-8911-7aee562194fc\"},\"737fd968-cf35-42f2-86c0-53bcd3d36246\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountName\",\"label\":\"G/l account name\",\"newName\":\"GLAccountName\",\"indexOrder\":3,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"bb9d9455-b75a-4f34-bee6-5768df5919c3\"},\"12cc0f7a-0f82-415f-9748-ced01993edce\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountLongName\",\"label\":\"G/l account long name\",\"newName\":\"GLAccountLongName\",\"indexOrder\":4,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"06beaea6-2107-4ea9-9934-2ac2bc03c147\"},\"7d0fff02-3274-4014-b81d-7d68ccf7f9cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LastChangeDateTime\",\"label\":\"Utc time stamp in short form (yyyymmddhhmmss)\",\"newName\":\"LastChangeDateTime\",\"indexOrder\":5,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":15,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a055b199-a7f4-4339-8570-83c1c2ebddaa\"}}}"
+    },
     "ZFI_IL_TrialBalance": {
       "editor": {
         "lastModifier": "GRAPHICALVIEWBUILDER",
@@ -5913,20 +5927,6 @@
       },
       "uiModel": "{\"contents\":{\"590f1af5-40d9-46a2-83c2-b9d61f695872\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_HL_TrialBalance\",\"label\":\"Harmonization Layer\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"53b9435f-5ffb-4f4d-8de3-d7722e48f9ba\",\"nodes\":{\"53b9435f-5ffb-4f4d-8de3-d7722e48f9ba\":{\"name\":\"ZFI_HL_TrialBalance\"},\"eb73fd6e-6022-4734-95f7-701b5e517f7d\":{\"name\":\"ZFI_IL_TrialBalance\"}},\"diagrams\":{\"a2354f3c-8e06-4e19-a36e-e7b63cd32c43\":{}}},\"53b9435f-5ffb-4f4d-8de3-d7722e48f9ba\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_HL_TrialBalance\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"FACT\",\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"aebead1a-f7e3-4545-ae64-541096eba2a1\":{\"name\":\"SourceLedger\"},\"46d36da6-7b1e-46e3-96f1-cf471fbea618\":{\"name\":\"CompanyCode\"},\"d8175f92-e45a-45dd-a39c-e779402e7648\":{\"name\":\"CompanyCodeCurrency\"},\"9dd8ecf1-5461-42be-a225-97309120ce3b\":{\"name\":\"AmountInCompanyCodeCurrency\"},\"ee490839-7de5-4e31-856c-6fdd7485acfc\":{\"name\":\"PartnerCompanyCode\"},\"91313c7c-f5dd-4775-8f8c-a7d05d207ad4\":{\"name\":\"FiscalYear\"},\"ae869515-8a65-4836-8b6c-979f11c5fe43\":{\"name\":\"LedgerFiscalYear\"},\"f02c3fd8-624a-43c8-bb40-2c142e560ced\":{\"name\":\"FiscalPeriod\"},\"c9b46219-c654-4929-8192-6a3b63d38766\":{\"name\":\"FiscalYearPeriod\"},\"918c2942-3e0b-408b-850a-2553fa7ae5e0\":{\"name\":\"PostingDate\"},\"25c35d81-d1f8-49e0-b8ec-42880dbf652c\":{\"name\":\"AccountingDocumentItem\"},\"99fb9fc1-2440-4718-9099-4c6322759ab6\":{\"name\":\"GLAccount\"},\"adf0b41f-6fdb-4794-8afd-540c68c7f3af\":{\"name\":\"ChartOfAccounts\"},\"01943f7a-d482-48e4-964e-003846dccb1a\":{\"name\":\"ControllingArea\"},\"4566c017-43e1-445e-8180-2940d7ffaa1c\":{\"name\":\"DebitCreditCode\"},\"31ad3ecf-d351-43d9-80f5-b674d8be8ccd\":{\"name\":\"GlobalCurrency\"},\"ecc394d8-d66b-4050-ad84-df9f6203bf7c\":{\"name\":\"AmountInGlobalCurrency\"},\"6ab30310-032c-4aff-a39c-e78a04f169aa\":{\"name\":\"ProfitCenter\"},\"855c9820-0435-404b-be89-2cf8bee6f0d5\":{\"name\":\"PartnerProfitCenter\"},\"53d49041-4c28-4190-94aa-f00ba8a62bbf\":{\"name\":\"CostCenter\"},\"d1634835-d8e4-413c-8478-146181bbae6d\":{\"name\":\"PartnerCostCenter\"},\"cc3d0516-7928-4175-be01-4fcf77e95152\":{\"name\":\"Segment\"},\"967407da-b861-490b-bbc1-bbf546fca9a8\":{\"name\":\"PartnerSegment\"},\"72d5bfab-c890-4dc9-b5a3-9cd66d4f6838\":{\"name\":\"BusinessArea\"},\"34b1388a-0e64-4c26-9566-0afabd95eee1\":{\"name\":\"PartnerBusinessArea\"},\"a15e12d4-3961-4a93-90b2-b8da322aaa1a\":{\"name\":\"FunctionalArea\"},\"9cb1b366-001f-4f79-861c-b4d7120586b7\":{\"name\":\"Customer\"},\"327eff6d-de4a-4217-a59a-ae58119d302f\":{\"name\":\"Supplier\"},\"cf730316-1073-469d-9376-e3b411fef0c5\":{\"name\":\"FixedAsset\"},\"2e73c896-6d7c-4816-8f89-35683523db38\":{\"name\":\"DocumentDate\"},\"8fae9d92-3694-4a11-94a3-7aa3ba531579\":{\"name\":\"AccountingDocument\"},\"3229bc86-96d2-4ffc-951a-9d3c6b9da804\":{\"name\":\"LedgerGLLineItem\"},\"a6d6e319-9052-476d-9279-f84f2d6a5fd7\":{\"name\":\"MasterFixedAsset\"},\"d62bd68b-0c71-4a58-8fd2-e4fe68ac4666\":{\"name\":\"AssetClass\"},\"13e53a3d-1a8a-4a7a-845f-04d3cee70fce\":{\"name\":\"DocumentItemText\"},\"5d9bb2b8-2a59-4132-8d0c-f5e004109cf0\":{\"name\":\"PartnerCompany\"},\"b46e125b-3160-44f6-a0cd-6472b525e2bc\":{\"name\":\"DebitAmountInCodeCry\"},\"29060018-d71b-4c6f-8044-6a3a2dabf95e\":{\"name\":\"CreditAmountInCoCodeCrcy\"},\"32cea0a9-d81a-4a73-9d1b-de6be953d2ba\":{\"name\":\"NetAmountInCoodeCrcy\"},\"6a0aab50-3cc6-431d-8e01-f70bac302e3f\":{\"name\":\"DebitAmountInGlobalCrcy\"},\"b0d2c202-763b-4552-aa30-824f80ecd1dc\":{\"name\":\"CreditAmountInGlobalCry\"},\"2afd2e73-2f75-4aa0-9f54-69fc86a97432\":{\"name\":\"NetAmountInGlobalCrcy\"}}},\"a2354f3c-8e06-4e19-a36e-e7b63cd32c43\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"fc58ed09-ff49-459d-8b5a-295dc4f0d420\":{},\"174e33b5-61a6-4ded-a158-1eea8d35c7ee\":{\"name\":\"Entity Symbol 1\"},\"7d578a9a-725c-407d-a1c6-1157e0435895\":{}}},\"fc58ed09-ff49-459d-8b5a-295dc4f0d420\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"53b9435f-5ffb-4f4d-8de3-d7722e48f9ba\"},\"eb73fd6e-6022-4734-95f7-701b5e517f7d\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"ZFI_IL_TrialBalance\",\"label\":\"Inbound Layer\",\"type\":3,\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"FACT\",\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1785807818000,\"#objectStatus\":\"1\",\"elements\":{\"3b6cf627-7aa1-4fa3-98cb-24087cad6414\":{\"name\":\"SourceLedger\"},\"8adce838-0e81-436a-87c8-2b49db1acb34\":{\"name\":\"CompanyCode\"},\"19bf2fb2-4476-409c-8601-db765dc078e2\":{\"name\":\"CompanyCodeCurrency\"},\"a5c498a7-616e-4854-9efe-692a2e0fe97a\":{\"name\":\"AmountInCompanyCodeCurrency\"},\"ee4c003f-425e-4c86-b784-3576aea5f77a\":{\"name\":\"PartnerCompanyCode\"},\"a677a305-460b-4ca2-8994-10ab8b5a2bdb\":{\"name\":\"FiscalYear\"},\"f3039ef4-4824-4d58-99f7-9d0b9e4f78cc\":{\"name\":\"LedgerFiscalYear\"},\"9afbbe30-64aa-4736-8b9e-872a73eea6f4\":{\"name\":\"FiscalPeriod\"},\"e03ae3df-ade1-46c7-a1d3-23277a4a3ea2\":{\"name\":\"FiscalYearPeriod\"},\"90a0ccdf-7251-45bf-9255-1a82bcd96af4\":{\"name\":\"PostingDate\"},\"3e70074b-0837-45fc-aefd-b54cdff29564\":{\"name\":\"AccountingDocumentItem\"},\"0f2956df-3c80-47ce-ad33-72f6a19e0683\":{\"name\":\"GLAccount\"},\"a94f21ab-b2fe-4a71-a534-b92df665ca22\":{\"name\":\"ChartOfAccounts\"},\"d5c81ece-80dc-47f1-a0aa-9e0e0b7b7efe\":{\"name\":\"ControllingArea\"},\"49cae611-04fa-4947-9fca-bf37c32b9a69\":{\"name\":\"DebitCreditCode\"},\"e809cb7f-2ecf-4c3b-b6ed-97ae9cb253e7\":{\"name\":\"GlobalCurrency\"},\"9ec9505b-d92d-4ce8-bfcf-18d63456f5d6\":{\"name\":\"AmountInGlobalCurrency\"},\"10920563-4c0c-4b0a-ba67-c75c75541ac1\":{\"name\":\"ProfitCenter\"},\"908744f8-7b83-4af4-9ffa-d6a3b7c752cc\":{\"name\":\"PartnerProfitCenter\"},\"f632dad8-7f0c-4c92-a807-0e1882234ac3\":{\"name\":\"CostCenter\"},\"9f525b21-34be-47ee-bfbf-a145f0d8a6a1\":{\"name\":\"PartnerCostCenter\"},\"83240288-34af-4e65-8749-1cf95c9bdf0c\":{\"name\":\"Segment\"},\"d7618f06-3a7b-400f-9223-ddf7e847fad7\":{\"name\":\"PartnerSegment\"},\"2d03504e-76a8-47f4-af15-e17882304dc0\":{\"name\":\"BusinessArea\"},\"2209fba3-48f0-44b9-907f-f43d58a13e21\":{\"name\":\"PartnerBusinessArea\"},\"fc30c966-a060-4f1f-9abd-7e0d3e1f3479\":{\"name\":\"FunctionalArea\"},\"32dc4a52-5609-4054-af6c-90f49f6b56b4\":{\"name\":\"Customer\"},\"b2c09f0c-c220-4803-b7f5-79e6af463ce2\":{\"name\":\"Supplier\"},\"cfd9d782-4243-4663-a23f-a8d2db8660be\":{\"name\":\"FixedAsset\"},\"fe21f5d6-6600-420b-93f8-0ce5555d9897\":{\"name\":\"DocumentDate\"},\"fd46f17d-8a68-4a7f-bbdd-b3d527b6c672\":{\"name\":\"AccountingDocument\"},\"5863538d-a54b-4e58-aba1-e2c2a2486437\":{\"name\":\"LedgerGLLineItem\"},\"b15272fc-2496-4da4-973b-f1cb9f24895c\":{\"name\":\"MasterFixedAsset\"},\"874da3c2-932e-404d-a5af-eaae46b4463e\":{\"name\":\"AssetClass\"},\"432715f4-d924-4e5a-9eef-558ef0e40f73\":{\"name\":\"DocumentItemText\"},\"3432ecc3-355f-47a4-a1e5-da300aa8b5d9\":{\"name\":\"PartnerCompany\"},\"c583dd83-64e9-4f3d-8f8c-d9df93ab3a45\":{\"name\":\"DebitAmountInCodeCry\"},\"87db8f9d-0206-4480-9253-38d32d01e2b5\":{\"name\":\"CreditAmountInCoCodeCrcy\"},\"03ac6122-6d68-4b59-a49c-1b704235af05\":{\"name\":\"NetAmountInCoodeCrcy\"},\"081369de-aa4d-45fd-ba6a-0970f2a9fef4\":{\"name\":\"DebitAmountInGlobalCrcy\"},\"fd16cb65-95b8-4c98-823f-e883ded26abe\":{\"name\":\"CreditAmountInGlobalCry\"},\"f25339e0-1efe-48b6-8bc5-54c06b8da960\":{\"name\":\"NetAmountInGlobalCrcy\"}},\"successorNode\":\"53b9435f-5ffb-4f4d-8de3-d7722e48f9ba\"},\"3b6cf627-7aa1-4fa3-98cb-24087cad6414\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"SourceLedger\",\"label\":\"Source ledger\",\"newName\":\"SourceLedger\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"aebead1a-f7e3-4545-ae64-541096eba2a1\"},\"8adce838-0e81-436a-87c8-2b49db1acb34\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCode\",\"label\":\"Company code\",\"newName\":\"CompanyCode\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"46d36da6-7b1e-46e3-96f1-cf471fbea618\"},\"19bf2fb2-4476-409c-8601-db765dc078e2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCodeCurrency\",\"label\":\"Company code currency\",\"newName\":\"CompanyCodeCurrency\",\"indexOrder\":2,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d8175f92-e45a-45dd-a39c-e779402e7648\"},\"a5c498a7-616e-4854-9efe-692a2e0fe97a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AmountInCompanyCodeCurrency\",\"label\":\"Amount in company code currency\",\"newName\":\"AmountInCompanyCodeCurrency\",\"indexOrder\":3,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9dd8ecf1-5461-42be-a225-97309120ce3b\"},\"ee4c003f-425e-4c86-b784-3576aea5f77a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCompanyCode\",\"label\":\"Partner company code\",\"newName\":\"PartnerCompanyCode\",\"indexOrder\":4,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ee490839-7de5-4e31-856c-6fdd7485acfc\"},\"a677a305-460b-4ca2-8994-10ab8b5a2bdb\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalYear\",\"label\":\"Fiscal year\",\"newName\":\"FiscalYear\",\"indexOrder\":5,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"91313c7c-f5dd-4775-8f8c-a7d05d207ad4\"},\"f3039ef4-4824-4d58-99f7-9d0b9e4f78cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LedgerFiscalYear\",\"label\":\"Fiscal year of ledger\",\"newName\":\"LedgerFiscalYear\",\"indexOrder\":6,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ae869515-8a65-4836-8b6c-979f11c5fe43\"},\"9afbbe30-64aa-4736-8b9e-872a73eea6f4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalPeriod\",\"label\":\"Fiscal period\",\"newName\":\"FiscalPeriod\",\"indexOrder\":7,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"f02c3fd8-624a-43c8-bb40-2c142e560ced\"},\"e03ae3df-ade1-46c7-a1d3-23277a4a3ea2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalYearPeriod\",\"label\":\"Fiscal year period\",\"newName\":\"FiscalYearPeriod\",\"indexOrder\":8,\"length\":7,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c9b46219-c654-4929-8192-6a3b63d38766\"},\"90a0ccdf-7251-45bf-9255-1a82bcd96af4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date\",\"newName\":\"PostingDate\",\"indexOrder\":9,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"918c2942-3e0b-408b-850a-2553fa7ae5e0\"},\"3e70074b-0837-45fc-aefd-b54cdff29564\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AccountingDocumentItem\",\"label\":\"Journal entry posting view item\",\"newName\":\"AccountingDocumentItem\",\"indexOrder\":10,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"25c35d81-d1f8-49e0-b8ec-42880dbf652c\"},\"0f2956df-3c80-47ce-ad33-72f6a19e0683\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account\",\"newName\":\"GLAccount\",\"indexOrder\":11,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"99fb9fc1-2440-4718-9099-4c6322759ab6\"},\"a94f21ab-b2fe-4a71-a534-b92df665ca22\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":12,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"adf0b41f-6fdb-4794-8afd-540c68c7f3af\"},\"d5c81ece-80dc-47f1-a0aa-9e0e0b7b7efe\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":13,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"01943f7a-d482-48e4-964e-003846dccb1a\"},\"49cae611-04fa-4947-9fca-bf37c32b9a69\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit code\",\"newName\":\"DebitCreditCode\",\"indexOrder\":14,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"4566c017-43e1-445e-8180-2940d7ffaa1c\"},\"e809cb7f-2ecf-4c3b-b6ed-97ae9cb253e7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GlobalCurrency\",\"label\":\"Global currency\",\"newName\":\"GlobalCurrency\",\"indexOrder\":15,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"31ad3ecf-d351-43d9-80f5-b674d8be8ccd\"},\"9ec9505b-d92d-4ce8-bfcf-18d63456f5d6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AmountInGlobalCurrency\",\"label\":\"Amount in global currency\",\"newName\":\"AmountInGlobalCurrency\",\"indexOrder\":16,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"ecc394d8-d66b-4050-ad84-df9f6203bf7c\"},\"10920563-4c0c-4b0a-ba67-c75c75541ac1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":17,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6ab30310-032c-4aff-a39c-e78a04f169aa\"},\"908744f8-7b83-4af4-9ffa-d6a3b7c752cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerProfitCenter\",\"label\":\"Partner profit center\",\"newName\":\"PartnerProfitCenter\",\"indexOrder\":18,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"855c9820-0435-404b-be89-2cf8bee6f0d5\"},\"f632dad8-7f0c-4c92-a807-0e1882234ac3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":19,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"53d49041-4c28-4190-94aa-f00ba8a62bbf\"},\"9f525b21-34be-47ee-bfbf-a145f0d8a6a1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCostCenter\",\"label\":\"Partner cost center\",\"newName\":\"PartnerCostCenter\",\"indexOrder\":20,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d1634835-d8e4-413c-8478-146181bbae6d\"},\"83240288-34af-4e65-8749-1cf95c9bdf0c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Segment\",\"label\":\"Segment for segmental reporting\",\"newName\":\"Segment\",\"indexOrder\":21,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cc3d0516-7928-4175-be01-4fcf77e95152\"},\"d7618f06-3a7b-400f-9223-ddf7e847fad7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerSegment\",\"label\":\"Partner segment for segmental reporting\",\"newName\":\"PartnerSegment\",\"indexOrder\":22,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"967407da-b861-490b-bbc1-bbf546fca9a8\"},\"2d03504e-76a8-47f4-af15-e17882304dc0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessArea\",\"label\":\"Business area\",\"newName\":\"BusinessArea\",\"indexOrder\":23,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"72d5bfab-c890-4dc9-b5a3-9cd66d4f6838\"},\"2209fba3-48f0-44b9-907f-f43d58a13e21\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerBusinessArea\",\"label\":\"Partner business area\",\"newName\":\"PartnerBusinessArea\",\"indexOrder\":24,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"34b1388a-0e64-4c26-9566-0afabd95eee1\"},\"fc30c966-a060-4f1f-9abd-7e0d3e1f3479\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalArea\",\"label\":\"Functional area\",\"newName\":\"FunctionalArea\",\"indexOrder\":25,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a15e12d4-3961-4a93-90b2-b8da322aaa1a\"},\"32dc4a52-5609-4054-af6c-90f49f6b56b4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Customer\",\"label\":\"Customer number\",\"newName\":\"Customer\",\"indexOrder\":26,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"9cb1b366-001f-4f79-861c-b4d7120586b7\"},\"b2c09f0c-c220-4803-b7f5-79e6af463ce2\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Supplier\",\"newName\":\"Supplier\",\"indexOrder\":27,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"327eff6d-de4a-4217-a59a-ae58119d302f\"},\"cfd9d782-4243-4663-a23f-a8d2db8660be\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FixedAsset\",\"label\":\"Asset subnumber\",\"newName\":\"FixedAsset\",\"indexOrder\":28,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"cf730316-1073-469d-9376-e3b411fef0c5\"},\"fe21f5d6-6600-420b-93f8-0ce5555d9897\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DocumentDate\",\"label\":\"Journal entry date\",\"newName\":\"DocumentDate\",\"indexOrder\":29,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"2e73c896-6d7c-4816-8f89-35683523db38\"},\"fd46f17d-8a68-4a7f-bbdd-b3d527b6c672\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AccountingDocument\",\"label\":\"Journal entry\",\"newName\":\"AccountingDocument\",\"indexOrder\":30,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"8fae9d92-3694-4a11-94a3-7aa3ba531579\"},\"5863538d-a54b-4e58-aba1-e2c2a2486437\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LedgerGLLineItem\",\"label\":\"General ledger journal entry line item\",\"newName\":\"LedgerGLLineItem\",\"indexOrder\":31,\"isKey\":true,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"3229bc86-96d2-4ffc-951a-9d3c6b9da804\"},\"b15272fc-2496-4da4-973b-f1cb9f24895c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MasterFixedAsset\",\"label\":\"Fixed asset\",\"newName\":\"MasterFixedAsset\",\"indexOrder\":32,\"length\":12,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a6d6e319-9052-476d-9279-f84f2d6a5fd7\"},\"874da3c2-932e-404d-a5af-eaae46b4463e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AssetClass\",\"label\":\"Asset class\",\"newName\":\"AssetClass\",\"indexOrder\":33,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"d62bd68b-0c71-4a58-8fd2-e4fe68ac4666\"},\"432715f4-d924-4e5a-9eef-558ef0e40f73\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DocumentItemText\",\"label\":\"Item text\",\"newName\":\"DocumentItemText\",\"indexOrder\":34,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"13e53a3d-1a8a-4a7a-845f-04d3cee70fce\"},\"3432ecc3-355f-47a4-a1e5-da300aa8b5d9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCompany\",\"label\":\"Company id of trading partner\",\"newName\":\"PartnerCompany\",\"indexOrder\":35,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5d9bb2b8-2a59-4132-8d0c-f5e004109cf0\"},\"c583dd83-64e9-4f3d-8f8c-d9df93ab3a45\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitAmountInCodeCry\",\"label\":\"Debit Amount Code Currency\",\"newName\":\"DebitAmountInCodeCry\",\"indexOrder\":36,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b46e125b-3160-44f6-a0cd-6472b525e2bc\"},\"87db8f9d-0206-4480-9253-38d32d01e2b5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreditAmountInCoCodeCrcy\",\"label\":\"Credit Amount in company currency\",\"newName\":\"CreditAmountInCoCodeCrcy\",\"indexOrder\":37,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"29060018-d71b-4c6f-8044-6a3a2dabf95e\"},\"03ac6122-6d68-4b59-a49c-1b704235af05\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NetAmountInCoodeCrcy\",\"label\":\"Net Amount in company code currency\",\"newName\":\"NetAmountInCoodeCrcy\",\"indexOrder\":38,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"32cea0a9-d81a-4a73-9d1b-de6be953d2ba\"},\"081369de-aa4d-45fd-ba6a-0970f2a9fef4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitAmountInGlobalCrcy\",\"label\":\"Debit Amount In Global Currency\",\"newName\":\"DebitAmountInGlobalCrcy\",\"indexOrder\":39,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"6a0aab50-3cc6-431d-8e01-f70bac302e3f\"},\"fd16cb65-95b8-4c98-823f-e883ded26abe\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreditAmountInGlobalCry\",\"label\":\"Credit Amount In Global Currency\",\"newName\":\"CreditAmountInGlobalCry\",\"indexOrder\":40,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":23,\"scale\":2,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"b0d2c202-763b-4552-aa30-824f80ecd1dc\"},\"f25339e0-1efe-48b6-8bc5-54c06b8da960\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NetAmountInGlobalCrcy\",\"label\":\"Net Amount In Global Currency\",\"newName\":\"NetAmountInGlobalCrcy\",\"indexOrder\":41,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"2afd2e73-2f75-4aa0-9f54-69fc86a97432\"},\"174e33b5-61a6-4ded-a158-1eea8d35c7ee\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"eb73fd6e-6022-4734-95f7-701b5e517f7d\"},\"aebead1a-f7e3-4545-ae64-541096eba2a1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"SourceLedger\",\"label\":\"Source ledger\",\"newName\":\"SourceLedger\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"46d36da6-7b1e-46e3-96f1-cf471fbea618\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCode\",\"label\":\"Company code\",\"newName\":\"CompanyCode\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"d8175f92-e45a-45dd-a39c-e779402e7648\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CompanyCodeCurrency\",\"label\":\"Company code currency\",\"newName\":\"CompanyCodeCurrency\",\"indexOrder\":2,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"9dd8ecf1-5461-42be-a225-97309120ce3b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AmountInCompanyCodeCurrency\",\"label\":\"Amount in company code currency\",\"newName\":\"AmountInCompanyCodeCurrency\",\"indexOrder\":3,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ee490839-7de5-4e31-856c-6fdd7485acfc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCompanyCode\",\"label\":\"Partner company code\",\"newName\":\"PartnerCompanyCode\",\"indexOrder\":4,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"91313c7c-f5dd-4775-8f8c-a7d05d207ad4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalYear\",\"label\":\"Fiscal year\",\"newName\":\"FiscalYear\",\"indexOrder\":5,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"ae869515-8a65-4836-8b6c-979f11c5fe43\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LedgerFiscalYear\",\"label\":\"Fiscal year of ledger\",\"newName\":\"LedgerFiscalYear\",\"indexOrder\":6,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"f02c3fd8-624a-43c8-bb40-2c142e560ced\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalPeriod\",\"label\":\"Fiscal period\",\"newName\":\"FiscalPeriod\",\"indexOrder\":7,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"c9b46219-c654-4929-8192-6a3b63d38766\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FiscalYearPeriod\",\"label\":\"Fiscal year period\",\"newName\":\"FiscalYearPeriod\",\"indexOrder\":8,\"length\":7,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"918c2942-3e0b-408b-850a-2553fa7ae5e0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PostingDate\",\"label\":\"Posting date\",\"newName\":\"PostingDate\",\"indexOrder\":9,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"25c35d81-d1f8-49e0-b8ec-42880dbf652c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AccountingDocumentItem\",\"label\":\"Journal entry posting view item\",\"newName\":\"AccountingDocumentItem\",\"indexOrder\":10,\"length\":3,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"99fb9fc1-2440-4718-9099-4c6322759ab6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account\",\"newName\":\"GLAccount\",\"indexOrder\":11,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"adf0b41f-6fdb-4794-8afd-540c68c7f3af\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":12,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"01943f7a-d482-48e4-964e-003846dccb1a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":13,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"4566c017-43e1-445e-8180-2940d7ffaa1c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitCreditCode\",\"label\":\"Debit/credit code\",\"newName\":\"DebitCreditCode\",\"indexOrder\":14,\"length\":1,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"31ad3ecf-d351-43d9-80f5-b674d8be8ccd\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GlobalCurrency\",\"label\":\"Global currency\",\"newName\":\"GlobalCurrency\",\"indexOrder\":15,\"length\":5,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"ecc394d8-d66b-4050-ad84-df9f6203bf7c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AmountInGlobalCurrency\",\"label\":\"Amount in global currency\",\"newName\":\"AmountInGlobalCurrency\",\"indexOrder\":16,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"6ab30310-032c-4aff-a39c-e78a04f169aa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":17,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"855c9820-0435-404b-be89-2cf8bee6f0d5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerProfitCenter\",\"label\":\"Partner profit center\",\"newName\":\"PartnerProfitCenter\",\"indexOrder\":18,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"53d49041-4c28-4190-94aa-f00ba8a62bbf\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":19,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"d1634835-d8e4-413c-8478-146181bbae6d\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCostCenter\",\"label\":\"Partner cost center\",\"newName\":\"PartnerCostCenter\",\"indexOrder\":20,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"cc3d0516-7928-4175-be01-4fcf77e95152\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Segment\",\"label\":\"Segment for segmental reporting\",\"newName\":\"Segment\",\"indexOrder\":21,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"967407da-b861-490b-bbc1-bbf546fca9a8\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerSegment\",\"label\":\"Partner segment for segmental reporting\",\"newName\":\"PartnerSegment\",\"indexOrder\":22,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"72d5bfab-c890-4dc9-b5a3-9cd66d4f6838\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"BusinessArea\",\"label\":\"Business area\",\"newName\":\"BusinessArea\",\"indexOrder\":23,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"34b1388a-0e64-4c26-9566-0afabd95eee1\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerBusinessArea\",\"label\":\"Partner business area\",\"newName\":\"PartnerBusinessArea\",\"indexOrder\":24,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"a15e12d4-3961-4a93-90b2-b8da322aaa1a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalArea\",\"label\":\"Functional area\",\"newName\":\"FunctionalArea\",\"indexOrder\":25,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"9cb1b366-001f-4f79-861c-b4d7120586b7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Customer\",\"label\":\"Customer number\",\"newName\":\"Customer\",\"indexOrder\":26,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"327eff6d-de4a-4217-a59a-ae58119d302f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Supplier\",\"label\":\"Supplier\",\"newName\":\"Supplier\",\"indexOrder\":27,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"cf730316-1073-469d-9376-e3b411fef0c5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FixedAsset\",\"label\":\"Asset subnumber\",\"newName\":\"FixedAsset\",\"indexOrder\":28,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"2e73c896-6d7c-4816-8f89-35683523db38\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DocumentDate\",\"label\":\"Journal entry date\",\"newName\":\"DocumentDate\",\"indexOrder\":29,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"8fae9d92-3694-4a11-94a3-7aa3ba531579\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AccountingDocument\",\"label\":\"Journal entry\",\"newName\":\"AccountingDocument\",\"indexOrder\":30,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"3229bc86-96d2-4ffc-951a-9d3c6b9da804\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LedgerGLLineItem\",\"label\":\"General ledger journal entry line item\",\"newName\":\"LedgerGLLineItem\",\"indexOrder\":31,\"isKey\":true,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"a6d6e319-9052-476d-9279-f84f2d6a5fd7\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"MasterFixedAsset\",\"label\":\"Fixed asset\",\"newName\":\"MasterFixedAsset\",\"indexOrder\":32,\"length\":12,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"d62bd68b-0c71-4a58-8fd2-e4fe68ac4666\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"AssetClass\",\"label\":\"Asset class\",\"newName\":\"AssetClass\",\"indexOrder\":33,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"13e53a3d-1a8a-4a7a-845f-04d3cee70fce\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DocumentItemText\",\"label\":\"Item text\",\"newName\":\"DocumentItemText\",\"indexOrder\":34,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5d9bb2b8-2a59-4132-8d0c-f5e004109cf0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"PartnerCompany\",\"label\":\"Company id of trading partner\",\"newName\":\"PartnerCompany\",\"indexOrder\":35,\"length\":6,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"b46e125b-3160-44f6-a0cd-6472b525e2bc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitAmountInCodeCry\",\"label\":\"Debit Amount Code Currency\",\"newName\":\"DebitAmountInCodeCry\",\"indexOrder\":36,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"29060018-d71b-4c6f-8044-6a3a2dabf95e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreditAmountInCoCodeCrcy\",\"label\":\"Credit Amount in company currency\",\"newName\":\"CreditAmountInCoCodeCrcy\",\"indexOrder\":37,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"32cea0a9-d81a-4a73-9d1b-de6be953d2ba\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NetAmountInCoodeCrcy\",\"label\":\"Net Amount in company code currency\",\"newName\":\"NetAmountInCoodeCrcy\",\"indexOrder\":38,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"6a0aab50-3cc6-431d-8e01-f70bac302e3f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"DebitAmountInGlobalCrcy\",\"label\":\"Debit Amount In Global Currency\",\"newName\":\"DebitAmountInGlobalCrcy\",\"indexOrder\":39,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"b0d2c202-763b-4552-aa30-824f80ecd1dc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CreditAmountInGlobalCry\",\"label\":\"Credit Amount In Global Currency\",\"newName\":\"CreditAmountInGlobalCry\",\"indexOrder\":40,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":23,\"scale\":2,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"2afd2e73-2f75-4aa0-9f54-69fc86a97432\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"NetAmountInGlobalCrcy\",\"label\":\"Net Amount In Global Currency\",\"newName\":\"NetAmountInGlobalCrcy\",\"indexOrder\":41,\"defaultAggregation\":\"SUM\",\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":38,\"scale\":6,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isMeasure\":true},\"7d578a9a-725c-407d-a1c6-1157e0435895\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"174e33b5-61a6-4ded-a158-1eea8d35c7ee\",\"targetSymbol\":\"fc58ed09-ff49-459d-8b5a-295dc4f0d420\"}}}"
     },
-    "ZFI_IL_I_CostCenterText": {
-      "editor": {
-        "lastModifier": "GRAPHICALVIEWBUILDER",
-        "default": "GRAPHICALVIEWBUILDER"
-      },
-      "uiModel": "{\"contents\":{\"4c59e1f1-59c3-4dbd-ae69-9385530d4fea\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_IL_I_CostCenterText\",\"label\":\"ZFI_IL_I_CostCenterText\",\"modificationDate\":1785393742882,\"deploymentDate\":0,\"#objectStatus\":\"0\",\"output\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\",\"nodes\":{\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\":{\"name\":\"ZFI_IL_I_CostCenterText\"},\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\":{\"name\":\"RAD_S3P.ZFI_LT_I_CostCenterText\"}},\"contexts\":{\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"fb743f58-b0dc-4d5b-9f58-eddeab3f7c8c\":{}}},\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_IL_I_CostCenterText\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1785393742882,\"deploymentDate\":0,\"#objectStatus\":\"0\",\"elements\":{\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\":{\"name\":\"Language\"},\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\":{\"name\":\"ControllingArea\"},\"30a88569-c1ac-41c8-ba92-f7228a66c582\":{\"name\":\"CostCenter\"},\"1fd1f371-18df-4ab0-9df0-da14e7330423\":{\"name\":\"ValidityEndDate\"},\"69c86059-f9bf-45a0-987b-c64139c9dfad\":{\"name\":\"CostCenterName\"},\"5d404912-48a1-4423-94d6-f17c65dad50a\":{\"name\":\"CostCenterLongText\"}}},\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZFI_LT_I_CostCenterText\",\"label\":\"ZFI_LT_I_CostCenterText\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1785392035776,\"deploymentDate\":1785392187439,\"#objectStatus\":\"1\",\"alias\":\"ZFI_LT_I_CostCenterText\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZFI_LT_I_CostCenterText_Delta\"]},\"context\":\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\",\"elements\":{\"06f4bf13-a88b-48e7-85c8-57b1db597c3f\":{\"name\":\"Language\"},\"534e6320-fc0c-46b6-a974-17890d7d48a4\":{\"name\":\"ControllingArea\"},\"88d73cb8-4daf-44c4-b9d3-dd5433b3e4c5\":{\"name\":\"CostCenter\"},\"5c2f9cc0-b272-4d22-a02c-94be1aa65003\":{\"name\":\"ValidityEndDate\"},\"e50af061-9650-4783-8795-da340385d70a\":{\"name\":\"CostCenterName\"},\"8f4c8adc-a67f-4c65-9110-ae33c17e2f7c\":{\"name\":\"CostCenterLongText\"}},\"successorNode\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\"},\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"fb743f58-b0dc-4d5b-9f58-eddeab3f7c8c\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"ad607a37-60b7-469f-9a43-89d563589a7f\":{},\"b51c0aee-a169-4865-84bd-ec4d965046dd\":{\"name\":\"Entity Symbol 1\"},\"5fb469e1-3382-448d-81ac-5ffff7b1e13a\":{}}},\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"30a88569-c1ac-41c8-ba92-f7228a66c582\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"5d404912-48a1-4423-94d6-f17c65dad50a\"},\"1fd1f371-18df-4ab0-9df0-da14e7330423\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"69c86059-f9bf-45a0-987b-c64139c9dfad\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterName\",\"label\":\"General name\",\"newName\":\"CostCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5d404912-48a1-4423-94d6-f17c65dad50a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterLongText\",\"label\":\"Description\",\"newName\":\"CostCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"ad607a37-60b7-469f-9a43-89d563589a7f\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\"},\"b51c0aee-a169-4865-84bd-ec4d965046dd\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\"},\"5fb469e1-3382-448d-81ac-5ffff7b1e13a\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"b51c0aee-a169-4865-84bd-ec4d965046dd\",\"targetSymbol\":\"ad607a37-60b7-469f-9a43-89d563589a7f\"},\"06f4bf13-a88b-48e7-85c8-57b1db597c3f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\"},\"534e6320-fc0c-46b6-a974-17890d7d48a4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\"},\"88d73cb8-4daf-44c4-b9d3-dd5433b3e4c5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"30a88569-c1ac-41c8-ba92-f7228a66c582\"},\"5c2f9cc0-b272-4d22-a02c-94be1aa65003\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"1fd1f371-18df-4ab0-9df0-da14e7330423\"},\"e50af061-9650-4783-8795-da340385d70a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterName\",\"label\":\"General name\",\"newName\":\"CostCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"69c86059-f9bf-45a0-987b-c64139c9dfad\"},\"8f4c8adc-a67f-4c65-9110-ae33c17e2f7c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterLongText\",\"label\":\"Description\",\"newName\":\"CostCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5d404912-48a1-4423-94d6-f17c65dad50a\"}}}"
-    },
-    "GV_GLT_NET": {
-      "editor": {
-        "lastModifier": "GRAPHICALVIEWBUILDER",
-        "default": "GRAPHICALVIEWBUILDER"
-      },
-      "uiModel": "{\"contents\":{\"53f2f0ad-68e7-4971-b81b-d0aa42324f33\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"GV_GLT_NET\",\"label\":\"GV_GLT_NET\",\"modificationDate\":1784689387784,\"deploymentDate\":1784689398604,\"#objectStatus\":\"1\",\"output\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\",\"nodes\":{\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\":{\"name\":\"GV_GLT_NET\"},\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\":{\"name\":\"RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET\"}},\"contexts\":{\"aead1cf8-aa79-4a04-9fee-414965d13a41\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"4bc2d507-2d18-4b4b-80ed-a239838fc009\":{}}},\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"GV_GLT_NET\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1784689387784,\"deploymentDate\":1784689398604,\"#objectStatus\":\"1\",\"elements\":{\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"name\":\"ChartOfAccounts\"},\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\":{\"name\":\"GLAccount\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"name\":\"Language\"},\"bb9d9455-b75a-4f34-bee6-5768df5919c3\":{\"name\":\"GLAccountName\"},\"06beaea6-2107-4ea9-9934-2ac2bc03c147\":{\"name\":\"GLAccountLongName\"},\"a055b199-a7f4-4339-8570-83c1c2ebddaa\":{\"name\":\"LastChangeDateTime\"}},\"representativeKey\":\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\",\"compoundKeySequence\":{\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"name\":\"ChartOfAccounts\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"name\":\"Language\"}}},\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZI_GLACCOUNTTEXTRAWDATA_NET\",\"label\":\"Glaccount master data\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1784640036434,\"deploymentDate\":1784640214524,\"#objectStatus\":\"1\",\"alias\":\"ZI_GLACCOUNTTEXTRAWDATA_NET\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZI_GLACCOUNTTEXTRAWDATA_NET_Delta\"]},\"context\":\"aead1cf8-aa79-4a04-9fee-414965d13a41\",\"elements\":{\"dc2ea0f5-e43b-4f86-bf7b-8f030ee95728\":{\"name\":\"ChartOfAccounts\"},\"c0b491ef-ac0c-4d49-9202-48977f607d33\":{\"name\":\"GLAccount\"},\"dbe5b628-b0f3-4d98-b536-69a6b9d771b4\":{\"name\":\"Language\"},\"737fd968-cf35-42f2-86c0-53bcd3d36246\":{\"name\":\"GLAccountName\"},\"12cc0f7a-0f82-415f-9748-ced01993edce\":{\"name\":\"GLAccountLongName\"},\"7d0fff02-3274-4014-b81d-7d68ccf7f9cc\":{\"name\":\"LastChangeDateTime\"}},\"successorNode\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\"},\"aead1cf8-aa79-4a04-9fee-414965d13a41\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"4bc2d507-2d18-4b4b-80ed-a239838fc009\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"eb7fc564-f4f2-4066-b760-1903e9284b93\":{},\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\":{\"name\":\"Entity Symbol 1\"},\"3005da55-5054-47ea-9716-ac1f2caf32a5\":{}}},\"9d2a9bec-0604-4805-800f-480b3538a249\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":0,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account number\",\"newName\":\"GLAccount\",\"indexOrder\":1,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"06beaea6-2107-4ea9-9934-2ac2bc03c147\"},\"9fd2ec55-3191-44b2-8911-7aee562194fc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":2,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"bb9d9455-b75a-4f34-bee6-5768df5919c3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountName\",\"label\":\"G/l account name\",\"newName\":\"GLAccountName\",\"indexOrder\":3,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"06beaea6-2107-4ea9-9934-2ac2bc03c147\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountLongName\",\"label\":\"G/l account long name\",\"newName\":\"GLAccountLongName\",\"indexOrder\":4,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"a055b199-a7f4-4339-8570-83c1c2ebddaa\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LastChangeDateTime\",\"label\":\"Utc time stamp in short form (yyyymmddhhmmss)\",\"newName\":\"LastChangeDateTime\",\"indexOrder\":5,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":15,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"eb7fc564-f4f2-4066-b760-1903e9284b93\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"720ad4bc-3a07-4035-8021-6b9c60e6e70b\"},\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"e9ea236b-13d8-44ce-9c22-aa10171cf11d\"},\"3005da55-5054-47ea-9716-ac1f2caf32a5\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"5d012b61-be7c-4fd9-ae1d-d6aee6f84cde\",\"targetSymbol\":\"eb7fc564-f4f2-4066-b760-1903e9284b93\"},\"dc2ea0f5-e43b-4f86-bf7b-8f030ee95728\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ChartOfAccounts\",\"label\":\"Chart of accounts\",\"newName\":\"ChartOfAccounts\",\"indexOrder\":0,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"9d2a9bec-0604-4805-800f-480b3538a249\"},\"c0b491ef-ac0c-4d49-9202-48977f607d33\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccount\",\"label\":\"G/l account number\",\"newName\":\"GLAccount\",\"indexOrder\":1,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"123ac2d8-f69e-4b4f-9002-7417d7c6613e\"},\"dbe5b628-b0f3-4d98-b536-69a6b9d771b4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":2,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"9fd2ec55-3191-44b2-8911-7aee562194fc\"},\"737fd968-cf35-42f2-86c0-53bcd3d36246\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountName\",\"label\":\"G/l account name\",\"newName\":\"GLAccountName\",\"indexOrder\":3,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"bb9d9455-b75a-4f34-bee6-5768df5919c3\"},\"12cc0f7a-0f82-415f-9748-ced01993edce\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"GLAccountLongName\",\"label\":\"G/l account long name\",\"newName\":\"GLAccountLongName\",\"indexOrder\":4,\"length\":50,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"06beaea6-2107-4ea9-9934-2ac2bc03c147\"},\"7d0fff02-3274-4014-b81d-7d68ccf7f9cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"LastChangeDateTime\",\"label\":\"Utc time stamp in short form (yyyymmddhhmmss)\",\"newName\":\"LastChangeDateTime\",\"indexOrder\":5,\"dataType\":\"cds.Decimal\",\"length\":0,\"precision\":15,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"a055b199-a7f4-4339-8570-83c1c2ebddaa\"}}}"
-    },
     "ZFI_IL_I_FunctionalAreaText": {
       "editor": {
         "lastModifier": "GRAPHICALVIEWBUILDER",
@@ -5934,12 +5934,12 @@
       },
       "uiModel": "{\"contents\":{\"b26c4a26-c757-4b67-8656-80933476d8e5\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_IL_I_FunctionalAreaText\",\"label\":\"ZFI_IL_I_FunctionalAreaText\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"7d9e6eae-6852-4fe0-a8c7-451291212aa6\",\"nodes\":{\"7d9e6eae-6852-4fe0-a8c7-451291212aa6\":{\"name\":\"ZFI_IL_I_FunctionalAreaText\"},\"fb9e13b8-3dc5-4ae4-a404-51eabc39a634\":{\"name\":\"RAD_S3P.ZFI_LT_I_FunctionalAreaText\"}},\"contexts\":{\"ba5e78de-5d37-4756-8e7a-ef45e61acac9\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"18a0ff28-9762-4d5d-a123-ab7c796db787\":{}}},\"7d9e6eae-6852-4fe0-a8c7-451291212aa6\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_IL_I_FunctionalAreaText\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"6bdf9058-715f-4b24-ac9d-f33304417d0c\":{\"name\":\"Language\"},\"782c6c52-fd21-49e0-823b-c2ddf10e2597\":{\"name\":\"FunctionalArea\"},\"c5421acf-403c-4793-9071-646981619b9e\":{\"name\":\"FunctionalAreaName\"}}},\"18a0ff28-9762-4d5d-a123-ab7c796db787\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"37aea003-a630-41bb-a3b7-9de0136b9c03\":{},\"e0049060-32a8-4264-8fd4-9ba610aa3374\":{\"name\":\"Entity Symbol 1\"},\"76777317-8cfb-4063-be2b-630495e2a5d6\":{}}},\"37aea003-a630-41bb-a3b7-9de0136b9c03\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"7d9e6eae-6852-4fe0-a8c7-451291212aa6\"},\"fb9e13b8-3dc5-4ae4-a404-51eabc39a634\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZFI_LT_I_FunctionalAreaText\",\"label\":\"ZFI_LT_I_FunctionalAreaText\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1785392187000,\"#objectStatus\":\"1\",\"alias\":\"ZFI_LT_I_FunctionalAreaText\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZFI_LT_I_FunctionalAreaText_Delta\"]},\"context\":\"ba5e78de-5d37-4756-8e7a-ef45e61acac9\",\"elements\":{\"c4357108-1c4d-4bd6-91b0-c7ca2e5800e3\":{\"name\":\"Language\"},\"8aa40d7e-9d3e-4160-a115-1f1ff29d6488\":{\"name\":\"FunctionalArea\"},\"86e3bed2-871e-4998-94fc-50750b7cc34f\":{\"name\":\"FunctionalAreaName\"}},\"successorNode\":\"7d9e6eae-6852-4fe0-a8c7-451291212aa6\"},\"c4357108-1c4d-4bd6-91b0-c7ca2e5800e3\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"6bdf9058-715f-4b24-ac9d-f33304417d0c\"},\"8aa40d7e-9d3e-4160-a115-1f1ff29d6488\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalArea\",\"label\":\"Functional area\",\"newName\":\"FunctionalArea\",\"indexOrder\":1,\"isKey\":true,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"782c6c52-fd21-49e0-823b-c2ddf10e2597\"},\"86e3bed2-871e-4998-94fc-50750b7cc34f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalAreaName\",\"label\":\"Name of the functional area\",\"newName\":\"FunctionalAreaName\",\"indexOrder\":2,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"c5421acf-403c-4793-9071-646981619b9e\"},\"ba5e78de-5d37-4756-8e7a-ef45e61acac9\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"e0049060-32a8-4264-8fd4-9ba610aa3374\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"fb9e13b8-3dc5-4ae4-a404-51eabc39a634\"},\"6bdf9058-715f-4b24-ac9d-f33304417d0c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"782c6c52-fd21-49e0-823b-c2ddf10e2597\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalArea\",\"label\":\"Functional area\",\"newName\":\"FunctionalArea\",\"indexOrder\":1,\"isKey\":true,\"length\":16,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"c5421acf-403c-4793-9071-646981619b9e\"},\"c5421acf-403c-4793-9071-646981619b9e\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"FunctionalAreaName\",\"label\":\"Name of the functional area\",\"newName\":\"FunctionalAreaName\",\"indexOrder\":2,\"length\":25,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"76777317-8cfb-4063-be2b-630495e2a5d6\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"e0049060-32a8-4264-8fd4-9ba610aa3374\",\"targetSymbol\":\"37aea003-a630-41bb-a3b7-9de0136b9c03\"}}}"
     },
-    "ZFI_IL_I_ProfitCenterText": {
+    "ZFI_IL_I_CostCenterText": {
       "editor": {
         "lastModifier": "GRAPHICALVIEWBUILDER",
         "default": "GRAPHICALVIEWBUILDER"
       },
-      "uiModel": "{\"contents\":{\"a60f9379-f113-483f-8048-d16481278cf4\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_IL_I_ProfitCenterText\",\"label\":\"ZFI_IL_I_ProfitCenterText\",\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"output\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\",\"nodes\":{\"a3474c85-4173-47b8-891b-0f064ac7d09f\":{\"name\":\"ZFI_IL_I_ProfitCenterText\"},\"d2d30186-8612-432f-950e-8c8bbf364321\":{\"name\":\"RAD_S3P.ZFI_LT_I_ProfitCenterText\"}},\"contexts\":{\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"3ae125b6-6f5f-4220-bceb-c1330906ae72\":{}}},\"a3474c85-4173-47b8-891b-0f064ac7d09f\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_IL_I_ProfitCenterText\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":0,\"deploymentDate\":0,\"#objectStatus\":0,\"elements\":{\"ac657707-0011-4ce1-a57c-a9e8881f6b55\":{\"name\":\"Language\"},\"24aa2167-e376-44b5-803b-56270e6e4f12\":{\"name\":\"ControllingArea\"},\"49a6626d-969d-4094-9afa-6cef2cc93e7c\":{\"name\":\"ProfitCenter\"},\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\":{\"name\":\"ValidityEndDate\"},\"5387eceb-529f-4c13-8764-31825b461df0\":{\"name\":\"ProfitCenterName\"},\"35be9ae5-62a2-49f6-8f00-a826421f02e6\":{\"name\":\"ProfitCenterLongText\"}}},\"3ae125b6-6f5f-4220-bceb-c1330906ae72\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"930ec2b4-5a30-4e2a-a346-650df0f60f10\":{},\"29362783-35e2-457f-a7d2-82e3a561d872\":{\"name\":\"Entity Symbol 1\"},\"fc056676-6637-4b5a-ae16-2e87947a5599\":{}}},\"930ec2b4-5a30-4e2a-a346-650df0f60f10\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\"},\"d2d30186-8612-432f-950e-8c8bbf364321\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZFI_LT_I_ProfitCenterText\",\"label\":\"ZFI_LT_I_ProfitCenterText\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":0,\"deploymentDate\":1785392187000,\"#objectStatus\":\"1\",\"alias\":\"ZFI_LT_I_ProfitCenterText\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZFI_LT_I_ProfitCenterText_Delta\"]},\"context\":\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\",\"elements\":{\"1db3d6ed-5614-461b-983f-cf249534700a\":{\"name\":\"Language\"},\"f5ed51be-6c5c-4959-ac10-f392feda52cc\":{\"name\":\"ControllingArea\"},\"76f44204-8461-4a5b-907a-3324f6f2e04b\":{\"name\":\"ProfitCenter\"},\"506dd295-0a76-414e-93aa-0d68fe7a825b\":{\"name\":\"ValidityEndDate\"},\"f645e6d2-028c-4959-b3b7-b1eb4b910081\":{\"name\":\"ProfitCenterName\"},\"42b079a0-1073-48b6-8642-421a50d9c932\":{\"name\":\"ProfitCenterLongText\"}},\"successorNode\":\"a3474c85-4173-47b8-891b-0f064ac7d09f\"},\"1db3d6ed-5614-461b-983f-cf249534700a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"ac657707-0011-4ce1-a57c-a9e8881f6b55\"},\"f5ed51be-6c5c-4959-ac10-f392feda52cc\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"24aa2167-e376-44b5-803b-56270e6e4f12\"},\"76f44204-8461-4a5b-907a-3324f6f2e04b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"49a6626d-969d-4094-9afa-6cef2cc93e7c\"},\"506dd295-0a76-414e-93aa-0d68fe7a825b\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\"},\"f645e6d2-028c-4959-b3b7-b1eb4b910081\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterName\",\"label\":\"General name\",\"newName\":\"ProfitCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5387eceb-529f-4c13-8764-31825b461df0\"},\"42b079a0-1073-48b6-8642-421a50d9c932\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterLongText\",\"label\":\"Long text\",\"newName\":\"ProfitCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"35be9ae5-62a2-49f6-8f00-a826421f02e6\"},\"b461d3a0-e394-4d7e-b9e6-6df152d22d9b\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"29362783-35e2-457f-a7d2-82e3a561d872\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"d2d30186-8612-432f-950e-8c8bbf364321\"},\"ac657707-0011-4ce1-a57c-a9e8881f6b55\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"24aa2167-e376-44b5-803b-56270e6e4f12\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"49a6626d-969d-4094-9afa-6cef2cc93e7c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenter\",\"label\":\"Profit center\",\"newName\":\"ProfitCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"35be9ae5-62a2-49f6-8f00-a826421f02e6\"},\"36817ac5-0d42-42cf-ac7d-bb649d8bb0c9\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"5387eceb-529f-4c13-8764-31825b461df0\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterName\",\"label\":\"General name\",\"newName\":\"ProfitCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"35be9ae5-62a2-49f6-8f00-a826421f02e6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ProfitCenterLongText\",\"label\":\"Long text\",\"newName\":\"ProfitCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"fc056676-6637-4b5a-ae16-2e87947a5599\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"29362783-35e2-457f-a7d2-82e3a561d872\",\"targetSymbol\":\"930ec2b4-5a30-4e2a-a346-650df0f60f10\"}}}"
+      "uiModel": "{\"contents\":{\"4c59e1f1-59c3-4dbd-ae69-9385530d4fea\":{\"classDefinition\":\"sap.cdw.querybuilder.Model\",\"name\":\"ZFI_IL_I_CostCenterText\",\"label\":\"ZFI_IL_I_CostCenterText\",\"modificationDate\":1785393742882,\"deploymentDate\":0,\"#objectStatus\":\"0\",\"output\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\",\"nodes\":{\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\":{\"name\":\"ZFI_IL_I_CostCenterText\"},\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\":{\"name\":\"RAD_S3P.ZFI_LT_I_CostCenterText\"}},\"contexts\":{\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\":{\"name\":\"RAD_S3P\"}},\"diagrams\":{\"fb743f58-b0dc-4d5b-9f58-eddeab3f7c8c\":{}}},\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\":{\"classDefinition\":\"sap.cdw.querybuilder.Output\",\"name\":\"ZFI_IL_I_CostCenterText\",\"type\":\"graphicView\",\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPinToMemoryEnabled\":false,\"dataCategory\":\"TEXT\",\"isAllowConsumption\":false,\"modificationDate\":1785393742882,\"deploymentDate\":0,\"#objectStatus\":\"0\",\"elements\":{\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\":{\"name\":\"Language\"},\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\":{\"name\":\"ControllingArea\"},\"30a88569-c1ac-41c8-ba92-f7228a66c582\":{\"name\":\"CostCenter\"},\"1fd1f371-18df-4ab0-9df0-da14e7330423\":{\"name\":\"ValidityEndDate\"},\"69c86059-f9bf-45a0-987b-c64139c9dfad\":{\"name\":\"CostCenterName\"},\"5d404912-48a1-4423-94d6-f17c65dad50a\":{\"name\":\"CostCenterLongText\"}}},\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\":{\"classDefinition\":\"sap.cdw.querybuilder.Entity\",\"name\":\"RAD_S3P.ZFI_LT_I_CostCenterText\",\"label\":\"ZFI_LT_I_CostCenterText\",\"type\":9,\"deltaTable\":{\"type\":\"ACTIVE\"},\"isDeltaOutboundOn\":false,\"isDeletionVector\":false,\"isPersistenceExists\":true,\"isPinToMemoryEnabled\":false,\"isAllowConsumption\":false,\"isHiddenInUi\":false,\"modificationDate\":1785392035776,\"deploymentDate\":1785392187439,\"#objectStatus\":\"1\",\"alias\":\"ZFI_LT_I_CostCenterText\",\"delta\":{\"type\":{\"#\":\"ACTIVE\"},\"deltaFromEntities\":[\"ZFI_LT_I_CostCenterText_Delta\"]},\"context\":\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\",\"elements\":{\"06f4bf13-a88b-48e7-85c8-57b1db597c3f\":{\"name\":\"Language\"},\"534e6320-fc0c-46b6-a974-17890d7d48a4\":{\"name\":\"ControllingArea\"},\"88d73cb8-4daf-44c4-b9d3-dd5433b3e4c5\":{\"name\":\"CostCenter\"},\"5c2f9cc0-b272-4d22-a02c-94be1aa65003\":{\"name\":\"ValidityEndDate\"},\"e50af061-9650-4783-8795-da340385d70a\":{\"name\":\"CostCenterName\"},\"8f4c8adc-a67f-4c65-9110-ae33c17e2f7c\":{\"name\":\"CostCenterLongText\"}},\"successorNode\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\"},\"b2934a49-af6d-4dc0-8705-eecd4f20e28f\":{\"classDefinition\":\"sap.cdw.commonmodel.Context\",\"name\":\"RAD_S3P\",\"label\":\"RAD_S3P\",\"crossSpace\":{\"schema\":\"RAD_S3P\",\"space\":\"RAD_S3P\"}},\"fb743f58-b0dc-4d5b-9f58-eddeab3f7c8c\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.Diagram\",\"symbols\":{\"ad607a37-60b7-469f-9a43-89d563589a7f\":{},\"b51c0aee-a169-4865-84bd-ec4d965046dd\":{\"name\":\"Entity Symbol 1\"},\"5fb469e1-3382-448d-81ac-5ffff7b1e13a\":{}}},\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.language\",\"isNotNull\":true},\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"30a88569-c1ac-41c8-ba92-f7228a66c582\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"labelElement\":\"5d404912-48a1-4423-94d6-f17c65dad50a\"},\"1fd1f371-18df-4ab0-9df0-da14e7330423\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true},\"69c86059-f9bf-45a0-987b-c64139c9dfad\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterName\",\"label\":\"General name\",\"newName\":\"CostCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false},\"5d404912-48a1-4423-94d6-f17c65dad50a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterLongText\",\"label\":\"Description\",\"newName\":\"CostCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"semanticType\":\"@Semantics.text\"},\"ad607a37-60b7-469f-9a43-89d563589a7f\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.OutputSymbol\",\"x\":47,\"y\":-20,\"width\":140,\"height\":40,\"object\":\"c6d32d3f-0fa7-418a-aee0-1a6c50ee6c31\"},\"b51c0aee-a169-4865-84bd-ec4d965046dd\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.EntitySymbol\",\"name\":\"Entity Symbol 1\",\"x\":-163,\"y\":-20,\"width\":160,\"displayName\":\"Entity Symbol 1\",\"object\":\"bb255024-4fe7-43ae-b1d3-7a30595ede3d\"},\"5fb469e1-3382-448d-81ac-5ffff7b1e13a\":{\"classDefinition\":\"sap.cdw.querybuilder.ui.AssociationSymbol\",\"points\":\"-3,0 47,0\",\"contentOffsetX\":5,\"contentOffsetY\":5,\"sourceSymbol\":\"b51c0aee-a169-4865-84bd-ec4d965046dd\",\"targetSymbol\":\"ad607a37-60b7-469f-9a43-89d563589a7f\"},\"06f4bf13-a88b-48e7-85c8-57b1db597c3f\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"Language\",\"label\":\"Language key\",\"newName\":\"Language\",\"indexOrder\":0,\"isKey\":true,\"length\":2,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"8b664cd0-4d53-48dd-8d22-d623fa96cce6\"},\"534e6320-fc0c-46b6-a974-17890d7d48a4\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ControllingArea\",\"label\":\"Controlling area\",\"newName\":\"ControllingArea\",\"indexOrder\":1,\"isKey\":true,\"length\":4,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"2a1890fa-0f60-4337-beb2-9d1e2c29c283\"},\"88d73cb8-4daf-44c4-b9d3-dd5433b3e4c5\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenter\",\"label\":\"Cost center\",\"newName\":\"CostCenter\",\"indexOrder\":2,\"isKey\":true,\"length\":10,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"30a88569-c1ac-41c8-ba92-f7228a66c582\"},\"5c2f9cc0-b272-4d22-a02c-94be1aa65003\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"ValidityEndDate\",\"label\":\"Valid to date\",\"newName\":\"ValidityEndDate\",\"indexOrder\":3,\"isKey\":true,\"length\":8,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"isNotNull\":true,\"successorElement\":\"1fd1f371-18df-4ab0-9df0-da14e7330423\"},\"e50af061-9650-4783-8795-da340385d70a\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterName\",\"label\":\"General name\",\"newName\":\"CostCenterName\",\"indexOrder\":4,\"length\":20,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"69c86059-f9bf-45a0-987b-c64139c9dfad\"},\"8f4c8adc-a67f-4c65-9110-ae33c17e2f7c\":{\"classDefinition\":\"sap.cdw.querybuilder.Element\",\"name\":\"CostCenterLongText\",\"label\":\"Description\",\"newName\":\"CostCenterLongText\",\"indexOrder\":5,\"length\":40,\"precision\":0,\"scale\":0,\"isMeasureBeforeAI\":false,\"isMeasureAI\":false,\"isKeyBeforeAI\":false,\"isKeyAI\":false,\"successorElement\":\"5d404912-48a1-4423-94d6-f17c65dad50a\"}}}"
     },
     "ZFI_FA_TrialBalance": {
       "editor": {
